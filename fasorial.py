@@ -22,17 +22,17 @@ def fasorial_2(r, theta, variable):
     ax = plt.subplot(111, polar=True)
     plt.title("Diagrama fasorial de potencias")
 
-    plt.polar([numpy.pi * theta[0] / 180, 0], [r[0], 0])
-    plt.scatter(numpy.pi * theta[0] / 180, r[0])
+    plt.polar([numpy.pi * theta[0] / 180, 0], [r[0], 0], color='#008b8b')
+    plt.scatter(numpy.pi * theta[0] / 180, r[0], color='#008b8b')
     ax.plot(theta[0], r[0], label=variable[0], color='#008b8b')
 
-    plt.polar([numpy.pi * theta[1] / 180, 0], [r[1], 0])
-    plt.scatter(numpy.pi * theta[1] / 180, r[1])
+    plt.polar([numpy.pi * theta[1] / 180, 0], [r[1], 0], color='#4b0082')
+    plt.scatter(numpy.pi * theta[1] / 180, r[1], color='#4b0082')
     ax.plot(theta[1], r[1], label=variable[1], color='#4b0082')
 
-    plt.polar([numpy.pi * theta[2] / 180, 0], [r[2], 0])
-    plt.scatter(numpy.pi * theta[2] / 180, r[2])
-    ax.plot(theta[2], r[2], label=variable[2], color='#228b22')
+    plt.polar([numpy.pi * theta[2] / 180, 0], [r[2], 0], color='blue')
+    plt.scatter(numpy.pi * theta[2] / 180, r[2], color='blue')
+    ax.plot(theta[2], r[2], label=variable[2], color='blue')
 
     ax.legend()
     plt.show()

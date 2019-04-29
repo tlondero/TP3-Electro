@@ -37,15 +37,14 @@ def fasorial_2(r, theta, variable):
     ax.legend()
     plt.show()
 
-modulo_1 = [3, 4]
-fase_1 = [90, 135]        #En grados
-variable_1 = ['Corriente (I)', 'Tensión (V)']
-fasorial_1(modulo_1, fase_1, variable_1)
+#modulo_1 = [3, 4]
+#fase_1 = [90, 135]        #En grados
+#variable_1 = ['Corriente (I)', 'Tensión (V)']
+#fasorial_1(modulo_1, fase_1, variable_1)
 
-#Por algún motivo no me quiere graficar esto
 modulo_2 = [1, numpy.sqrt(2), 1]
 fase_2 = [90, 45, 0]
 variable_2 = ['Potencia reacrtiva Q (VAR)', 'Potencia apartente S (VA)', 'Potencia activa P (W)']
-fasorial_2 = (modulo_2, fase_2, variable_2)
+fasorial_2(modulo_2, fase_2, variable_2)
 
 

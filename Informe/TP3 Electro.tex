@@ -83,6 +83,7 @@ A) Núcleo sólido                                                        & 7,25
 \begin{tabular}[c]{@{}c@{}}B) Núcleo sólido\\ por la mitad\end{tabular} & 9,88               & 0,46               & 98,50              & 43,72                & 44,82               & 0,22                                \\ \hline
 C) Sin núcleo                                                           & 23,25              & 0,92               & 96,00              & 85,40                & 88,51               & 0,26                                \\ \hline
 \end{tabular}
+\caption{Tesiones, corrientes y potencias medidas y calculadas.}
 \label{table:ej1}
 \end{table}
 
@@ -113,22 +114,25 @@ Finalmente, analizando los resultados obtenidos se puede observar que al retirar
 
 \subsection*{\underline{Ejercicio 2}}
 
-Se quiso medir la potencia activa, reactiva y aparente, junto al valor del $Cos(\phi)$ de tres circuitos diferentes: R, C, y RLC.
+En la segunda etapa se medió la potencia activa, reactiva y aparente, junto al valor del $Cos(\varphi)$ de tres circuitos diferentes: R, C, y RLC.
 
 \begin{figure}[H]
 \centering
-\begin{minipage}{.3\textwidth}
+\begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=.8\linewidth]{Circuito-ejercicio-2A}
   \caption{Circuito R}
 \end{minipage}%\\
-\begin{minipage}{.3\textwidth}
+\begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=.8\linewidth]{Circuito-ejercicio-2B}
   \caption{Circuito C}
 
 \end{minipage}%\\
-\begin{minipage}{.3\textwidth}
+\end{figure}
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=.8\linewidth]{Circuito-ejercicio-2C}
   \caption{Circuito RLC}
@@ -139,13 +143,15 @@ Se quiso medir la potencia activa, reactiva y aparente, junto al valor del $Cos(
 Obteniendo, los siguientes valores:
 
 \begin{table}[H]
-\begin{tabular}{lllll}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
 \hline
-Circuito & Q      & S      & P     & Cos($\Phi$) \\ \hline
-R1       & 6,23   & 54,86  & 54,50 & 0,99        \\
-C        & 106,09 & 106,50 & 9,38  & 0,09        \\
-RLC      & 78,01  & 116,11 & 86    & 0,74        \\ \hline
+\textbf{Circuito} & \textbf{P {[}W{]}} & \textbf{Q {[}VAR{]}} & \textbf{S {[}VA{]}} & \textbf{Cos($\varphi$)} \\ \hline
+R                 & 54,5               & 6,23                 & 54,5                & 0,99                                \\ \hline
+C                 & 9,38               & 106,09               & 9,38                & 0,09                                \\ \hline
+RLC               & 0,74               & 78,01                & 86                  & 0,74                                \\ \hline
 \end{tabular}
+\caption{Valores medidos de potencia.}
 \end{table}
 
 Graficando fasorialmente las tres potencias, se obtienen:
@@ -155,29 +161,36 @@ Graficando fasorialmente las tres potencias, se obtienen:
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=1.2\linewidth]{Diag-Fas-2A}
-  \caption{Circuito R}
+  \caption{Circuito R.}
 \end{minipage}%\\
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=1.2\linewidth]{Diag-Fas-2B}
-  \caption{Circuito C}
+  \caption{Circuito C.}
 
 \end{minipage}\\
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=1.2\linewidth]{Diag-Fas-2C}
-  \caption{Circuito RLC}
+  \caption{Circuito RLC.}
 \end{minipage}
 \end{figure}
 
 \newpage
 
 \subsection*{\underline{Ejercicio 3}}
-En este ejercicio la finalidad era mover el cos($\phi$) del circuito de la figura \ref{fig:2b} a un valor de 0.9 mediante la adición de capacitores en paralelo, en la practica le agregamos un total de 24$\mu$F y se midió un cos($\phi$))0.91
-
+La finalidad de la tercer etapa del trabajo consistió en variar el factor de potencia del circuito de la figura (\ref{fig:2b}) a un valor de $ 0.9 $ mediante la adición de capacitores en paralelo. En un principio se agregó un total de $ 16 \ \mu F$, lo que implicó que $ cos \left(\varphi \right) = 0.74 $. Al subir la capacitancia en paralelo a $ 24 \ \mu F$, se observo que $ cos \left(\varphi \right) = 0.91 $.
 
 \subsection*{\underline{Ejercicio 4}}
-
-\section*{Conclusión}
+Por último, en la sección final de este trabajo, se buscó determinar analíticamente el valor capacitivo del banco de capacitores que se debería colocar en paralelo a los circuitos del ejercicio 2 para alcanzar un factor de potencia de $ 0,9 $. Realizando las cuentas adecuadas se obtiene
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Circuito} & \textbf{R} & \textbf{C} & \textbf{RLC} \\ \hline
+\textbf{C}        & -3,01      & 0,63       & 1,55         \\ \hline
+\end{tabular}
+\caption{Capacidad necesaria para alcanzar un fator de potencia de $ 0,9 $.}
+\end{table}
 
 \end{document}

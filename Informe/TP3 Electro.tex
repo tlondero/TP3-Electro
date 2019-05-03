@@ -44,35 +44,72 @@ En la experiencia realizada se buscó analizar las potencias reactivas, activas 
 
 \subsection*{\underline{Ejercicio 1}}
 
-En esta etapa, se analizó un circuito con una bobina, la cual posee un núcleo de hierro macizo, lo que permitió observar tres situaciones distintas:
+En esta etapa, se analizó un circuito con una bobina, la cual dispone de un núcleo de hierro macizo, lo que permitió observar tres situaciones distintas:
 \begin{enumerate}
-	\item La totalidad del núcleo dentro de la bobina.
-	\item La mitad del núcleo dentro de la bobina.
-	\item Sin núcleo.
+	\item[A)] La totalidad del núcleo dentro de la bobina.
+	\item[B)] La mitad del núcleo dentro de la bobina.
+	\item[C)] Sin núcleo.
 \end{enumerate}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Circuito-ejercicio-1A}
+	\includegraphics[width=0.6\textwidth]{Circuito-ejercicio-1A}
 	\caption{Circuito con la totalidad del núcleo dentro de la bobina.}
 	\label{fig:1a}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Circuito-ejercicio-1B}
+	\includegraphics[width=0.6\textwidth]{Circuito-ejercicio-1B}
 	\caption{Circuito con la mitad del núcleo dentro de la bobina.}
 	\label{fig:1b}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Circuito-ejercicio-1C}
+	\includegraphics[width=0.6\textwidth]{Circuito-ejercicio-1C}
 	\caption{Circuito con sin núcleo.}
 	\label{fig:1c}
 \end{figure}
 
-\newpage
+De las mediciones realizadas, se pudo confeccionar la siguiente tabla:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{Circuito}                                                       & \textbf{P {[}W{]}} & \textbf{I {[}A{]}} & \textbf{V {[}V{]}} & \textbf{Q {[}VAR{]}} & \textbf{S {[}VA{]}} & \textbf{Cos($\varphi$)} \\ \hline
+A) Núcleo sólido                                                        & 7,25               & 0,28               & 99,50              & 26,38                & 27,36               & 0,26                                \\ \hline
+\begin{tabular}[c]{@{}c@{}}B) Núcleo sólido\\ por la mitad\end{tabular} & 9,88               & 0,46               & 98,50              & 43,72                & 44,82               & 0,22                                \\ \hline
+C) Sin núcleo                                                           & 23,25              & 0,92               & 96,00              & 85,40                & 88,51               & 0,26                                \\ \hline
+\end{tabular}
+\label{table:ej1}
+\end{table}
+
+A continuación se procede a graficar, para cada circuito, un diagrama fasorial de la corriente y la tensión:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Fasorial-1A.png}
+	\caption{Diagrama fasorial del circuito A).}
+	\label{fig:faso-1a}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Fasorial-1B.png}
+	\caption{Diagrama fasorial del circuito B).}
+	\label{fig:faso-1b}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Fasorial-1C.png}
+	\caption{Diagrama fasorial del circuito C).}
+	\label{fig:faso-1c}
+\end{figure}
+
+Finalmente, analizando los resultados obtenidos se puede observar que al retirar el núcleo metálico, la inductancia baja, aumentando la potencia activa del circuito. Por otra parte, esto aumenta la corriente, lo que genera un crecimiento tanto de la potencia reactiva como aparente. Por último, cabe destacar que el factor de potencia se mantiene prácticamente inalterado en los casos A) y B). Se atribuye dicho error a la poca diferencia entre la resistencia y la reactancia.
 
 \subsection*{\underline{Ejercicio 2}}
 

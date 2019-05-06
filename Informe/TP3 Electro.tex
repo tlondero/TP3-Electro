@@ -152,9 +152,9 @@ Obteniendo, los siguientes valores:
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Circuito} & \textbf{P {[}W{]}} & \textbf{Q {[}VAR{]}} & \textbf{S {[}VA{]}} & \textbf{Cos($\varphi$)} \\ \hline
-R                 & 54,5               & 6,23                 & 54,5                & 0,99                                \\ \hline
-C                 & 9,38               & 106,09               & 9,38                & 0,09                                \\ \hline
-RLC               & 0,74               & 78,01                & 86                  & 0,74                                \\ \hline
+R                 & 54,5               & 6,23                 & 54,86                & 0,99                                \\ \hline
+C                 & 9,38               & 106,09               & 106,5                & 0,09                                \\ \hline
+RLC               &  86              & 78,01                & 116.11                  & 0,74                                \\ \hline
 \end{tabular}
 \caption{Valores medidos de potencia.}
 \end{table}
@@ -180,11 +180,11 @@ Graficando fasorialmente las tres potencias, se obtienen:
   \caption{Circuito RLC.}
 \end{minipage}
 \end{figure}
-
+ Concluimos que los diagramas obtenidos a partir de las mediciones son coherentes con lo esperado analiticamente.
 \subsection*{\underline{Ejercicio 3}}
 La finalidad de la tercer etapa del trabajo consistió en variar el factor de potencia del circuito de la figura (\ref{fig:2b}) a un valor de $ 0.9 $ mediante la adición de capacitores en paralelo. En un principio se agregó un total de $ 16 \ \mu F$, lo que implicó que $ cos \left(\varphi \right) = 0.74 $. Al subir la capacitancia en paralelo a $ 24 \ \mu F$, se observo que $ cos \left(\varphi \right) = 0.91 $.
 
 \subsection*{\underline{Ejercicio 4}}
-Por último, en la sección final de este trabajo, se buscó determinar analíticamente el valor capacitivo del banco de capacitores que se debería colocar en paralelo a los circuitos del ejercicio 2 para alcanzar un factor de potencia de $ 0,9 $. Realizando las cuentas adecuadas se obtiene que para el circuito de C se requiere un capacitor de $ 16,03 \ \mu F $ mientras que para el circuito RLC se requiere otro de $ 6,54 \ \mu F $. Para el circuito de R, no no tiene sentido colocar en paralelo un capacitor para subir el factor de potencia a $ 0,9 $ ya que el de dicho circuito es de $ 0,99 $.
+Por último, en la sección final de este trabajo, se buscó determinar analíticamente el valor capacitivo del banco de capacitores que se debería colocar en paralelo a los circuitos del ejercicio 2 para alcanzar un factor de potencia de $ 0,9 $. Para el circuito de C no tiene sentido agregar un capacitor para arreglar el cos($\varphi$) dado que se necesitaria una inductancia. Mientras que para el circuito RLC se requiere otro de $ 6,54 \ \mu F $ .Este valor discrepa ligeramente con el real debido a que en el modelo no se tomo en cuenta la impedancia de la fuente  conjunto a errores de medición, pero mas alla de estos se observa que las calculos teoricos se ajustan a lo medido. Para el circuito de R, no no tiene sentido colocar en paralelo un capacitor para subir el factor de potencia a $ 0,9 $ ya que el de dicho circuito es de $ 0,99 $.
 
 \end{document}

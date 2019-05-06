@@ -41,10 +41,21 @@ def ej2(S):
 
 
 ax = plt.subplot(111, polar=True)
-Z1 = CNum(3, 90, 'Corriente [A]')
-Z2 = CNum(4, 135, 'Tension [V]')
-Z3 = CNum(56, 145, 'Potencia Apartente')
-#ej1([Z1, Z2])
-ej2(Z3)
+Z1 = CNum(280, 74.635, 'Corriente [mA]')
+Z2 = CNum(99.5, 0, 'Tension [V]')
+Z3 = CNum(460, 77.27, 'Corriente [mA]')
+Z4 = CNum(98.5, 0, 'Tension [V]')
+Z5 = CNum(920, 74.771, 'Corriente [mA]')
+Z6 = CNum(96, 0, 'Tension [V]')
+Z7 = CNum(116.11, 42.21, 'Potencia Apartente')
+Z8=CNum(106.50, -84.94, 'Potencia Apartente')
+Z9=CNum(54.86, 6.522, 'Potencia Apartente')
+ej1([Z1,Z2])
+ej1([Z3,Z4])
+ej1([Z5,Z6])
+ej2(Z7)
+ej2(Z8)
+ej2(Z9)
+
 
 

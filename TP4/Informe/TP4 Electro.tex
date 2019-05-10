@@ -83,9 +83,9 @@ Así queda determinado el sentido de la inductancia mutua, conectando el circuit
 	(T.west) node{$L_1$}
 	(T.east) node{$L_2$}
 
-	(0,1)	to	node[draw,circle,fill=white] {V} (2,1)
-	(0,0)	to	(0,1)
-	(2,0)	to	(2,1)
+	(0,0.5)	to	node[draw,circle,fill=white] {V} (2,0.5)
+	(0,0)	to	(0,0.5)
+	(2,0)	to	(2,0.5x)
 
 	;\end{circuitikz}
 \end{center}
@@ -93,33 +93,53 @@ Así queda determinado el sentido de la inductancia mutua, conectando el circuit
 \label{cir:1a}
 \end{figure}
 
-Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramientas necesarias en en circuito para realizar las mediciones adecuadas.
+Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramientas necesarias en el circuito para realizar las mediciones adecuadas.
 
 \begin{figure}[H]
 \begin{center}
 \begin{circuitikz}
 	\draw
 		
-	(1,0) node[transformer] (T) {}
-	node[] (A) at ([xshift=-1cm]T.A1) {}
-	node[] (B) at ([xshift=-1cm]T.A2) {}
-	node[] (C) at ([xshift=1cm]T.B1) {}
-	node[] (D) at ([xshift=1cm]T.B2) {}
-	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
-	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
-	
-	([xshift=-2cm]T.A1)	to node[draw,circle,fill=white] {A}	(T.A1)
-	([xshift=-2cm]T.A1) to node[draw,circle,fill=white] {V} ([xshift=-2cm]T.A2)
-	([xshift=-2cm]T.A2) to (T.A2)
+%	(1,0) node[transformer] (T) {}
+%	node[] (A) at ([xshift=-1cm]T.A1) {}
+%	node[] (B) at ([xshift=-1cm]T.A2) {}
+%	node[] (C) at ([xshift=1cm]T.B1) {}
+%	node[] (D) at ([xshift=1cm]T.B2) {}
+%	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
+%	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
+%	
+%	([xshift=-2cm]T.A1)	to node[draw,circle,fill=white] {A}	(T.A1)
+%	([xshift=-2cm]T.A1) to node[draw,circle,fill=white] {V} ([xshift=-2cm]T.A2)
+%	([xshift=-2cm]T.A2) to (T.A2)
+%
+%	([xshift=1cm]T.B1)	to (T.B1)
+%	([xshift=1cm]T.B2)	to (T.B2)
+%	
+%	([xshift=1cm]T.B2)	to [vR, l_ = $R_D$] ([xshift=1cm]T.B1)
+%			
+%			
+%	(T.west) node{$L_1$}
+%	(T.east) node{$L_2$}
 
-	([xshift=1cm]T.B1)	to (T.B1)
-	([xshift=1cm]T.B2)	to (T.B2)
-	
-	([xshift=1cm]T.B2)	to [vR, l_ = $R_D$] ([xshift=1cm]T.B1)
-			
-			
-	(T.west) node{$L_1$}
-	(T.east) node{$L_2$}
+(-1, -1.1) 		to [vL] (-1,-2.1)
+	(-1.5, -1.1) 	to [short, *-] (-1, -1.1)
+	(-1.5, -2.1) 	to [short, *-] (-1, -2.1)
+					to (0,-2.1)
+	(0,0)	to (0,-1.7)
+			to (-0.6,-1.7)
+	(0,0) 	to node[draw,circle,fill=white] {A} (1.5, 0)
+			to [short, -*] (5, 0) to (5.5,0)
+	(0.7,0.7) node[]{$I_{10}$}
+	(2.5,0.7) node[]{$P_{10}$}
+	(2.5,-0.4) to (2.5,-2.1)
+	(4,0) to node[draw,circle,fill=white] {V} (4, -2.1)
+	(4.5,-0.5) node[]{$U_{10}$}
+	(0,-2.1) to [short, -*] (5,-2.1) to (5.5,-2.1)
+	(6.5,0) node[transformer core]{}
+	(8,0) to (7,0) to [short, -*] (9.5,0)
+	(8,-2.1) to (7,-2.1) to [short, -*] (9.5,-2.1)
+	(8.5,0) to node[draw,circle,fill=white] {V} (8.5, -2.1)
+	(9,-0.5) node[]{$U_{20}$};
 
 	;\end{circuitikz}
 \end{center}

@@ -127,7 +127,16 @@ Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramient
 \caption{Circuito empleado con las conexiones necesarias.}
 \label{cir:1b}
 \end{figure}
-
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+Caso                & Vi (V) & I1 (A) & V2 (V) & I2 (A) & Rd ($\Omega$) & M    & k    \\ \hline
+Hierro Sólido       & 93.4   & 0.3    & 14.6   & 0.06   & 200      & 0.15 & 0.28 \\ \hline
+Laminado            & 93.4   & 0.45   & 23.22  & 0.1    & 200      & 0.26 & 0.33 \\ \hline
+Laminado (I2 = 0)   & 93.4   & 0.4    & 33.22  & 0      & 0        & 0.26 &      \\ \hline
+Sin núcleo (I2 = 0) & 93.4   & 0.8    & 8.3    & 0      & 0        & 0.03 &      \\ \hline
+\end{tabular}
+\end{table}
 \section{\underline{Segunda parte}}
 
 En esta parte, se va a hacer un análisis práctico de un transformador monofásico. El dicho es construido de la misma manera que antes con dos bobinas y un núcleo de hierro.

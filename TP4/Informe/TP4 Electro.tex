@@ -61,25 +61,63 @@ Para empezar se dispuso el circuito de la forma mostrada en la figura (\ref{fig:
 	\label{fig:1a}
 \end{figure}
 
-Así queda determinado el sentido de la inductancia mutua, conectando el circuito de forma tal que se vea de la forma mostrada en la figura
+Así queda determinado el sentido de la inductancia mutua, conectando el circuito de forma tal que se vea de la forma mostrada en la figura (\ref{cir:1a}).
 
 \begin{figure}[H]
 \begin{center}
 \begin{circuitikz}
 	\draw
 		
-	(0.5,3)	to	[voltmeter] (3.5,3)
+	(1,0) node[transformer] (T) {}
+	node[ocirc] (A) at ([xshift=-1cm]T.A1) {}
+	node[ocirc] (B) at ([xshift=-1cm]T.A2) {}
+	node[ocirc] (C) at ([xshift=1cm]T.B1) {}
+	node[ocirc] (D) at ([xshift=1cm]T.B2) {}
+	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
+	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
+	(T.A1) to	[-o] (A)
+	(T.A2) to	[-o] (B) 
+	(T.B1) to	[-o] (C)
+	(T.B2) to	[-o] (D)
+	(T.west) node{$L_1$}
+	(T.east) node{$L_2$}
 
-	(0,0)	to (1,0)
-	%(0,1)	to (1,1)	
-	(1,0)	node[transformer] {}
-	
-	(2,0)	node[circ]{}
+	(0,1)	to	[voltmeter] (2,1)
+	(0,0)	to	(0,1)
+	(2,0)	to	(2,1)
 
 	;\end{circuitikz}
 \end{center}
+\caption{Determinación del sentido de M.}
+\label{cir:1a}
 \end{figure}
 
+Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramientas necesarias en en circuito para realizar las mediciones adecuadas.
+
+\begin{figure}[H]
+\begin{center}
+\begin{circuitikz}
+	\draw
+		
+	(1,0) node[transformer] (T) {}
+	node[ocirc] (A) at ([xshift=-1cm]T.A1) {}
+	node[ocirc] (B) at ([xshift=-1cm]T.A2) {}
+	node[ocirc] (C) at ([xshift=1cm]T.B1) {}
+	node[ocirc] (D) at ([xshift=1cm]T.B2) {}
+	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
+	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
+	(T.A1) to	[-o] (A)
+	(T.A2) to	[-o] (B) 
+	(T.B1) to	[-o] (C)
+	(T.B2) to	[-o] (D)
+	(T.west) node{$L_1$}
+	(T.east) node{$L_2$}
+
+	;\end{circuitikz}
+\end{center}
+\caption{Circuito empleado con las conexiones necesarias.}
+\label{cir:1b}
+\end{figure}
 
 \section{\underline{Segunda parte}}
 
@@ -95,13 +133,18 @@ Para ese primer ensayo, se procede al armado del siguiente circuito :
 
 \begin{circuitikz}
 \draw
-	(0,0) to [ammeter] (1.5,0) to (3,0) to [short, -*] (3.5,0) 	
-	(4.5,0) node[transformer core]{}
-	(2.5,0) to node[draw,circle,fill=white] {V} (2.5, -2.1)
-	(5.5,0) to (7,0) to [short, -*] (7.5,0)
-	(5.5, -2.1) to (7, -2.1) to [short, -*] (7.5, -2.1)
-	(7,0) to node[draw,circle,fill=white] {V} (7, -2.1)
-	(7.5,-0.5) node[]{$U_{20}$};
+	(0,0) 	to node[draw,circle,fill=white] {A} (1.5, 0)
+			to node[draw,circle,fill=white] {W} (3, 0)
+			to [short, -*] (5.5, 0)
+	(4.5,0) to node[draw,circle,fill=white] {V} (4.5, -2.1)
+	(5,-0.5) node[]{$U_{10}$}
+	(0,-2.1) 	to [short, -*] (5.5, -2.1)
+	(6.5,0) node[transformer core]{}
+	(7.5,0) to (7,0) to [short, -*] (9.5,0)
+	(7.5,-2.1) to (7,-2.1) to [short, -*] (9.5,-2.1)
+	
+	(8.5,0) to node[draw,circle,fill=white] {V} (8.5, -2.1)
+	(9,-0.5) node[]{$U_{20}$};
 \end{circuitikz}
 
 Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pérdidas en el hierro nominales.

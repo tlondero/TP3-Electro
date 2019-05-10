@@ -68,16 +68,28 @@ Así queda determinado el sentido de la inductancia mutua, conectando el circuit
 \begin{circuitikz}
 	\draw
 		
-	(0.5,3)	to	[voltmeter] (3.5,3)
+	(1,0) node[transformer] (T) {}
+	node[ocirc] (A) at ([xshift=-1cm]T.A1) {}
+	node[ocirc] (B) at ([xshift=-1cm]T.A2) {}
+	node[ocirc] (C) at ([xshift=1cm]T.B1) {}
+	node[ocirc] (D) at ([xshift=1cm]T.B2) {}
+	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
+	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
+	(T.A1) to	[-o] (A)
+	(T.A2) to	[-o] (B) 
+	(T.B1) to	[-o] (C)
+	(T.B2) to	[-o] (D)
+	(T.west) node{$L_1$}
+	(T.east) node{$L_2$}
 
-	(0,0)	to (1,0)
-	%(0,1)	to (1,1)	
-	(1,0)	node[transformer] {}
-	
-	(2,0)	node[circ]{}
+	(0,1)	to	[voltmeter] (2,1)
+	(0,0)	to	(0,1)
+	(2,0)	to	(2,1)
 
 	;\end{circuitikz}
 \end{center}
+\caption{Determinación del sentido de M.}
+\label{cir:1a}
 \end{figure}
 
 

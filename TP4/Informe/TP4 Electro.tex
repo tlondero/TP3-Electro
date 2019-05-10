@@ -10,6 +10,9 @@
 \usepackage{graphicx}
 \graphicspath{ {./Imagenes/} }
 
+\usepackage{multirow}
+\setlength{\doublerulesep}{\arrayrulewidth}
+
 \usepackage[american voltage]{circuitikz}
 
 \usepackage{fancyhdr}
@@ -159,13 +162,22 @@ Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pé
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
-\hline
-Parámetro & U10 V & U20 V & I10 A & P10 W & cos $\phi_0$ & Im A  & Ip A  & Rp $\Omega$ & Xm $\Omega$ & M     \\ \hline
-Valor     & 93.1  & 35.2  & 0.375 & 6.75  & 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.378 \\ \hline
+\begin{tabular}{||c||c|c|c|c||}
+\hline\hline
+\multicolumn{5}{c}{\textbf{VALORES MEDIDOS}}\\
+\hline\hline
+\multirow{2}{*}{\textbf{Parámetro}} 	& $U_{10}$ & $U_{20}$ & $I_{10}$ & $P_{10}$\\
+										& [V] & [V] & [A] & [W]\\
+\hline										
+Valor     								& 93.1  & 35.2  & 0.375 & 6.75  \\ 
+\hline\hline
 \end{tabular}
 \caption {Ensayo a circuito abierto}
 \end{table}
+
+%& cos $\phi_0$ & Im A  & Ip A  & Rp $\Omega$ & Xm $\Omega$ & M 
+%& 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.378 
+
 
 \subsection{Ensayo en cortocircuito}
 Se quiso encontrar las pérdidas debidas al devanado de cobre del transformador. Para esto, se conectó un vatímetro en el primario y se concretó que la medición realizada con este son las pérdidas, ya que la única resistencia del circuito es la del cobre. A continuación se detallan los resultados obtenidos.

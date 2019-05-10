@@ -61,25 +61,63 @@ Para empezar se dispuso el circuito de la forma mostrada en la figura (\ref{fig:
 	\label{fig:1a}
 \end{figure}
 
-Así queda determinado el sentido de la inductancia mutua, conectando el circuito de forma tal que se vea de la forma mostrada en la figura
+Así queda determinado el sentido de la inductancia mutua, conectando el circuito de forma tal que se vea de la forma mostrada en la figura (\ref{cir:1a}).
 
 \begin{figure}[H]
 \begin{center}
 \begin{circuitikz}
 	\draw
 		
-	(0.5,3)	to	[voltmeter] (3.5,3)
+	(1,0) node[transformer] (T) {}
+	node[ocirc] (A) at ([xshift=-1cm]T.A1) {}
+	node[ocirc] (B) at ([xshift=-1cm]T.A2) {}
+	node[ocirc] (C) at ([xshift=1cm]T.B1) {}
+	node[ocirc] (D) at ([xshift=1cm]T.B2) {}
+	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
+	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
+	(T.A1) to	[-o] (A)
+	(T.A2) to	[-o] (B) 
+	(T.B1) to	[-o] (C)
+	(T.B2) to	[-o] (D)
+	(T.west) node{$L_1$}
+	(T.east) node{$L_2$}
 
-	(0,0)	to (1,0)
-	%(0,1)	to (1,1)	
-	(1,0)	node[transformer] {}
-	
-	(2,0)	node[circ]{}
+	(0,1)	to	[voltmeter] (2,1)
+	(0,0)	to	(0,1)
+	(2,0)	to	(2,1)
 
 	;\end{circuitikz}
 \end{center}
+\caption{Determinación del sentido de M.}
+\label{cir:1a}
 \end{figure}
 
+Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramientas necesarias en en circuito para realizar las mediciones adecuadas.
+
+\begin{figure}[H]
+\begin{center}
+\begin{circuitikz}
+	\draw
+		
+	(1,0) node[transformer] (T) {}
+	node[ocirc] (A) at ([xshift=-1cm]T.A1) {}
+	node[ocirc] (B) at ([xshift=-1cm]T.A2) {}
+	node[ocirc] (C) at ([xshift=1cm]T.B1) {}
+	node[ocirc] (D) at ([xshift=1cm]T.B2) {}
+	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
+	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
+	(T.A1) to	[-o] (A)
+	(T.A2) to	[-o] (B) 
+	(T.B1) to	[-o] (C)
+	(T.B2) to	[-o] (D)
+	(T.west) node{$L_1$}
+	(T.east) node{$L_2$}
+
+	;\end{circuitikz}
+\end{center}
+\caption{Circuito empleado con las conexiones necesarias.}
+\label{cir:1b}
+\end{figure}
 
 \section{\underline{Segunda parte}}
 
@@ -119,8 +157,30 @@ Para ese primer ensayo, se procede al armado del siguiente circuito :
 
 Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pérdidas en el hierro nominales.
 
-\subsection{Ensayo en cortocircuito}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+Parámetro & U10 V & U20 V & I10 A & P10 W & cos $\phi_0$ & Im A  & Ip A  & Rp $\Omega$ & Xm $\Omega$ & M     \\ \hline
+Valor     & 93.1  & 35.2  & 0.375 & 6.75  & 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.378 \\ \hline
+\end{tabular}
+\caption {Ensayo a circuito abierto}
+\end{table}
 
+\subsection{Ensayo en cortocircuito}
+Se quiso encontrar las pérdidas debidas al devanado de cobre del transformador. Para esto, se conectó un vatímetro en el primario y se concretó que la medición realizada con este son las pérdidas, ya que la única resistencia del circuito es la del cobre. A continuación se detallan los resultados obtenidos.
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+Parámetro & U1 [V] & I1 [A] & I2 [A] & P1 [W] & cos $\phi_0$  & R1 = R21 [$\Omega$] & X1 = X21 [$\Omega$] \\ \hline
+Valor     & 91.4     & 0.448    & 0.16     & 8.625    & 0.211            & 336.9               & 1561.79             \\ \hline
+\end{tabular}
+\caption {Ensayo a corto circuito}
+\centering
+\end{table}
 \subsection{Modelo resultante del transformador}
+
+
 
 \end{document}

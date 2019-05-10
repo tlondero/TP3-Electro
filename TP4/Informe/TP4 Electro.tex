@@ -41,7 +41,7 @@
 
 \section*{Introducción}
 
-En el trabajo realizado se analizó el funcionamiento de un transformador. Se realizaron análisis en del circuito analizando las situaciones en corto, en vacío y con carga. 
+En el trabajo realizado se observó el funcionamiento de un transformador. Se realizaron análisis en del circuito modelando sistemas en corto, en vacío y con carga. 
 %Para llevar adelante el experimento se utilizó:
 %\begin{itemize}
 %	\item[a)]	Ohmetro;
@@ -56,7 +56,7 @@ En el trabajo realizado se analizó el funcionamiento de un transformador. Se re
 
 \section[I]{\underline{Primera parte}}
 
-Para empezar se dispuso el circuito de la forma mostrada en la figura (\ref{fig:1a}). Luego, se colocó un voltímetro en los distintos bornes de las inductacias, de esta forma se buscó determinar de que manera serían homólogos, sabiendo que se daría dicha condición cuando la diferencia de tensión sea próxima a cero.
+Para empezar se dispuso el circuito de la forma mostrada en la figura (\ref{fig:1a}). Luego, se colocó un voltímetro en los distintos bornes de las inductacias, para poder, de esta forma, determinar de que manera serían homólogos, sabiendo que se daría dicha condición cuando la diferencia de tensión sea próxima a cero.
 
 \begin{figure}[H]
 	\centering
@@ -65,7 +65,7 @@ Para empezar se dispuso el circuito de la forma mostrada en la figura (\ref{fig:
 	\label{fig:1a}
 \end{figure}
 
-Así queda determinado el sentido de la inductancia mutua, conectando el circuito de forma tal que se vea de la forma mostrada en la figura (\ref{cir:1a}).
+Así queda determinado el sentido de la inductancia mutua, conectando el voltimetro de forma en la que se muestra en la figura (\ref{cir:1a}).
 
 \begin{figure}[H]
 \begin{center}
@@ -123,15 +123,17 @@ Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramient
 
 	;\end{circuitikz}
 \end{center}
-\caption{Circuito empleado con las conexiones necesarias.}
+\caption{Circuito analizado.}
 \label{cir:1b}
 \end{figure}
 
-Luego se determinaron las resisetncias internas de cada bobina siendo $ R_1 = 23 \ \Omega $ y $ R_2 = 21,8 \ \Omega $ las resistencias del primario y del secundario respectivamente.
+Luego se determinaron mediante el uso de un ohmetro las resistencias internas de cada bobina siendo $ R_1 = 23 \ \Omega $ y $ R_2 = 21,8 \ \Omega $ la del primario y del secundario respectivamente.
 
-Por último se procedió a realizar las mediciones adecuadas y se calcularon los valores de auto inductancia, el factor de acoplamiento y el valor de mutua inductancia. Dichos resultados y cálculos se encuentran en la tabla (\ref{tabla:1a}). Cabe aclarar que algunos valores no pudieron ser calculados dada las condiciones, como por ejemplo en los análisis en vacío. 
+Por último se procedió a realizar las mediciones adecuadas y se calcularon los valores de auto inductancia, el factor de acoplamiento y el valor de mutua inductancia. Dichos resultados y cálculos se encuentran en la tabla (\ref{tabla:1a}). Cabe aclarar que algunos valores, tales como el coeficiente de acoplamiento y las auto inductancias, no pudieron ser calculados en aquellos análisis en vacío. 
+
 
 \begin{table}[H]
+\centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \textbf{Caso} & $V_1 \ [V]$ & $I_1 \ [A]$ & $V_2 \ [V]$ & $I_2 \ [A]$ & $R_D \ [\Omega]$ & M [H]& k & $L_1 [H]$ & $L_2 [H]$ \\ \hline
@@ -144,18 +146,20 @@ Por último se procedió a realizar las mediciones adecuadas y se calcularon los
 \label{tabla:1a}
 \end{table}
 
+
 \section{\underline{Segunda parte}}
 
-En esta parte, se va a hacer un análisis práctico de un transformador monofásico. El dicho es construido de la misma manera que antes con dos bobinas y un núcleo de hierro.
+En esta parte, se hace un análisis práctico de un transformador monofásico. El dicho es construido de la misma manera que en la primera parte, con dos bobinas y un núcleo de hierro.
 
-El objetivo es entonces de hallar los parámetros físicos de este transformador con diferentes ensayos sucesivos.
+El objetivo es hallar los parámetros físicos de este transformador con diferentes ensayos sucesivos.
 
-Con uno transformador de ese tipo, no se puede estimar rendimiento o regulación, porque ...
+Con un transformador de este tipo, no es posible estimar el rendimiento o regulación, porque ...
 
 \subsection{Ensayo en vacío}
 
-Para ese primer ensayo, se procede al armado del siguiente circuito :
+Para este primer ensayo, se procede al armado del siguiente circuito:
 
+\begin{figure}[H]
 \begin{circuitikz}
 \draw
 	(-1, -1.1) 		to [vL] (-1,-2.1)
@@ -179,6 +183,8 @@ Para ese primer ensayo, se procede al armado del siguiente circuito :
 	(8.5,0) to node[draw,circle,fill=white] {V} (8.5, -2.1)
 	(9,-0.5) node[]{$U_{20}$};
 \end{circuitikz}
+\caption{Circuito analizado durante la segunda instancia.}
+\end{figure}
 
 Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pérdidas en el hierro nominales.
 
@@ -196,10 +202,10 @@ Valor     & 93.1  & 35.2  & 0.375 & 6.75  & 0.193        & 0.368 & 0.073 & 1284.
 \centering
 \begin{tabular}{||c||c|c|c|c|c|c||}
 \hline\hline
-\multicolumn{7}{c}{\textbf{VALORES CALCULADOS}}\\
-\hline\hline
-\multirow{2}{*}{\textbf{Parámetro}} 	& \multirow{2}{*}{cos $\phi_0$} & $I_{m}$ & $I_{p}$ & $R_{p}$ & $X_{m}$ & $m$ \\
-										&  & [A] & [A] & [$\Omega$] & [$\Omega$] & --\\
+%\multicolumn{7}{c}{\textbf{VALORES CALCULADOS}}\\
+%\hline\hline
+\multirow{2}{*}{\textbf{Parámetro}} 	& \multirow{2}{*}{cos $\phi_0$} & $I_{m}$ & $I_{p}$ & $R_{p}$ & $X_{m}$ & $M$ \\
+										&  & [A] & [A] & [$\Omega$] & [$\Omega$] & \\
 \hline										
 Valor     								& 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.378   \\ 
 \hline\hline
@@ -208,7 +214,7 @@ Valor     								& 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.37
 \end{table}
 
 \subsection{Ensayo en cortocircuito}
-Se quiso encontrar las pérdidas debidas al devanado de cobre del transformador. Para esto, se conectó un vatímetro en el primario y se concretó que la medición realizada con este son las pérdidas, ya que la única resistencia del circuito es la del cobre. A continuación se detallan los resultados obtenidos.
+Se Buscó determinar las pérdidas debidas al devanado de cobre del transformador. Para esto, se conectó un vatímetro en el primario y se concretó que la medición realizada con este son las pérdidas, ya que la única resistencia del circuito es la del cobre. A continuación se detallan los resultados obtenidos.
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|l|l|l|l|}

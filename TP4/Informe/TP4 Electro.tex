@@ -10,6 +10,9 @@
 \usepackage{graphicx}
 \graphicspath{ {./Imagenes/} }
 
+\usepackage{multirow}
+\setlength{\doublerulesep}{\arrayrulewidth}
+
 \usepackage[american]{circuitikz}
 
 \usepackage{fancyhdr}
@@ -190,6 +193,28 @@ Valor     & 93.1  & 35.2  & 0.375 & 6.75  & 0.193        & 0.368 & 0.073 & 1284.
 \caption {Ensayo a circuito abierto}
 \end{table}
 
+<<<<<<< HEAD
+\begin{table}[H]
+\centering
+\begin{tabular}{||c||c|c|c|c|c|c||}
+\hline\hline
+\multicolumn{7}{c}{\textbf{VALORES CALCULADOS}}\\
+\hline\hline
+\multirow{2}{*}{\textbf{Parámetro}} 	& \multirow{2}{*}{cos $\phi_0$} & $I_{m}$ & $I_{p}$ & $R_{p}$ & $X_{m}$ & $m$ \\
+										&  & [A] & [A] & [$\Omega$] & [$\Omega$] & --\\
+\hline										
+Valor     								& 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.378   \\ 
+\hline\hline
+\end{tabular}
+\caption {Ensayo a circuito abierto}
+\end{table}
+
+
+
+
+
+=======
+>>>>>>> 2a39626b73fd8e13252de0593dad9da14daf9a6c
 \subsection{Ensayo en cortocircuito}
 Se quiso encontrar las pérdidas debidas al devanado de cobre del transformador. Para esto, se conectó un vatímetro en el primario y se concretó que la medición realizada con este son las pérdidas, ya que la única resistencia del circuito es la del cobre. A continuación se detallan los resultados obtenidos.
 \begin{table}[H]

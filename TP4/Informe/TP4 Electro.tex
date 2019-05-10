@@ -42,15 +42,7 @@
 \section*{Introducción}
 
 En el trabajo realizado se observó el funcionamiento de un transformador. Se realizaron análisis en del circuito modelando sistemas en corto, en vacío y con carga. 
-%Para llevar adelante el experimento se utilizó:
-%\begin{itemize}
-%	\item[a)]	Ohmetro;
-%	\item[b)]	Voltímetro;
-%	\item[c)]	Amperímetro;
-%	\item[d)]	Vatímetro;
-%	\item[e)]	Inductancias; y
-%	\item[f)]	Autotransformador.
-%\end{itemize}
+
 
 \section*{Desarrollo de la experiencia}
 
@@ -136,11 +128,11 @@ Por último se procedió a realizar las mediciones adecuadas y se calcularon los
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{Caso} & $V_1 \ [V]$ & $I_1 \ [A]$ & $V_2 \ [V]$ & $I_2 \ [A]$ & $R_D \ [\Omega]$ & M [H]& k & $L_1 [H]$ & $L_2 [H]$ \\ \hline
-\textbf{Hierro Sólido} & 93,4 & 0,3 & 14,6 & 0,06 & 200 & 0,15 & 0,28 & 0,99 & 0,32 \\ \hline
-\textbf{Laminado} & 93,4 & 0,45 & 23,22 & 0,1 & 200 & 0,26 & 0,33 & 0,66 & 0,93 \\ \hline
-\textbf{Laminado ($I_2 = 0$)} & 93,4 & 0,4 & 33,22 & 0 & 0 & 0,26 & - & - & - \\ \hline
-\textbf{Sin núcleo ($I_2 = 0$)} & 93,4 & 0,8 & 8,3 & 0 & 0 & 0,3 & - & - & - \\ \hline
+\textbf{Caso}                                                             & \textbf{\begin{tabular}[c]{@{}c@{}}$V_1$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_1$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$V_2$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_2$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$R_D$\\ $\Omega$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}M\\ {[}H{]}\end{tabular}} & \textbf{k} & \textbf{\begin{tabular}[c]{@{}c@{}}$L_1$\\ {[}H{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$L_2$\\ {[}H{]}\end{tabular}} \\ \hline
+\textbf{Hierro Sólido}                                                    & 93,4                                                             & 0,3                                                              & 14,6                                                             & 0,06                                                             & 200                                                               & 0,15                                                         & 0,28       & 0,99                                                             & 0,32                                                             \\ \hline
+\textbf{Laminado}                                                         & 93,4                                                             & 0,45                                                             & 23,22                                                            & 0,1                                                              & 200                                                               & 0,26                                                         & 0,33       & 0,66                                                             & 0,93                                                             \\ \hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Laminado\\ ($I_2 = 0$)\end{tabular}}   & 93,4                                                             & 0,4                                                              & 33,22                                                            & 0                                                                & 0                                                                 & -                                                            & -          & -                                                                & -                                                                \\ \hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Sin núcleo\\ ($I_2 = 0$)\end{tabular}} & 93,4                                                             & 0,8                                                              & 8,3                                                              & 0                                                                & 0                                                                 & -                                                            & -          & -                                                                & -                                                                \\ \hline
 \end{tabular}
 \caption{Mediciones realizadas en la primer experiencia.}
 \label{tabla:1a}
@@ -186,41 +178,29 @@ Para este primer ensayo, se procede al armado del siguiente circuito:
 \caption{Circuito analizado durante la segunda instancia.}
 \end{figure}
 
-Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pérdidas en el hierro nominales.
+Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pérdidas en el hierro nominales. A continuación, se representa un forma de tabla, los calores medidos y calculados de dicho anlisis
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-Parámetro & $U_{10} [V]$ & $U_{20} [V]$ & $I_{10} [A]$ & $P_{10} [W] $ & $ cos \phi_0 $ & $I_m [A] $ & $I_p [A] $ & $ R_p [\Omega]$ & $ X_m [\Omega] $ & M     \\ \hline
-Valor     & 93.1  & 35.2  & 0.375 & 6.75  & 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.378 \\ \hline
+\textbf{Parámetro} & \textbf{\begin{tabular}[c]{@{}c@{}}$U_{10}$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$U_{20}$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{10}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$P_{10}$\\ {[}W{]}\end{tabular}} & \textbf{$cos \ \phi$} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{m}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{p}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$R_{p}$\\ {[}$\Omega${]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$X_{m}$\\ {[}$\Omega${]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$M$\\ {[}H{]}\end{tabular}} \\ \hline
+\textbf{Valor}     & 93,1                                                                & 35,2                                                                & 0,375                                                               & 6,75                                                                & 0,193                 & 0,368                                                              & 0,073                                                              & 1284,09                                                                   & 253,041                                                                   & 0,378                                                          \\ \hline
 \end{tabular}
-\caption {Ensayo a circuito abierto}
+\caption {Ensayo a circuito abierto.}
 \end{table}
 
-\begin{table}[H]
-\centering
-\begin{tabular}{||c||c|c|c|c|c|c||}
-\hline\hline
-%\multicolumn{7}{c}{\textbf{VALORES CALCULADOS}}\\
-%\hline\hline
-\multirow{2}{*}{\textbf{Parámetro}} 	& \multirow{2}{*}{cos $\phi_0$} & $I_{m}$ & $I_{p}$ & $R_{p}$ & $X_{m}$ & $M$ \\
-										&  & [A] & [A] & [$\Omega$] & [$\Omega$] & \\
-\hline										
-Valor     								& 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.378   \\ 
-\hline\hline
-\end{tabular}
-\caption {Ensayo a circuito abierto}
-\end{table}
+
 
 \subsection{Ensayo en cortocircuito}
 Se Buscó determinar las pérdidas debidas al devanado de cobre del transformador. Para esto, se conectó un vatímetro en el primario y se concretó que la medición realizada con este son las pérdidas, ya que la única resistencia del circuito es la del cobre. A continuación se detallan los resultados obtenidos.
+
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
-Parámetro & $U_1 \ [V]$ & $I_1 \ [A]$ & $I_2 \ [A]$ & $P_1 \ [W]$ & $cos \ \phi_0 $  & $R_1 = R_21 \ [\Omega] $ & $X_1 = X_{21} \ [\Omega] $\\ \hline
-Valor     & 91.4     & 0.448    & 0.16     & 8.625    & 0.211            & 336.9               & 1561.79             \\ \hline
+\textbf{Parámetro} & \textbf{\begin{tabular}[c]{@{}c@{}}$U_{1CC}$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{1CC}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{2CC}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$P_{1CC}$\\ {[}W{]}\end{tabular}} & \textbf{$cos \ \phi$} & \textbf{\begin{tabular}[c]{@{}c@{}}$R_{1} = R_{21}$\\ {[}$\Omega${]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$X_{1} = X_{21}$\\ {[}$\Omega${]}\end{tabular}} \\ \hline
+\textbf{Valor}     & 91,4                                                                 & 0,448                                                                & 0,16                                                                 & 8,625                                                                & 0,211                 & 336,9                                                                              & 1561,79                                                                            \\ \hline
 \end{tabular}
 \caption {Ensayo a corto circuito}
 \centering

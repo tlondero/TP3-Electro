@@ -10,7 +10,7 @@
 \usepackage{graphicx}
 \graphicspath{ {./Imagenes/} }
 
-\usepackage[american voltage]{circuitikz}
+\usepackage[american]{circuitikz}
 
 \usepackage{fancyhdr}
 
@@ -83,7 +83,7 @@ Así queda determinado el sentido de la inductancia mutua, conectando el circuit
 	(T.west) node{$L_1$}
 	(T.east) node{$L_2$}
 
-	(0,1)	to	[voltmeter] (2,1)
+	(0,1)	to	node[draw,circle,fill=white] {V} (2,1)
 	(0,0)	to	(0,1)
 	(2,0)	to	(2,1)
 
@@ -101,16 +101,21 @@ Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramient
 	\draw
 		
 	(1,0) node[transformer] (T) {}
-	node[ocirc] (A) at ([xshift=-1cm]T.A1) {}
-	node[ocirc] (B) at ([xshift=-1cm]T.A2) {}
-	node[ocirc] (C) at ([xshift=1cm]T.B1) {}
-	node[ocirc] (D) at ([xshift=1cm]T.B2) {}
+	node[] (A) at ([xshift=-1cm]T.A1) {}
+	node[] (B) at ([xshift=-1cm]T.A2) {}
+	node[] (C) at ([xshift=1cm]T.B1) {}
+	node[] (D) at ([xshift=1cm]T.B2) {}
 	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
 	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
-	(T.A1) to	[-o] (A)
-	(T.A2) to	[-o] (B) 
-	(T.B1) to	[-o] (C)
-	(T.B2) to	[-o] (D)
+	
+	([xshift=-2cm]T.A1)	to node[draw,circle,fill=white] {A}	(T.A1)
+	([xshift=-2cm]T.A1) to node[draw,circle,fill=white] {V} ([xshift=-2cm]T.A2)
+	([xshift=-2cm]T.A2) to (T.A2)
+
+	([xshift=2cm]T.A1)	to (T.A1)
+	([xshift=2cm]T.A2)	to (T.A2)
+			
+			
 	(T.west) node{$L_1$}
 	(T.east) node{$L_2$}
 

@@ -110,17 +110,16 @@ Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramient
 	(0,0)	to (0,-1.7)
 			to (-0.6,-1.7)
 	(0,0) 	to node[draw,circle,fill=white] {A} (1.5, 0)
-			to (5, 0) to (5.5,0)
+			to (3.5,0) to [R, l=$R_{L_{1}}$] (5.5,0)
 			
-	(4,0) to node[draw,circle,fill=white] {V} (4, -2.1)
+	(2.5,0) to node[draw,circle,fill=white] {V} (2.5, -2.1)
 	
 	(0,-2.1) to (5,-2.1) to (5.5,-2.1)	
 
 	(6.5,0) node[transformer core]{}
-	(8,0) to (7,0) to (8.5,0)
-	(8,-2.1) to (7,-2.1) to (8.5,-2.1)
-		
-	(8.5,0) to [vR, l_ = $R_D$] (8.5, -2.1)
+	(7.5,0) to [R, l=$R_{L_{2}}$] (9.5,0) to (10,0)
+	(7.5,-2.1) to (10,-2.1)
+	(10,0) to [vR, l_ = $R_d$] (10,-2.1)
 
 	;\end{circuitikz}
 \end{center}
@@ -190,7 +189,6 @@ Valor     & 93.1  & 35.2  & 0.375 & 6.75  & 0.193        & 0.368 & 0.073 & 1284.
 \caption {Ensayo a circuito abierto}
 \end{table}
 
-<<<<<<< HEAD
 \begin{table}[H]
 \centering
 \begin{tabular}{||c||c|c|c|c|c|c||}
@@ -206,12 +204,6 @@ Valor     								& 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.37
 \caption {Ensayo a circuito abierto}
 \end{table}
 
-
-
-
-
-=======
->>>>>>> 2a39626b73fd8e13252de0593dad9da14daf9a6c
 \subsection{Ensayo en cortocircuito}
 Se quiso encontrar las pérdidas debidas al devanado de cobre del transformador. Para esto, se conectó un vatímetro en el primario y se concretó que la medición realizada con este son las pérdidas, ya que la única resistencia del circuito es la del cobre. A continuación se detallan los resultados obtenidos.
 \begin{table}[H]

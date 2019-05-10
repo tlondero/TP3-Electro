@@ -44,7 +44,31 @@
 
 \section{\underline{Segunda parte}}
 
-\subsection{}
-\subsection{}
+En esta parte, se va a hacer un análisis práctico de un transformador monofásico. El dicho es construido de la misma manera que antes con dos bobinas y un núcleo de hierro.
+
+El objetivo es entonces de hallar los parámetros físicos de este transformador con diferentes ensayos sucesivos.
+
+Con uno transformador de ese tipo, no se puede estimar rendimiento o regulación, porque ...
+
+\subsection{Ensayo en vacío}
+
+Para ese primer ensayo, se procede al armado del siguiente circuito :
+
+\begin{circuitikz}
+\draw
+	(0,0) to [ammeter] (1.5,0) to (3,0) to [short, -*] (3.5,0) 	
+	(4.5,0) node[transformer core]{}
+	(2.5,0) to node[draw,circle,fill=white] {V} (2.5, -2.1)
+	(5.5,0) to (7,0) to [short, -*] (7.5,0)
+	(5.5, -2.1) to (7, -2.1) to [short, -*] (7.5, -2.1)
+	(7,0) to node[draw,circle,fill=white] {V} (7, -2.1)
+	(7.5,-0.5) node[]{$U_{20}$};
+\end{circuitikz}
+
+Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pérdidas en el hierro nominales.
+
+\subsection{Ensayo en cortocircuito}
+
+\subsection{Modelo resultante del transformador}
 
 \end{document}

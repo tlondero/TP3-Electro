@@ -61,7 +61,7 @@ Para empezar se dispuso el circuito de la forma mostrada en la figura (\ref{fig:
 	\label{fig:1a}
 \end{figure}
 
-Así queda determinado el sentido de la inductancia mutua, conectando el circuito de forma tal que se vea de la forma mostrada en la figura
+Así queda determinado el sentido de la inductancia mutua, conectando el circuito de forma tal que se vea de la forma mostrada en la figura (\ref{cir:1a}).
 
 \begin{figure}[H]
 \begin{center}
@@ -92,6 +92,32 @@ Así queda determinado el sentido de la inductancia mutua, conectando el circuit
 \label{cir:1a}
 \end{figure}
 
+Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramientas necesarias en en circuito para realizar las mediciones adecuadas.
+
+\begin{figure}[H]
+\begin{center}
+\begin{circuitikz}
+	\draw
+		
+	(1,0) node[transformer] (T) {}
+	node[ocirc] (A) at ([xshift=-1cm]T.A1) {}
+	node[ocirc] (B) at ([xshift=-1cm]T.A2) {}
+	node[ocirc] (C) at ([xshift=1cm]T.B1) {}
+	node[ocirc] (D) at ([xshift=1cm]T.B2) {}
+	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
+	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
+	(T.A1) to	[-o] (A)
+	(T.A2) to	[-o] (B) 
+	(T.B1) to	[-o] (C)
+	(T.B2) to	[-o] (D)
+	(T.west) node{$L_1$}
+	(T.east) node{$L_2$}
+
+	;\end{circuitikz}
+\end{center}
+\caption{Circuito empleado con las conexiones necesarias.}
+\label{cir:1b}
+\end{figure}
 
 \section{\underline{Segunda parte}}
 

@@ -85,7 +85,7 @@ Así queda determinado el sentido de la inductancia mutua, conectando el circuit
 
 	(0,0.5)	to	node[draw,circle,fill=white] {V} (2,0.5)
 	(0,0)	to	(0,0.5)
-	(2,0)	to	(2,0.5x)
+	(2,0)	to	(2,0.5)
 
 	;\end{circuitikz}
 \end{center}
@@ -100,46 +100,27 @@ Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramient
 \begin{circuitikz}
 	\draw
 		
-	(1,0) node[transformer] (T) {}
-	node[] (A) at ([xshift=-1cm]T.A1) {}
-	node[] (B) at ([xshift=-1cm]T.A2) {}
-	node[] (C) at ([xshift=1cm]T.B1) {}
-	node[] (D) at ([xshift=1cm]T.B2) {}
-	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
-	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
-	
-	([xshift=-2cm]T.A1)	to node[draw,circle,fill=white] {A}	(T.A1)
-	([xshift=-2cm]T.A1) to node[draw,circle,fill=white] {V} ([xshift=-2cm]T.A2)
-	([xshift=-2cm]T.A2) to (T.A2)
-
-	([xshift=1cm]T.B1)	to (T.B1)
-	([xshift=1cm]T.B2)	to (T.B2)
-	
-	([xshift=1cm]T.B2)	to [vR, l_ = $R_D$] ([xshift=1cm]T.B1)
+	(-1, -1.1) 		to [vL] (-1,-2.1)
+	(-1.5, -1.1) 	to [short, *-] (-1, -1.1)
+	(-1.5, -2.1) 	to [short, *-] (-1, -2.1)
+					to (0,-2.1)
+	(0,0)	to (0,-1.7)
+			to (-0.6,-1.7)
+	(0,0) 	to node[draw,circle,fill=white] {A} (1.5, 0)
+			to (5, 0) to (5.5,0)
 			
-			
-	(T.west) node{$L_1$}
-	(T.east) node{$L_2$}
+	(0.7,0.7) node[]{$I_{10}$}
+	
+	(4,0) to node[draw,circle,fill=white] {V} (4, -2.1)
+	(4.5,-0.5) node[]{$U_{10}$}
 
-%(-1, -1.1) 		to [vL] (-1,-2.1)
-%	(-1.5, -1.1) 	to [short, *-] (-1, -1.1)
-%	(-1.5, -2.1) 	to [short, *-] (-1, -2.1)
-%					to (0,-2.1)
-%	(0,0)	to (0,-1.7)
-%			to (-0.6,-1.7)
-%	(0,0) 	to node[draw,circle,fill=white] {A} (1.5, 0)
-%			to [short, -*] (5, 0) to (5.5,0)
-%	(0.7,0.7) node[]{$I_{10}$}
-%	(2.5,0.7) node[]{$P_{10}$}
-%	(2.5,-0.4) to (2.5,-2.1)
-%	(4,0) to node[draw,circle,fill=white] {V} (4, -2.1)
-%	(4.5,-0.5) node[]{$U_{10}$}
-%	(0,-2.1) to [short, -*] (5,-2.1) to (5.5,-2.1)
-%	(6.5,0) node[transformer core]{}
-%	(8,0) to (7,0) to [short, -*] (9.5,0)
-%	(8,-2.1) to (7,-2.1) to [short, -*] (9.5,-2.1)
-%	(8.5,0) to node[draw,circle,fill=white] {V} (8.5, -2.1)
-%	(9,-0.5) node[]{$U_{20}$};
+	(0,-2.1) to (5,-2.1) to (5.5,-2.1)	
+
+	(6.5,0) node[transformer core]{}
+	(8,0) to (7,0) to (8.5,0)
+	(8,-2.1) to (7,-2.1) to (8.5,-2.1)
+		
+	(8.5,0) to [vR, l_ = $R_D$] (8.5, -2.1)
 
 	;\end{circuitikz}
 \end{center}
@@ -189,7 +170,7 @@ Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pé
 \centering
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
-Parámetro & U10 V & U20 V & I10 A & P10 W & cos $\phi_0$ & Im A  & Ip A  & Rp $\Omega$ & Xm $\Omega$ & M     \\ \hline
+Parámetro & $U_{10} [V]$ & $U_{20} [V]$ & $I_{10} [A]$ & $P_{10} [W] $ & $ cos \phi_0 $ & $I_m [A] $ & $I_p [A] $ & $ R_p [\Omega]$ & $ X_m [\Omega] $ & M     \\ \hline
 Valor     & 93.1  & 35.2  & 0.375 & 6.75  & 0.193        & 0.368 & 0.073 & 1284.090 & 253.041     & 0.378 \\ \hline
 \end{tabular}
 \caption {Ensayo a circuito abierto}
@@ -201,7 +182,7 @@ Se quiso encontrar las pérdidas debidas al devanado de cobre del transformador.
 \centering
 \begin{tabular}{|l|l|l|l|l|l|l|l|}
 \hline
-Parámetro & U1 [V] & I1 [A] & I2 [A] & P1 [W] & cos $\phi_0$  & R1 = R21 [$\Omega$] & X1 = X21 [$\Omega$] \\ \hline
+Parámetro & $U_1 \ [V]$ & $I_1 \ [A]$ & $I_2 \ [A]$ & $P_1 \ [W]$ & $cos \ \phi_0 $  & $R_1 = R_21 \ [\Omega] $ & $X_1 = X_{21} \ [\Omega] $\\ \hline
 Valor     & 91.4     & 0.448    & 0.16     & 8.625    & 0.211            & 336.9               & 1561.79             \\ \hline
 \end{tabular}
 \caption {Ensayo a corto circuito}

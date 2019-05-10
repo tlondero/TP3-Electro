@@ -127,19 +127,22 @@ Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramient
 \label{cir:1b}
 \end{figure}
 
-\begin{table}[]
-\begin{tabular}{|l|l|l|l|l|l|l|l|}
-\hline
-Caso                & Vi (V) & I1 (A) & V2 (V) & I2 (A) & Rd ($\Omega$) & M    & k    \\ \hline
-Hierro Sólido       & 93.4   & 0.3    & 14.6   & 0.06   & 200      & 0.15 & 0.28 \\ \hline
-Laminado            & 93.4   & 0.45   & 23.22  & 0.1    & 200      & 0.26 & 0.33 \\ \hline
-Laminado (I2 = 0)   & 93.4   & 0.4    & 33.22  & 0      & 0        & 0.26 &      \\ \hline
-Sin núcleo (I2 = 0) & 93.4   & 0.8    & 8.3    & 0      & 0        & 0.03 &      \\ \hline
-\end{tabular}
-\end{table}
-
 Luego se determinaron las resisetncias internas de cada bobina siendo $ R_1 = 23 \ \Omega $ y $ R_2 = 21,8 \ \Omega $ las resistencias del primario y del secundario respectivamente.
 
+Por último se procedió a realizar las mediciones adecuadas y se calcularon los valores de auto inductancia, el factor de acoplamiento y el valor de mutua inductancia. Dichos resultados y cálculos se encuentran en la tabla (\ref{tabla:1a}). Cabe aclarar que algunos valores no pudieron ser calculados dada las condiciones, como por ejemplo en los análisis en vacío. 
+
+\begin{table}[H]
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Caso} & $V_1 \ [V]$ & $I_1 \ [A]$ & $V_2 \ [V]$ & $I_2 \ [A]$ & $R_D \ [\Omega]$ & M [H]& k & $L_1 [H]$ & $L_2 [H]$ \\ \hline
+\textbf{Hierro Sólido} & 93,4 & 0,3 & 14,6 & 0,06 & 200 & 0,15 & 0,28 & 0,99 & 0,32 \\ \hline
+\textbf{Laminado} & 93,4 & 0,45 & 23,22 & 0,1 & 200 & 0,26 & 0,33 & 0,66 & 0,93 \\ \hline
+\textbf{Laminado ($I_2 = 0$)} & 93,4 & 0,4 & 33,22 & 0 & 0 & 0,26 & - & - & - \\ \hline
+\textbf{Sin núcleo ($I_2 = 0$)} & 93,4 & 0,8 & 8,3 & 0 & 0 & 0,3 & - & - & - \\ \hline
+\end{tabular}
+\caption{Mediciones realizadas en la primer experiencia.}
+\label{tabla:1a}
+\end{table}
 
 \section{\underline{Segunda parte}}
 

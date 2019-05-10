@@ -38,9 +38,50 @@
 
 \section*{Introducción}
 
+En el trabajo realizado se analizo el funcionamiento de un transformador. Se realizaron análisis en del circuito analizando las situaciones en corto, ne vacío y con carga. Para llevar adelante el experimento se utilizó:
+\begin{itemize}
+	\item[a)]	Ohmetro;
+	\item[b)]	Voltímetro;
+	\item[c)]	Amperímetro;
+	\item[d)]	Vatímetro;
+	\item[e)]	Inductancias; y
+	\item[f)]	Autotransformador.
+\end{itemize}
+
 \section*{Desarrollo de la experiencia}
 
 \section[I]{\underline{Primera parte}}
+
+Para empezar se dispuso el circuito de la forma mostrada en la figura (\ref{fig:1a}). Luego, se colocó un voltímetro en los distintos bornes de las inductacias, de esta forma se buscó determinar de que manera serían homólogos, sabiendo que se daría dicha condición cuando la diferencia de tensión sea próxima a cero.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Circuito-1.PNG}
+	\caption{Circuito empleado.}
+	\label{fig:1a}
+\end{figure}
+
+Así queda determinado el sentido de la inductancia mutua, conectando el circuito de forma tal que se vea de la forma mostrada en la figura
+
+\begin{figure}[H]
+\begin{center}
+\begin{circuitikz}
+	\draw
+	(0,0)	to [o-] (1,0)
+	(1,2)	to [L, l=$L_{1}$] (1,0) 
+	(1,2)	to [-o]	(0,2)
+	
+	(3,0)	to [o-] (4,0)
+	(3,0)	to [L, l=$L_{2}$] (3,2) 
+	(3,2)	to [-o]	(4,2)
+	
+	(0.5,2)	to	(0.5,3)
+	(0.5,3)	to	[voltmeter] (3.5,3)
+	(3.5,2)	to	(3.5,3)
+
+	;\end{circuitikz}
+\end{center}
+\end{figure}
 
 \section{\underline{Segunda parte}}
 

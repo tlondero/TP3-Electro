@@ -95,16 +95,24 @@ Para ese primer ensayo, se procede al armado del siguiente circuito :
 
 \begin{circuitikz}
 \draw
+	(-1, -1.1) 		to [vL] (-1,-2.1)
+	(-1.5, -1.1) 	to [short, *-] (-1, -1.1)
+	(-1.5, -2.1) 	to [short, *-] (-1, -2.1)
+					to (0,-2.1)
+	(0,0)	to (0,-1.7)
+			to (-0.6,-1.7)
 	(0,0) 	to node[draw,circle,fill=white] {A} (1.5, 0)
-			to node[draw,circle,fill=white] {W} (3, 0)
-			to [short, -*] (5.5, 0)
-	(4.5,0) to node[draw,circle,fill=white] {V} (4.5, -2.1)
-	(5,-0.5) node[]{$U_{10}$}
-	(0,-2.1) 	to [short, -*] (5.5, -2.1)
+			to node[draw,circle,fill=white] {W} (3.5, 0)
+			to [short, -*] (5, 0) to (5.5,0)
+	(0.7,0.7) node[]{$I_{10}$}
+	(2.5,0.7) node[]{$P_{10}$}
+	(2.5,-0.4) to (2.5,-2.1)
+	(4,0) to node[draw,circle,fill=white] {V} (4, -2.1)
+	(4.5,-0.5) node[]{$U_{10}$}
+	(0,-2.1) to [short, -*] (5,-2.1) to (5.5,-2.1)
 	(6.5,0) node[transformer core]{}
-	(7.5,0) to (7,0) to [short, -*] (9.5,0)
-	(7.5,-2.1) to (7,-2.1) to [short, -*] (9.5,-2.1)
-	
+	(8,0) to (7,0) to [short, -*] (9.5,0)
+	(8,-2.1) to (7,-2.1) to [short, -*] (9.5,-2.1)
 	(8.5,0) to node[draw,circle,fill=white] {V} (8.5, -2.1)
 	(9,-0.5) node[]{$U_{20}$};
 \end{circuitikz}

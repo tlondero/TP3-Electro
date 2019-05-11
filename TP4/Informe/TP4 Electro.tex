@@ -55,24 +55,27 @@ Para empezar, se armó el siguiente circuito:
 \begin{circuitikz}
 	\draw
 		
-	(-1, -1.1) 		to [vL] (-1,-2)
-	(-1.5, -1) 	to [short, *-] (-1, -1)
+		(-1, -1.1) 		to [vL] (-1,-2)
+	(-1.5, -1) 		to [short, *-] (-1, -1)
 	(-1.5, -2.1) 	to [short, *-] (-1, -2.1)
 					to (0,-2.1)
 	(0,0)	to (0,-1.7)
 			to (-0.6,-1.7)
 	(0,0) 	to node[draw,circle,fill=white] {A} (1.5, 0)
-			to (3,0) to [R, l=$R_{L_{1}}$] (4,0)
-			
-	(2,0) to node[draw,circle,fill=white] {V} (2, -2.1)
+			to (2.5,0) to [R, l=$R_{L_{1}}$] (4,0)
+	(2,0)	to node[draw,circle,fill=white] {V} (2, -2.1)
+	(0,-2.1)	to (4,-2.1)	
+	(5,0)	node[transformer core]{}
+	(7.5,0) 	to node[draw,circle,fill=white] {A} (10, 0)
 	
-	(0,-2.1) to (5,-2.1) to (5.5,-2.1)	
-	(5,0) node[transformer core]{}
-	(6,0) 	to node[draw,circle,fill=white] {A} (7, 0)
-		(7,0) to node[draw,circle,fill=white] {V} (7, -2.1)
-	(7.5,0) to [R, l=$R_{L_{2}}$] (9.5,0) to (10,0)
-	(7.5,-2.1) to (10,-2.1)
-	(10,0) to [vR, l_ = $R_d$] (10,-2.1)
+	%(4,-2.1) to (5.5,-2.1)			%creo que Alan quería poner esta linea, a mi me aprece bien así como está
+	
+	(11.5,0)	to node[draw,circle,fill=white] {V} (11.5, -2.1)
+	(10,0)	to (11.5,0)
+	(10,-2.1)	to (11.5,-2.1)	
+	(6,0)	to [R, l=$R_{L_{2}}$] (7.5,0)
+	(6,-2.1)	to (10,-2.1)
+	(10,0)	to [vR, l_ = $R_d$] (10,-2.1)
 
 	;\end{circuitikz}
 \end{center}

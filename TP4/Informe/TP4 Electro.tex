@@ -107,7 +107,16 @@ Luego, antes de empezar las mediciones, se quiso comprobar la polaridad de las i
 	(0,0.5)	to	node[draw,circle,fill=white] {V} (2,0.5)
 	(0,0)	to	(0,0.5)
 	(2,0)	to	(2,0.5)
-	(-1.3,-0.1) to node[voltage source]{fuente de tension jajaja} (-1.3, -2.1)
+
+	([xshift=-3cm]T.A1) 		to [vL] ([xshift=-3cm,]T.A2)
+	([xshift=-4cm]T.A2) 		to [short, *-] ([xshift=-3cm,]T.A2)
+	([xshift=-4cm]T.A1) 		to [short, *-] ([xshift=-3cm,]T.A1)
+
+	([xshift=-4cm]T.A2) 		to (T.A2)
+	
+	([xshift=-2cm]T.A1) 		to (T.A1)
+	([xshift=-2cm]T.A1)			to ([xshift=-2cm,yshift=-1cm]T.A1)
+	([xshift=-2cm,yshift=-1cm]T.A1) to ([xshift=-2.5cm,yshift=-1cm]T.A1)
 
 	;\end{circuitikz}
 \end{center}

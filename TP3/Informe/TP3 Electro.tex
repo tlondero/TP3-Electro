@@ -115,7 +115,15 @@ A continuación se procede a graficar, para cada circuito, un diagrama fasorial 
 \end{minipage}
 \end{figure}
 
-Finalmente, analizando los resultados obtenidos se puede observar que al retirar el núcleo metálico, la inductancia baja, aumentando la potencia activa del circuito. Por otra parte, esto aumenta la corriente, lo que genera un crecimiento tanto de la potencia reactiva como aparente. Por último, cabe destacar que el factor de potencia se mantiene prácticamente inalterado en los casos A) y B). Se atribuye dicho error a la poca diferencia entre la resistencia y la reactancia.
+Analizando los resultados obtenidos se pueden destacar las siguientes situaciones:
+
+1) Al dejar enteramente el núcleo sólido en la bobina, la potencia activa baja, ya que la inductancia en la bobina aumenta y ello genera una menor circulación de corriente por la resistencia la cual es responsable del componente activo (real) de la potencia aparente. En este caso, notamos la menor potencia activa de los 3 casos coincidentemente con la situación teórica.
+
+2) Al retirar el núcleo metálico, la inductancia en la bobina baja, por consiguiente aumenta la potencia activa del circuito, tal que la circulación de corriente por la resistencia ahora es mayor. Como hay una menor inductancia, aumenta la corriente que circula con respecto a las situaciones A y B por la resistencia, lo que genera un crecimiento tanto de la potencia reactiva como aparente que se condice con los datos obtenidos para el caso C pero en este caso podemos notar que el crecimiento de la potencia aparente es un mucho mayor que del caso A al B donde hay un escaso aumento de la potencia activa, debido a que el efecto de tener mitad de núcleo o núcleo entero en la bobina, no genera una variación significativa en la inductancia, por ende en la corriente que circula por la resistencia.
+
+3) Cabe destacar que el factor de potencia se mantiene prácticamente inalterado en los casos A) y B). Se atribuye dicho error a la poca diferencia entre la resistencia y la reactancia.
+
+4) Con los diagramas fasoriales de corrientes y tensiones, podemos ver la variación de intensidad de corrientes entre los casos A y B y el mayor crecimiento hacia el caso C, dejando como consecuencia lo descripto previamente.
 
 \subsection*{\underline{Ejercicio 2}}
 
@@ -180,11 +188,26 @@ Graficando fasorialmente las tres potencias, se obtienen:
   \caption{Circuito RLC.}
 \end{minipage}
 \end{figure}
- Concluimos que los diagramas obtenidos a partir de las mediciones son coherentes con lo esperado analíticamente.
+ A destacar, el factor de potencia es de aproximadamente 1 para un circuito puramente resistivo (intensidad y tensión en fase); el factor de potencia es aproximadamente 0 para un circuito puramente reactivo (intensidad y tensión con una diferencia de 90 grados) coincidiendo con lo esperado teóricamente con pequeños errores experimentales.
+ 
+ De los gráficos de potencia y los datos medidos, podemos confirmar según el circuito analizado los comportamientos esperados: 
+ 
+ 1) En el circuito puramente resistivo, observamos que la potencia aparente es prácticamente la potencia activa, ya que no hay componentes reactivos, por ende no hay potencia reactiva. 
+ 
+ 2) En el circuito puramente reactivo (capacitivo), observamos un factor de potencia tal que el triangulo de potencias se encuentra en el cuarto cuadrante correspondiente a un triángulo de potencias teórico similar para este caso donde la potencia aparente es aproximadamente la potencia reactiva.
+ 
+ 3) En el circuito RLC, observamos el triángulo de potencias tal que el efecto inductivo es mayor al capacitivo, por lo cual se ubica en el primer cuadrante dando como resultado un circuito con comportamiento de forma inductiva. 
 \subsection*{\underline{Ejercicio 3}}
-La finalidad de la tercer etapa del trabajo consistió en variar el factor de potencia del circuito de la figura (\ref{fig:2b}) a un valor de $ 0.9 $ mediante la adición de capacitores en paralelo. En un principio se agregó un total de $ 16 \ \mu F$, lo que implicó que $ cos \left(\varphi \right) = 0.74 $. Al subir la capacitancia en paralelo a $ 24 \ \mu F$, se observo que $ cos \left(\varphi \right) = 0.91 $.
+La finalidad de la tercer etapa del trabajo consistió en variar el factor de potencia del circuito de la figura (\ref{fig:2b}) a un valor de $ 0.9 $ mediante la adición de capacitores en paralelo. En otras palabras, agregando capacitores en paralelo, lograr que la potencia activa se aproxime a la potencia reactiva, logrando una mayor eficiencia, con un factor de potencia cercano a 1. Cabe destacar que este efecto podría lograrse también reduciendo la carga inductiva. 
+En un principio se agregó un total de $ 16 \ \mu F$, lo que implicó que $ cos \left(\varphi \right) = 0.74 $. Al subir la capacitancia en paralelo a $ 24 \ \mu F$, se observo que $ cos \left(\varphi \right) = 0.91 $.
 
 \subsection*{\underline{Ejercicio 4}}
-Por último, en la sección final de este trabajo, se buscó determinar analíticamente el valor capacitivo del banco de capacitores que se debería colocar en paralelo a los circuitos del ejercicio 2 para alcanzar un factor de potencia de $ 0,9 $. Para el circuito de C no tiene sentido agregar un capacitor para arreglar el cos($\varphi$) dado que se necesitaria una inductancia. Mientras que para el circuito RLC se requiere otro de $ 6,54 \ \mu F $ .Este valor discrepa ligeramente con el real debido a que en el modelo no se tomo en cuenta la impedancia de la fuente conjunto a errores de medición, pero más allá de estos se observa que las cálculos teóricos se ajustan a lo medido. Para el circuito de R, no tiene sentido colocar en paralelo un capacitor para subir el factor de potencia a $ 0,9 $ ya que el de dicho circuito es de $ 0,99 $.
+En la sección final de este trabajo, se buscó determinar analíticamente el valor capacitivo del banco de capacitores que se debería colocar en paralelo a los circuitos del ejercicio 2 para alcanzar un factor de potencia de $ 0,9 $. 
+
+1) Para el circuito de R, no tiene sentido colocar en paralelo un capacitor para subir el factor de potencia a $ 0,9 $ ya que el de dicho circuito es de $ 0,99 $.
+
+2) Para el circuito de C no tiene sentido agregar un capacitor para arreglar el cos($\varphi$) dado que se necesitaría una inductancia y el circuito presentado es de caracter capacitivo puro. 
+
+3) Mientras que para el circuito RLC (que coincide con el circuito de la figura 9)se requiere otro de $ 6,54 \ \mu F $ .Este valor discrepa ligeramente con el obtenido experimentalmente debido a que en el modelo no se tomó en cuenta la impedancia de la fuente conjunto a errores de medición, pero más allá de éstos se observa que los cálculos teóricos se ajustan a lo medido. 
 
 \end{document}

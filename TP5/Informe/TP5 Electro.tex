@@ -13,6 +13,9 @@
 \usepackage{multirow}
 \setlength{\doublerulesep}{\arrayrulewidth}
 
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 \usepackage[american]{circuitikz}
 
 \usepackage{fancyhdr}
@@ -41,7 +44,291 @@
 
 \section*{Introducción}
 
+En ese trabajo práctico, se va a determinar los parámetros de \textbf{impedencia [Z]}
+
 \section*{Desarrollo de la experiencia}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|||C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|||}
+\hline\hline 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\multicolumn{5}{|||l|||}{\textbf{Cuadripolo A - Nro de serie : 9601}} \\ 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\hline
+&&&&\\[-7pt]
+ & $V_{1}$ (V) & $V_{2}$ (V) & $I_{1}$ (mA) & $I_{2}$ (mA) \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$V_{1}=0$ & 0 &   &   &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$V_{2}=0$ &   & 0 &   &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$I_{1}=0$ &   &   & 0 &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$I_{2}=0$ &   &   &   & 0 \\[-7pt]
+&&&&\\
+\hline\hline
+\end{tabular}
+\caption{Linda tabla}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|||C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|||}
+\hline\hline 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\multicolumn{5}{|||l|||}{\textbf{Cuadripolo B - Nro de serie : 9612}} \\ 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\hline
+&&&&\\[-7pt]
+ & $V_{1}$ (V) & $V_{2}$ (V) & $I_{1}$ (mA) & $I_{2}$ (mA) \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$V_{1}=0$ & 0 &   &   &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$V_{2}=0$ &   & 0 &   &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$I_{1}=0$ &   &   & 0 &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$I_{2}=0$ &   &   &   & 0 \\[-7pt]
+&&&&\\
+\hline\hline
+\end{tabular}
+\caption{Linda tabla}
+\end{center}
+\end{table}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|||C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|||}
+\hline\hline 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\multicolumn{5}{|||l|||}{\textbf{Cuadripolo A y B en serie :}} \\ 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\hline
+&&&&\\[-7pt]
+ & $V_{1}$ (V) & $V_{2}$ (V) & $I_{1}$ (mA) & $I_{2}$ (mA) \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$I_{1}=0$ &   &   & 0 &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$I_{2}=0$ &   &   &   & 0 \\[-7pt]
+&&&&\\
+\hline\hline
+\end{tabular}
+\caption{Linda tabla}
+\end{center}
+\end{table}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|||C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|||}
+\hline\hline 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\multicolumn{5}{|||l|||}{\textbf{Cuadripolo A y B en paralelo :}} \\ 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\hline
+&&&&\\[-7pt]
+ & $V_{1}$ (V) & $V_{2}$ (V) & $I_{1}$ (mA) & $I_{2}$ (mA) \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$V_{1}=0$ & 0 &   &   &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$V_{2}=0$ &   & 0 &   &   \\[-7pt]
+&&&&\\
+\hline\hline
+\end{tabular}
+\caption{Linda tabla}
+\end{center}
+\end{table}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|||C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|||}
+\hline\hline 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\multicolumn{5}{|||l|||}{\textbf{Cuadripolo A y B en cascada (cascada A-B) :}} \\ 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\hline
+&&&&\\[-7pt]
+ & $V_{1}$ (V) & $V_{2}$ (V) & $I_{1}$ (mA) & $I_{2}$ (mA) \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$V_{2}=0$ &   & 0 &   &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$I_{2}=0$ &   &   &   & 0 \\[-7pt]
+&&&&\\
+\hline\hline
+\end{tabular}
+\caption{Linda tabla}
+\end{center}
+\end{table}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|||C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|||}
+\hline\hline 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\multicolumn{5}{|||l|||}{\textbf{Cuadripolo B y A en cascada (cascada B-A) :}} \\ 
+\multicolumn{5}{|||l|||}{}\\[-7pt]
+\hline
+&&&&\\[-7pt]
+ & $V_{1}$ (V) & $V_{2}$ (V) & $I_{1}$ (mA) & $I_{2}$ (mA) \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$V_{2}=0$ &   & 0 &   &   \\
+&&&&\\[-7pt]
+\hline
+&&&&\\[-7pt]
+$I_{2}=0$ &   &   &   & 0 \\[-7pt]
+&&&&\\
+\hline\hline
+\end{tabular}
+\caption{Linda tabla}
+\end{center}
+\end{table}
+
+\subsection*{Cálculos}
+
+A partir de los valores medidos antes, se puede calcular los parámetros correspondientes de cada cuadripolo ensayado.
+
+\subsubsection*{Parámetros de impedancia Z (impedancia a circuito abierto)}
+
+\begin{equation}
+\text{Cuadripolo A :}\quad [Z_{A}] =
+\begin{vmatrix}
+	Z^{A}_{11} & Z^{A}_{12}\\
+	Z^{A}_{21} & Z^{A}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\begin{equation}
+\text{Cuadripolo B :}\quad [Z_{B}] =
+\begin{vmatrix}
+	Z^{B}_{11} & Z^{B}_{12}\\
+	Z^{B}_{21} & Z^{B}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\begin{equation}
+\text{Cuadripolos en serie :}\quad [Z_{serie}] =
+\begin{vmatrix}
+	Z^{AB}_{11} & Z^{AB}_{12}\\
+	Z^{AB}_{21} & Z^{AB}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\subsubsection*{Parámetros de admitancia Y (admitancia a cortocircuito)}
+
+\begin{equation}
+\text{Cuadripolo A :}\quad [Y_{A}] =
+\begin{vmatrix}
+	Y^{A}_{11} & Y^{A}_{12}\\
+	Y^{A}_{21} & Y^{A}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\begin{equation}
+\text{Cuadripolo B :}\quad [Y_{B}] =
+\begin{vmatrix}
+	Y^{B}_{11} & Y^{B}_{12}\\
+	Y^{B}_{21} & Y^{B}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\begin{equation}
+\text{Cuadripolos en paralelo :}\quad [Y_{paralelo}] =
+\begin{vmatrix}
+	Y^{AB}_{11} & Y^{AB}_{12}\\
+	Y^{AB}_{21} & Y^{AB}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\subsubsection*{Parámetros de transmisión T}
+
+\begin{equation}
+\text{Cuadripolo A :}\quad [T_{A}] =
+\begin{vmatrix}
+	T^{A}_{11} & T^{A}_{12}\\
+	T^{A}_{21} & T^{A}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\begin{equation}
+\text{Cuadripolo B :}\quad [T_{B}] =
+\begin{vmatrix}
+	T^{B}_{11} & T^{B}_{12}\\
+	T^{B}_{21} & T^{B}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\begin{equation}
+\text{Cascada A-B :}\quad [T_{A-B}] =
+\begin{vmatrix}
+	T^{A-B}_{11} & T^{A-B}_{12}\\
+	T^{A-B}_{21} & T^{A-B}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\begin{equation}
+\text{Cascada B-A :}\quad [T_{B-A}] =
+\begin{vmatrix}
+	T^{B-A}_{11} & T^{B-A}_{12}\\
+	T^{B-A}_{21} & T^{B-A}_{22}\\
+\end{vmatrix}
+\end{equation}
+
+\subsection*{Equivalencia de parámetros de cuadripolos sueltos}
+
+A continuación, se verificará la correspondencia entre los valores medidos y los valores calculados con diferentes fórmulas conocidas.
+
+\subsubsection*{Equivalencia [Z] - [Y]}
+
+Está basada en la fórmula : $[Z]=[Y]^{-1}$.
+
+\begin{equation}
+ert
+\end{equation}
+
+\subsubsection*{Equivalencia [Z] - [T]}
+
+Está basada en la transformación : 
+
+\subsection*{Equivalencia de parámetros de cuadripolos asociados}
+
+\subsubsection*{Conexión serie}
+
+\subsubsection*{Conexión paralelo}
+
+\subsubsection*{Conexión cascada A-B}
+
+\subsubsection*{Conexión cascada B-A}
 
 \section*{Conclusión}
 

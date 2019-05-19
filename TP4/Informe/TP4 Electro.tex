@@ -41,7 +41,7 @@
 
 \section*{Introducción}
 
-En el trabajo realizado se estudió el funcionamiento de un transformador. Se realizaron análisis sobre sistemas en corto, en vacío y con carga. 
+El objetivo del trabajo consistió en el estudio del funcionamiento de un transformador. Se realizaron análisis sobre sistemas en corto, en vacío y con carga. 
 
 
 \section*{Desarrollo de la experiencia}
@@ -83,7 +83,7 @@ Para empezar, se armó el siguiente circuito:
 \label{cir:1}
 \end{figure}
 
-Luego, antes de empezar las mediciones, se quiso comprobar la polaridad de las inductancias acopladas. Para esto, se conectó una fuente de tensión en el primario, y un voltímetro entre los distintos bornes de las inductancias. Se identificaron los \textit{puntos} de las inductancias en los bornes donde el voltímetro medía la menor diferencia de potencial, de la siguiente manera:
+Luego, antes de empezar las mediciones, se quiso comprobar la polaridad de las inductancias acopladas. Para esto, se conectó una fuente de tensión en el primario y un voltímetro entre los distintos bornes de las inductancias. Se identificaron los \textit{puntos} de las inductancias en los bornes donde el voltímetro medía la menor diferencia de potencial, de la siguiente manera:
 
 \begin{figure}[H]
 \begin{center}
@@ -140,102 +140,11 @@ Se utilizó un ohmetro para medir la resistencia del devanado de cobre de los in
 \label{tabla:1a}
 \end{table}
 
-%Para empezar se dispuso el circuito de la forma mostrada en la figura (\ref{fig:1a}). Luego, se colocó un voltímetro en los distintos bornes de las inductacias, para poder, de esta forma, determinar de que manera serían homólogos, sabiendo que se daría dicha condición cuando la diferencia de tensión sea próxima a cero.
-%
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.8\textwidth]{Circuito-1.PNG}
-%	\caption{Circuito empleado.}
-%	\label{fig:1a}
-%\end{figure}
-%
-%Así queda determinado el sentido de la inductancia mutua, conectando el voltimetro de forma en la que se muestra en la figura (\ref{cir:1a}).
-%
-%\begin{figure}[H]
-%\begin{center}
-%\begin{circuitikz}
-%	\draw
-%		
-%	(1,0) node[transformer] (T) {}
-%	node[ocirc] (A) at ([xshift=-1cm]T.A1) {}
-%	node[ocirc] (B) at ([xshift=-1cm]T.A2) {}
-%	node[ocirc] (C) at ([xshift=1cm]T.B1) {}
-%	node[ocirc] (D) at ([xshift=1cm]T.B2) {}
-%	node[circ] (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
-%	node[circ] (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
-%	(T.A1) to	[-o] (A)
-%	(T.A2) to	[-o] (B) 
-%	(T.B1) to	[-o] (C)
-%	(T.B2) to	[-o] (D)
-%	(T.west) node{$L_1$}
-%	(T.east) node{$L_2$}
-%
-%	(0,0.5)	to	node[draw,circle,fill=white] {V} (2,0.5)
-%	(0,0)	to	(0,0.5)
-%	(2,0)	to	(2,0.5)
-%
-%	;\end{circuitikz}
-%\end{center}
-%\caption{Determinación del sentido de M.}
-%\label{cir:1a}
-%\end{figure}
-%
-%Una vez hecho lo mencionado anteriormente, se prosigue conectando las herramientas necesarias en el circuito para realizar las mediciones adecuadas.
-%
-%\begin{figure}[H]
-%\begin{center}
-%\begin{circuitikz}
-%	\draw
-%		
-%	(-1, -1.1) 		to [vL] (-1,-2.1)
-%	(-1.5, -1.1) 	to [short, *-] (-1, -1.1)
-%	(-1.5, -2.1) 	to [short, *-] (-1, -2.1)
-%					to (0,-2.1)
-%	(0,0)	to (0,-1.7)
-%			to (-0.6,-1.7)
-%	(0,0) 	to node[draw,circle,fill=white] {A} (1.5, 0)
-%			to (3.5,0) to [R, l=$R_{L_{1}}$] (5.5,0)
-%			
-%	(2.5,0) to node[draw,circle,fill=white] {V} (2.5, -2.1)
-%	
-%	(0,-2.1) to (5,-2.1) to (5.5,-2.1)	
-%
-%	(6.5,0) node[transformer core]{}
-%	(7.5,0) to [R, l=$R_{L_{2}}$] (9.5,0) to (10,0)
-%	(7.5,-2.1) to (10,-2.1)
-%	(10,0) to [vR, l_ = $R_d$] (10,-2.1)
-%
-%	;\end{circuitikz}
-%\end{center}
-%\caption{Circuito analizado.}
-%\label{cir:1b}
-%\end{figure}
-%
-%Luego se determinaron mediante el uso de un ohmetro las resistencias internas de cada bobina siendo $ R_1 = 23 \ \Omega $ y $ R_2 = 21,8 \ \Omega $ la del primario y del secundario respectivamente.
-%
-%Por último se procedió a realizar las mediciones adecuadas y se calcularon los valores de auto inductancia, el factor de acoplamiento y el valor de mutua inductancia. Dichos resultados y cálculos se encuentran en la tabla (\ref{tabla:1a}). Cabe aclarar que algunos valores, tales como el coeficiente de acoplamiento y las auto inductancias, no pudieron ser calculados en aquellos análisis en vacío. 
-%
-%
-%\begin{table}[H]
-%\centering
-%\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
-%\hline
-%\textbf{Caso}                                                             & \textbf{\begin{tabular}[c]{@{}c@{}}$V_1$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_1$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$V_2$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_2$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$R_D$\\ $\Omega$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}M\\ {[}H{]}\end{tabular}} & \textbf{k} & \textbf{\begin{tabular}[c]{@{}c@{}}$L_1$\\ {[}H{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$L_2$\\ {[}H{]}\end{tabular}} \\ \hline
-%\textbf{Hierro Sólido}                                                    & 93,4                                                             & 0,3                                                              & 14,6                                                             & 0,06                                                             & 200                                                               & 0,15                                                         & 0,28       & 0,99                                                             & 0,32                                                             \\ \hline
-%\textbf{Laminado}                                                         & 93,4                                                             & 0,45                                                             & 23,22                                                            & 0,1                                                              & 200                                                               & 0,26                                                         & 0,33       & 0,66                                                             & 0,93                                                             \\ \hline
-%\textbf{\begin{tabular}[c]{@{}c@{}}Laminado\\ ($I_2 = 0$)\end{tabular}}   & 93,4                                                             & 0,4                                                              & 33,22                                                            & 0                                                                & 0                                                                 & -                                                            & -          & -                                                                & -                                                                \\ \hline
-%\textbf{\begin{tabular}[c]{@{}c@{}}Sin núcleo\\ ($I_2 = 0$)\end{tabular}} & 93,4                                                             & 0,8                                                              & 8,3                                                              & 0                                                                & 0                                                                 & -                                                            & -          & -                                                                & -                                                                \\ \hline
-%\end{tabular}
-%\caption{Mediciones realizadas en la primer experiencia.}
-%\label{tabla:1a}
-%\end{table}
-
-
 \section{\underline{Segunda parte}}
 
-En esta parte, se hacen estudios en vacío y de corto circuito en un transformador monofásico con el objetivo que hallar los parámetros físicos de este. El dicho es construido de la misma manera que en la primera parte, con dos bobinas y un núcleo de hierro.
+En esta parte, se hicieron estudios en vacío y de corto circuito en un transformador monofásico con el objetivo que hallar los parámetros físicos de este. El dicho es construido de la misma manera que en la primera parte, con dos bobinas y un núcleo de hierro.
 
-No se realizó un estudio del transformador con carga ya que como este era un modelo experimental, no se poseía la información de la potencia máxima.
+No se realizó un estudio del transformador con carga ya que, como este era un modelo experimental, no se poseía la información de la potencia máxima.
 
 \subsection{Ensayo en vacío}
 
@@ -268,7 +177,7 @@ Para este primer ensayo, se procede al armado del siguiente circuito:
 \caption{Circuito analizado durante la segunda instancia.}
 \end{figure}
 
-Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pérdidas en el hierro nominales. A continuación, se representa en forma de tabla, los valores medidos y calculados de dicho análisis:
+Aplicando una tensión nominal cercana de $100 \ V$, el vatímetro indicará las pérdidas en el hierro nominales. A continuación, se representa en forma de tabla, los valores medidos y calculados de dicho análisis:
 
 \begin{table}[H]
 \centering
@@ -277,10 +186,8 @@ Aplicando una tensión nominal cercana de 100 V, el vatímetro indicará las pé
 \textbf{Parámetro} & \textbf{\begin{tabular}[c]{@{}c@{}}$U_{10}$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$U_{20}$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{10}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$P_{10}$\\ {[}W{]}\end{tabular}} & \textbf{$cos \ \phi$} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{m}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{p}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$R_{p}$\\ {[}$\Omega${]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$X_{m}$\\ {[}$\Omega${]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$M$\\ {[}H{]}\end{tabular}} \\ \hline
 \textbf{Valor}     & 93,1                                                                & 35,2                                                                & 0,375                                                               & 6,75                                                                & 0,193                 & 0,368                                                              & 0,073                                                              & 1284,09                                                                   & 253,041                                                                   & 0,378                                                          \\ \hline
 \end{tabular}
-\caption {Ensayo a circuito abierto.}
+\caption {Ensayo con circuito abierto.}
 \end{table}
-
-
 
 \subsection{Ensayo en cortocircuito}
 Se buscó determinar las pérdidas debidas al devanado de cobre del transformador. Para esto, se conectó un vatímetro en el primario y se concretó que la medición realizada con este serán las perdidas nominales en el cobre. A continuación se detallan los resultados obtenidos:
@@ -292,11 +199,11 @@ Se buscó determinar las pérdidas debidas al devanado de cobre del transformado
 \textbf{Parámetro} & \textbf{\begin{tabular}[c]{@{}c@{}}$U_{1CC}$\\ {[}V{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{1CC}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$I_{2CC}$\\ {[}A{]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$P_{1CC}$\\ {[}W{]}\end{tabular}} & \textbf{$cos \ \phi$} & \textbf{\begin{tabular}[c]{@{}c@{}}$R_{1} = R_{21}$\\ {[}$\Omega${]}\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$X_{1} = X_{21}$\\ {[}$\Omega${]}\end{tabular}} \\ \hline
 \textbf{Valor}     & 91,4                                                                 & 0,448                                                                & 0,16                                                                 & 8,625                                                                & 0,211                 & 336,9                                                                              & 1561,79                                                                            \\ \hline
 \end{tabular}
-\caption {Ensayo a corto circuito}
+\caption {Ensayo en corto circuito}
 \centering
 \end{table}
-\centering
+
 \section*{Conclusiones}
-miau
+El trabajo permitió constatar la teoría estudiada, viendo sus contraparte práctica. Se pudo analizar el funcionamiento de un transistor y determinación de sus características más importantes, mediante diversos ensayos. Los resultados obtenidos corresponden con lo esperado, teniendo en cuenta la existencia de posibles errores debido a los instrumentos.
 
 \end{document}

@@ -44,7 +44,7 @@
 
 \section*{Introducción}
 
-En este trabajo práctico, se somete al análisis dos cuadripolos, con los cuales se determina sus parámetros \textbf{impedencia [Z]}, \textbf{admitancia [Y]} y \textbf{trasmisión [T]} y se analiza su máxima transferencia de potencia.
+En este trabajo práctico, se somete al análisis a dos cuadripolos, a los cuales se les determinan sus parámetros impedencia [Z], admitancia [Y] y trasmisión [T] y se analizan sus máximas transferencias de potencia. Luego se los pone en serie, paralelo y cascada, y se ensayan aquellos nuevos cuadripolos. Finalmente se comparan los parametros obtenidos de los nuevos cuadripolos y se comparan con los parametros calculados mediante el equivalente teórico a partir de los parametros de los cuadripolos originales.
 
 \section*{Desarrollo de la experiencia}
 
@@ -89,7 +89,7 @@ $I_2 = 0$ & 3,05 & 2,19 & 8,2 & 0 \\ \hline
 
 \subsection*{Cálculos}
 
-A partir de los valores medidos antes, se puede calcular los parámetros correspondientes de cada cuadripolo ensayado.
+A partir de los valores medidos antes, se pueden calcular los parámetros correspondientes de cada cuadripolo ensayado.
 
 \begin{equation}
 \text{Cuadripolo A :}\quad [Z_{A}] =
@@ -115,7 +115,7 @@ A partir de los valores medidos antes, se puede calcular los parámetros corresp
 \end{vmatrix}
 \end{equation}
 
-\subsubsection*{Parámetros de admitancia Y (admitancia a cortocircuito)}
+\subsubsection*{Parámetros de admitancia Y}
 
 \begin{equation}
 \text{Cuadripolo A :}\quad [Y_{A}] =
@@ -186,36 +186,36 @@ Calculando Z, para cada cuadripolo, mediante la formula relación $[Z]=[Y]^{-1}$
 \begin{equation}
 \text{Cuadripolo A :}\quad [Z_{Teorico}] =
 \begin{vmatrix}
-	x & x\\
-	x & x\\
+	-500 & 700\\
+	500 & -600\\
 \end{vmatrix}
 \end{equation}
 
 \begin{equation}
 \text{Cuadripolo B :}\quad [Z_{Teorico}] =
 \begin{vmatrix}
-	x & x\\
-	x & x\\
+	555,5 & -444,4\\
+	 -444,4 & 555,5\\
 \end{vmatrix}
 \end{equation}
 
 \subsubsection*{Equivalencia [Z] - [T]}
 
-De forma análoga, se calcula T mediante los valores medidos de Z: 
+De forma análoga, se calcula T mediante los valores medidos de Z, considerando la $I_2$ saliente: 
 
 \begin{equation}
 \text{Cuadripolo A :}\quad [T_{Teorico}] =
 \begin{vmatrix}
-	x & x\\
-	x & x\\
+	1,384 & -102,501\\
+	0,006 & -1,193\\
 \end{vmatrix}
 \end{equation}
 
 \begin{equation}
 \text{Cuadripolo B :}\quad [T_{Teorico}] =
 \begin{vmatrix}
-	x & x\\
-	x & x\\
+	1,396 & -315,810\\
+	0,004 & -1,683\\
 \end{vmatrix}
 \end{equation}
 
@@ -224,41 +224,52 @@ De forma análoga, se calcula T mediante los valores medidos de Z:
 Por último, se calculan los parámetros medidos en la primer instancia, de las conexiones serie, paralelo y cascada:
 
 \begin{equation}
-\text{Conexión Serie :}\quad [T_{Teorico}] =
+\text{Conexión Serie :}\quad [Z_{Teorico}] =
 \begin{vmatrix}
-	x & x\\
-	x & x\\
+	589,81 & 467,64\\
+	423,82 & 636,22\\
 \end{vmatrix}
 \end{equation}
 
 \begin{equation}
-\text{Conexión Paralelo :}\quad [T_{Teorico}] =
+\text{Conexión Paralelo :}\quad [Y_{Teorico}] =
 \begin{vmatrix}
-	x & x\\
-	x & x\\
+	0,017 & 0,018\\
+	0,014 & 0,015\\
 \end{vmatrix}
 \end{equation}
 
 \begin{equation}
 \text{Conexión Cascada A - B :}\quad [T_{Teorico}] =
 \begin{vmatrix}
-	x & x\\
-	x & x\\
+	8,85 & -1535\\
+	0,013 & -0,91\\
 \end{vmatrix}
 \end{equation}
 
 \begin{equation}
 \text{Conexión Cascada B - A :}\quad [T_{Teorico}] =
 \begin{vmatrix}
-	x & x\\
-	x & x\\
+	6,24 & 174,44\\
+	-0,01 & 1,70\\
 \end{vmatrix}
 \end{equation}
 
 \section*{Transferencia de potencia máxima}
 
+que hacemos aca porque esto no se midio
+
 \section*{Conclusión}
 
-La verdad que somos unos giles: los números dan cualquier cosa, está todo como el orto, no hicimos la máxima transferencia de potencia para los dos cuadripolos. Que se yo, aprobame.
+La verdad que somos unos giles: los números dan cualquier cosa, está todo como el orto, no hicimos la máxima transferencia de potencia para los dos cuadripolos. Que se yo, aprobame.\\
+
+Equivalencia Z-Y dio horrible\\
+equivalencia Z-T dio bastante bien\\
+
+conexion serie teorica dan z11 y z22 bastante bien, z12 y z21 mal\\
+conexion paralela teorica da medio mal\\
+
+conexion cascada a-b medio mal\\
+conexion cascada b-a medio mal\\
 
 \end{document}

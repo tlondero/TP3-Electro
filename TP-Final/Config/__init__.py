@@ -1,4 +1,4 @@
 
-LARGE_FONT = ("Bahnschrift", 20)
-SMALL_FONT = ("Bahnschrift", 16)
-SMALLEST_FONT = ("Bahnschrift", 10)
+LARGE_FONT = ("Impact", 20)
+SMALL_FONT = ("Impact", 16)
+SMALLEST_FONT = ("Impact", 10)

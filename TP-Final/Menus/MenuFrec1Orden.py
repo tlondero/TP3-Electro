@@ -45,23 +45,23 @@ class MenuFrec1Orden(tk.Frame):
         self.buttonContinuar = tk.Button(
             self,
             height=2,
-            width=50,
+            width=20,
             text="Continuar",
             font=Config.SMALL_FONT,
             background="#ccffd5",
             command=self.continuar
         )
-        self.buttonContinuar.pack(side=tk.TOP, fill=tk.BOTH, pady=20)
+        self.buttonContinuar.pack(side=tk.RIGHT, pady=20 )
         self.buttonBack = tk.Button(  # Atras
             self,
-            height=1,
+            height=2,
             width=20,
-            text="Back",
+            text="Volver",
             font=Config.SMALL_FONT,
             background="#ccffd5",
-            command=self.gotoMenuPrimerOrden
+            command=self.gotoMenuPrimerOrden,
         )
-        self.buttonBack.pack(side=tk.TOP, fill=tk.BOTH, pady=20)
+        self.buttonBack.pack(side=tk.LEFT, pady=20)
 
     def continuar(self):
         # configuramos modos

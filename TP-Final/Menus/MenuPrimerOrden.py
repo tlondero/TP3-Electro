@@ -26,7 +26,7 @@ class MenuPrimerOrden(tk.Frame):
             self,
             height=1,
             width=20,
-            text="Back",
+            text="Volver",
             font=Config.SMALL_FONT,
             background="#ccffd5",
             command=self.gotoMenuSelectOrder

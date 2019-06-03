@@ -3,7 +3,7 @@ import Config
 #from UserInput import userInput
 #from Menus.MenuBode import MenuBode
 #from Menus.MenuDiagrama import MenuDiagrama
-#from Menus.MenuSignal import MenuSignal
+from Menus.MenuSignal import MenuSignal
 
 class MenuModo(tk.Frame):
     def __init__(self, parent, controller):
@@ -65,9 +65,9 @@ class MenuModo(tk.Frame):
         self.buttonBack.pack(side=tk.TOP, fill=tk.BOTH)
 
     def gotoMenuSignal(self):
-        pass
- #       self.controller.showFrame(MenuSignal)
- #       userInput["Option"] = "Signal"
+ #       pass
+        self.controller.showFrame(MenuSignal)
+        userInput["Option"] = "Signal"
 
     def gotoMenuBode(self):
         pass

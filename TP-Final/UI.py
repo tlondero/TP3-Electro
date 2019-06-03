@@ -19,7 +19,7 @@ frames = [MenuSelectOrder,
 #    MenuBode,
 #    MenuDiagrama,
     MenuModo,
-#    MenuSignal,
+    MenuSignal,
     MenuInputOutput]
 
 startFrame = MenuSelectOrder
@@ -32,7 +32,7 @@ class UI(tk.Tk):
         self.protocol('WM_DELETE_WINDOW', self.exitFunction)
         self.title("Ejemplo gui 01")
         self.resizable(width=True, height=True)
-        self.minsize(width=700, height=500)
+#        self.minsize(width=700, height=500)
 #        self.maxsize(width=800, height=800)
 
         self.container = tk.Frame(self)

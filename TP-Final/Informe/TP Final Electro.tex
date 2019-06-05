@@ -56,8 +56,8 @@ Se comenzó analizando el período de carga y descarga de los componentes capaci
 \draw
 	(0,3) to [V,v_=$V$] (0,0)
 	(0,0) to (4,0)
-	(2,0) to [vR, l_=$18 \ \Omega$] (2,1.5)
-	(4,0) to [vR, l_=$12 \ \Omega$] (4,1.5)
+	(2,0) to [R, l_=$18 \ \Omega$] (2,1.5)
+	(4,0) to [R, l_=$12 \ \Omega$] (4,1.5)
 	(2,1.5) to [C, l_=$22 \ \mu f$]	(2,3)
 	(4,3)	to [L, l=$13 \ mH$] (4,1.5)
 	(0,3)	to [spst] (2,3)
@@ -72,14 +72,14 @@ Mediante el uso del programa \textbf{LTSpice}, y otorgando un valor arbitrario d
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{LTSpice-Carga1}
+	\includegraphics[width=\textwidth]{LTSpice-Carga1}
 	\caption{Tensión del capacitor (en rojo) y corritente en la bobina (en azul) durante la carga.}
 	\label{fig:LTSC1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{LTSpice-Descarga1}
+	\includegraphics[width=\textwidth]{LTSpice-Descarga1}
 	\caption{Tensión del capacitor (en rojo) y corritente en la bobina (en azul) durante la descarga.}
 	\label{fig:LTSD1}
 \end{figure}
@@ -94,9 +94,28 @@ Analizando teóricamente ambas situaciones...
 
 Luego se analiza el caso en el cual el valor de ambas resistencias sea de $0 \Omega$. Dicha situación no es posible en la realidad ya que siempre se presenta una resistencia interna por parte de los elementos. Idealmente, lo que sucedería sería que la tensión y la corriente oscilarían sin perdidas de energía.
 
-Finalmente, se realizó un diagrama de Montecarlo. Para ello se determinó las tolerancias de los distintos componentes de la siguiente forma: 5\% para las resistencias, 10\% para el capacitor y 0\% para la bobina.
+Finalmente, se realizó un diagrama de Montecarlo. Para ello se determinó las tolerancias de los distintos componentes de la siguiente forma: 5\% para las resistencias, 10\% para el capacitor y 0\% para la bobina. Se corrió la simulación 100 veces con un punto inicial en 1 e incrementándolo en 1 por iteratición. Además, se configuró la fuente de tensión de entrada para que varíe desde $0 \ V$ a $5 \ V$ con un paso de $0,1 \ V$. De esta forma se obtuvieron los gráficos presentados en la figuras (\ref{fig:LTSMCVC}), (\ref{fig:LTSMCIL}) y (\ref{fig:LTSMCIR}).
 
-... 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{LTSpice-MC1-VC}
+	\caption{Análisis de Montecarlo de la tensión en el capacitor.}
+	\label{fig:LTSMCVC}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{LTSpice-MC1-IR}
+	\caption{Análisis de Montecarlo de la corriente en la resistencia 1.}
+	\label{fig:LTSMCIR}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{LTSpice-MC1-IL}
+	\caption{Análisis de Montecarlo de la corriente en la bobina (igual corriente que en la resistencia 2).}
+	\label{fig:LTSMCIL}
+\end{figure}
 
 \section*{Conclusión}
 

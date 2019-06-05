@@ -4,5 +4,3 @@ un mismo gráfico).
 
 * Corroborar teóricamente los resultados de las simulaciones. Contrastar gráficos teóricos con
 gráficos de LTSpice.
-
-* ¿Qué sucedería si las resistencias fueran de 0?? ¿Puede suceder esto en la realidad? Justifique.

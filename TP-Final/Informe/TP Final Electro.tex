@@ -44,8 +44,59 @@
 
 \section*{Introducción}
 
-
 \section*{Desarrollo}
+
+\subsection*{Simulación en LTSpice}
+
+Se comenzó analizando el período de carga y descarga de los componentes capacitivos e inductivos del circuito dado.
+
+\begin{figure}[H]
+\begin{center}
+\begin{circuitikz}
+\draw
+	(0,3) to [V,v_=$V$] (0,0)
+	(0,0) to (4,0)
+	(2,0) to [vR, l_=$18 \ \Omega$] (2,1.5)
+	(4,0) to [vR, l_=$12 \ \Omega$] (4,1.5)
+	(2,1.5) to [C, l_=$22 \ \mu f$]	(2,3)
+	(4,3)	to [L, l=$13 \ mH$] (4,1.5)
+	(0,3)	to [spst] (2,3)
+	(2,3)	to (4,3)
+	
+;\end{circuitikz}
+\caption{Circuito analizado.}
+\end{center}
+\end{figure}
+
+Mediante el uso del programa \textbf{LTSpice}, y otorgando un valor arbitrario de $5 \ V$ a la tensión de entrada, se obtuvo
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{LTSpice-Carga1}
+	\caption{Tensión del capacitor (en rojo) y corritente en la bobina (en azul) durante la carga.}
+	\label{fig:LTSC1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{LTSpice-Descarga1}
+	\caption{Tensión del capacitor (en rojo) y corritente en la bobina (en azul) durante la descarga.}
+	\label{fig:LTSD1}
+\end{figure}
+
+Mediante el uso de las figuras (\ref{fig:LTSC1}) y (\ref{fig:LTSD1}) se pudo determinar la pseudofrecuencia de oscilación del transitorio y el calor máximo de sobrepico.
+
+...
+
+Analizando teóricamente ambas situaciones...
+
+...
+
+Luego se analiza el caso en el cual el valor de ambas resistencias sea de $0 \Omega$. Dicha situación no es posible en la realidad ya que siempre se presenta una resistencia interna por parte de los elementos. Idealmente, lo que sucedería sería que la tensión y la corriente oscilarían sin perdidas de energía.
+
+Finalmente, se realizó un diagrama de Montecarlo. Para ello se determinó las tolerancias de los distintos componentes de la siguiente forma: 5\% para las resistencias, 10\% para el capacitor y 0\% para la bobina.
+
+... 
 
 \section*{Conclusión}
 

@@ -1,0 +1,11 @@
+* Determinar el valor de la pseudofrecuencia de oscilación del transitorio y el valor máximo de
+sobrepico cuando corresponda. Sacar conclusiones (sugerencia: presentar ambos resultados en
+un mismo gráfico).
+
+* Corroborar teóricamente los resultados de las simulaciones. Contrastar gráficos teóricos con
+gráficos de LTSpice.
+
+* ¿Qué sucedería si las resistencias fueran de 0?? ¿Puede suceder esto en la realidad? Justifique.
+
+* Realizar un diagrama de Montecarlo, en donde la tolerancia de las resistencias sea de 5 %, del
+capacitor de 10 % y de la bobina 0 %.

@@ -6,6 +6,3 @@ un mismo gráfico).
 gráficos de LTSpice.
 
 * ¿Qué sucedería si las resistencias fueran de 0?? ¿Puede suceder esto en la realidad? Justifique.
-
-* Realizar un diagrama de Montecarlo, en donde la tolerancia de las resistencias sea de 5 %, del
-capacitor de 10 % y de la bobina 0 %.

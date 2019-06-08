@@ -332,3 +332,5 @@ fabric.properties
 *.pyc
 *.iml
 *.xml
+TP-Final/LTSpice/Carga/Circuito.op.raw
+*.raw

@@ -84,13 +84,33 @@ Mediante el uso del programa \textbf{LTSpice}, y otorgando un valor arbitrario d
 	\label{fig:LTSD1}
 \end{figure}
 
-Mediante el uso de las figuras (\ref{fig:LTSC1}) y (\ref{fig:LTSD1}) se pudo determinar la pseudofrecuencia de oscilación del transitorio y el calor máximo de sobrepico.
+Mediante el uso de las figuras (\ref{fig:LTSC1}) y (\ref{fig:LTSD1}) se pudo determinar la pseudofrecuencia de oscilación del transitorio y el valor máximo de sobrepico. De esta forma, se determinó para el capacitor una pseudofrecuencia de ${\omega}_{T} \ = \ 4.47 \ ms$ y un sobrepico de $227 \ mV$, y para el inductor una pseudofrecuencia de ${\omega}_{T} \ = \ 3.84 \ ms$ y un sobrepico de $4.55 \ mA$.
 
-...
+Para analizar teóricamente ambas situaciones se observa que tanto el capacitor como el inductor se encuentran en ramas distintas conectadas a una fuente de tensión constante, es por ello que se llega a las siguientes ecuaciones:
 
-Analizando teóricamente ambas situaciones...
+\begin{equation}
+	V_{C} (t) = V_{f} \left( 1 - e^{- \frac{t}{0.396 \ ms}  } \right)
+	\label{eq:carg-c}
+\end{equation}
 
-...
+\begin{equation}
+	I_{L} (t) = V_{f} \left( 1 - e^{- \frac{t}{0.156 \ s}  } \right)
+	\label{eq:carg-l}
+\end{equation}
+
+Por otro lado, para la descarga, el circuito es un RLC serie. Sabiendo que para este circuito $\alpha < \omega_0$, se plantea la solución para un circuito subamortiguado, obteniéndose así las siguientes ecuaciones:
+
+\begin{equation}
+	V_{C} (t) = V_{f} \cdot e^{- \alpha t} \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right]
+	\label{eq:descarg-c}
+\end{equation}
+
+\begin{equation}
+	I_{L} (t) = V_{f} C \cdot e^{- \alpha t} \left\lbrace - \alpha \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right] - \omega_d sen \left(  \omega_d t \right) + \left( \alpha + \frac{R}{C} \right) cos \left(  \omega_d t \right) \right\rbrace
+	\label{eq:descarg-l}
+\end{equation}
+
+con $\alpha = 1153.85 \ \frac{1}{s}$, $\omega_d = 1471.44 \ \frac{1}{s}$, $R = 30 \ \Omega$.
 
 Luego se analiza el caso en el cual el valor de ambas resistencias sea de $0 \ \Omega$. Dicha situación no es posible en la realidad ya que siempre se presenta una resistencia interna por parte de los elementos. Idealmente, lo que sucedería sería que la tensión y la corriente oscilarían sin perdidas de energía.
 

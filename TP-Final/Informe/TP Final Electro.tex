@@ -105,9 +105,11 @@ Por otro lado, para la descarga, el circuito es un RLC serie. Sabiendo que para 
 	\label{eq:descarg-c}
 \end{equation}
 
-\begin{equation}
-	I_{L} (t) = V_{f} C \cdot e^{- \alpha t} \left\lbrace - \alpha \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right] - \omega_d sen \left(  \omega_d t \right) + \left( \alpha + \frac{R}{C} \right) cos \left(  \omega_d t \right) \right\rbrace
-	\label{eq:descarg-l}
+\begin{equation} \label{eq:descarg-l}
+\begin{split}
+I_{L} (t) = V_{f} C \cdot e^{- \alpha t} \left\lbrace - \alpha \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right] \right. \\
+ \left. - \omega_d sen \left(  \omega_d t \right) + \left( \alpha + \frac{R}{C} \right) cos \left(  \omega_d t \right) \right\rbrace
+\end{split}
 \end{equation}
 
 con $\alpha = 1153.85 \ \frac{1}{s}$, $\omega_d = 1471.44 \ \frac{1}{s}$, $R = 30 \ \Omega$.

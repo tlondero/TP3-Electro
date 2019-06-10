@@ -1,6 +1,0 @@
-* Determinar el valor de la pseudofrecuencia de oscilación del transitorio y el valor máximo de
-sobrepico cuando corresponda. Sacar conclusiones (sugerencia: presentar ambos resultados en
-un mismo gráfico).
-
-* Corroborar teóricamente los resultados de las simulaciones. Contrastar gráficos teóricos con
-gráficos de LTSpice.

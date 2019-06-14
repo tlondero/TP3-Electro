@@ -44,7 +44,52 @@
 
 \section*{Introducción}
 
+El desarrollo de la experiencia consiste en el análisis de un circuito en triangulo, alimentado por corriente trifásica. Se utilizó cargas no balanceadas alternando entre valores resistivos, inductivos y resistivos e inductivos en paralelo.
+
 \section*{Desarrollo de la experiencia}
+
+Se conectaron las cargas y los instrumentos de la forma que se muestra en la imagen (\ref{fig:circuito}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Circuito}
+\caption{Circuito trifásico analizado, alternando las cargas.}
+	\label{fig:circuito}
+\end{figure}
+
+De esta forma, se obtuvieron los siguientes valores:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Fase}} & \textbf{$U_{RS}$} & \textbf{$U_{ST}$} & \textbf{$U_{TR}$} & \textbf{$I_{RS}$} & \textbf{$I_{ST}$} & \textbf{$I_{TR}$} & \textbf{$I_{R}$} & \textbf{$I_{S}$} & \textbf{$I_{T}$} \\ \hline
+\textbf{RS} & \textbf{ST} & \textbf{TR} & \textbf{V} & \textbf{V} & \textbf{V} & \textbf{A} & \textbf{A} & \textbf{A} & \textbf{A} & \textbf{A} & \textbf{A} \\ \hline
+\textbf{R} & \textbf{R} & \textbf{R} & 140 & 137,2 & 137,5 & 2,075 & 2,04 & 1,83 & 2,075 & 2,05 & 3,7 \\ \hline
+\textbf{L} & \textbf{L} & \textbf{L} & 140 & 137,2 & 137,5 & 1,31 & 2,21 & 1,42 & 1,55 & 2,2 & 2,9 \\ \hline
+\textbf{R/L} & \textbf{R/L} & \textbf{R/L} & 140 & 137,2 & 137,5 & 1,97 & 3,22 & 2,22 & 3 & 3,4 & 4,5 \\ \hline
+\textbf{R} & \textbf{R/L} & \textbf{L} & 140 & 137,2 & 137,5 & 1,29 & 2,94 & 2,06 & 1,05 & 2,95 & 4,15 \\ \hline
+\end{tabular}
+\label{tabla:1}
+\caption{Mediciones de corrientes del circuito.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Fase}} & \textbf{$W_{RT}$} & \textbf{$W_{ST}$} & \textbf{P} & \textbf{Q} \\ \hline
+\textbf{RS} & \textbf{ST} & \textbf{TR} & \textbf{W} & \textbf{W} & \textbf{W} & \textbf{VAR} \\ \hline
+\textbf{R} & \textbf{R} & \textbf{R} & 242 & 236 & 478 & 10,39 \\ \hline
+\textbf{L} & \textbf{L} & \textbf{L} & 196 & 100 & 296 & 166,28 \\ \hline
+\textbf{R/L} & \textbf{R/L} & \textbf{R/L} & 396 & 132 & 528 & 457,26 \\ \hline
+\textbf{R} & \textbf{R/L} & \textbf{L} & 116 & 248 & 364 & -228,63 \\ \hline
+\end{tabular}
+\label{tabla:2}
+\caption{Mediciones de potencia del circuito.}
+\end{table}
+
+
 
 \section*{Conclusión}
 

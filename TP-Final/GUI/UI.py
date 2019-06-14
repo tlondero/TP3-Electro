@@ -14,11 +14,12 @@ class UI(tk.Tk):
 
         self.containMenu  = tk.Frame(self, bd = 1, relief = SUNKEN)
         self.containCurve = tk.Frame(self, bd = 1, relief = SUNKEN)
-
-        self.containMenu.grid( row = 0, column = 0, sticky = E + W + N + S)
-        self.containCurve.grid(row = 0, column = 1, sticky = E + W + N + S)
+                                                         
+        self.containMenu.grid( row = 0, column = 0, sticky = E+W+N+S)
+        self.containCurve.grid(row = 0, column = 1, sticky = E+W+N+S)
 
         self.menuFrame  = MenuMain(self.containMenu, self)
+        self.menuFrame.config(bg="#ffe4c4")
         self.curveFrame = CurveMain(self.containCurve, self)
 
         self.menuFrame.grid( row = 0, column = 0, sticky = E + W + N + S)
@@ -26,7 +27,20 @@ class UI(tk.Tk):
 
         self.menuFrame.focus()
 
+        self.width = 1
+        self.height = 1
+        self.x_center = 1
+        self.y_center = 1
+
     def run(self):
+        self.update_idletasks()
+        self.width = self.winfo_width()
+        self.height = self.winfo_height()
+        self.x_center = (self.winfo_screenwidth() // 2) - (self.width // 2)
+        self.y_center = (self.winfo_screenheight() // 2) - (self.height // 2) - 50
+
+        self.geometry('{}x{}+{}+{}'.format(self.width, self.height, self.x_center, self.y_center))
+
         self.mainloop()
 
     def exitFunction(self):

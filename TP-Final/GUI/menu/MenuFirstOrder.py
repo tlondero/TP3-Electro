@@ -21,12 +21,12 @@ class MenuFirstOrder(tk.Frame):
         #################################
 
         # Widgets Definition
-        self.labelFrequency = tk.Label(self, width=21, text="Frequency", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.labelFrequency = tk.Label(self, width=15, text="Frequency", font=config.SMALL_FONT, bg="#ffe4c4")
         self.entryFrequency = tk.Entry(self, width=5)
 
-        self.HzUnitButton = tk.Button( self, text="Hz",  font=config.SMALL_FONT, command=self.HzUnitButtonPressed)
-        self.kHzUnitButton = tk.Button(self, text="kHz", font=config.SMALL_FONT, command=self.kHzUnitButtonPressed)
-        self.MHzUnitButton = tk.Button(self, text="MHz", font=config.SMALL_FONT, command=self.MHzUnitButtonPressed)
+        self.HzUnitButton = tk.Button( self, width=8, text="Hz",  font=config.SMALL_FONT, command=self.HzUnitButtonPressed)
+        self.kHzUnitButton = tk.Button(self, width=8, text="kHz", font=config.SMALL_FONT, command=self.kHzUnitButtonPressed)
+        self.MHzUnitButton = tk.Button(self, width=8, text="MHz", font=config.SMALL_FONT, command=self.MHzUnitButtonPressed)
 
         # Widgets Placement
         self.labelFrequency.grid(row=1, column=0, sticky=W, ipady=10)
@@ -41,28 +41,28 @@ class MenuFirstOrder(tk.Frame):
         ######################################
         
         # Widgets Definition
-        self.labelGainBW = tk.Label(self, width=21, text="BandWidth Gain", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.labelGainBW = tk.Label(self, width=15, text="BandWidth Gain", font=config.SMALL_FONT, bg="#ffe4c4")
         self.entryGainBW = tk.Entry(self, width=5)
-        self.buttonGainBW = tk.Button(self, text="Get", font=config.SMALL_FONT, command=self.buttonGainBWPressed)
+        self.buttonGainBW = tk.Button(self, width=8, text="Send", font=config.SMALL_FONT, command=self.buttonGainBWPressed)
 
         # Widgets Placement
         self.labelGainBW.grid( row=2, column=0, sticky=W, ipady=10)
         self.entryGainBW.grid( row=2, column=1, sticky=E, ipadx=10)
-        self.buttonGainBW.grid(row=2, column=2, columnspan=3)
+        self.buttonGainBW.grid(row=2, column=2)
 
         ###################################
         #   Filter Type Inline Selector   #
         ###################################
 
         # Widgets Definition
-        self.labelFilterType = tk.Label(self, width=21, text="Filter Type", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.labelFilterType = tk.Label(self, width=15, text="Filter Type", font=config.SMALL_FONT, bg="#ffe4c4")
 
         self.buttonLowPass = tk.Button(
-            self, text="Low Pass", font=config.SMALL_FONT, command=self.buttonLowPassPressed)
+            self, width=8, text="Low Pass", font=config.SMALL_FONT, command=self.buttonLowPassPressed)
         self.buttonHighPass =tk.Button(
-            self, text="High Pass",font=config.SMALL_FONT, command=self.buttonHighPassPressed)
+            self, width=8, text="High Pass",font=config.SMALL_FONT, command=self.buttonHighPassPressed)
         self.buttonAllPass = tk.Button(
-            self, text="All Pass", font=config.SMALL_FONT, command=self.buttonAllPassPressed)
+            self, width=8, text="All Pass", font=config.SMALL_FONT, command=self.buttonAllPassPressed)
 
         # Widgets Placement
         self.labelFilterType.grid(row=3, column=0, sticky=W, ipady=10)
@@ -71,53 +71,51 @@ class MenuFirstOrder(tk.Frame):
         self.buttonHighPass.grid(row=3, column=3)
         self.buttonAllPass.grid( row=3, column=4)
 
-        dictInput["filterType"] = "lowPass"
-
     #################################################
     #   Frequency Unit Buttons' Callback Functions  #
     #################################################
 
     def HzUnitButtonPressed(self):
-        self.HzUnitButton.config( relief=FLAT)
-        self.kHzUnitButton.config(relief=RAISED)
-        self.MHzUnitButton.config(relief=RAISED)
+        self.HzUnitButton.config( relief=FLAT,   bg="#ffe4c4")
+        self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
         dictInput["frequencyValue"] = int(self.entryFrequency.get())
-        dictInput["frequencyUnit"] = 1
+        dictInput["frequencyUnitFactor"] = 1
 
     def kHzUnitButtonPressed(self):
-        self.HzUnitButton.config( relief=RAISED)
-        self.kHzUnitButton.config(relief=FLAT)
-        self.MHzUnitButton.config(relief=RAISED)
+        self.HzUnitButton.config( relief=RAISED, bg="#f0f0f0")
+        self.kHzUnitButton.config(relief=FLAT,   bg="#ffe4c4")
+        self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
         dictInput["frequencyValue"] = int(self.entryFrequency.get())
-        dictInput["frequencyUnit"] = 1000
+        dictInput["frequencyUnitFactor"] = 1000
 
     def MHzUnitButtonPressed(self):
-        self.HzUnitButton.config( relief=RAISED)
-        self.kHzUnitButton.config(relief=RAISED)
-        self.MHzUnitButton.config(relief=FLAT)
+        self.HzUnitButton.config( relief=RAISED, bg="#f0f0f0")
+        self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.MHzUnitButton.config(relief=FLAT,   bg="#ffe4c4")
         dictInput["frequencyValue"] = int(self.entryFrequency.get())
-        dictInput["frequencyUnit"] = 1000000
+        dictInput["frequencyUnitFactor"] = 1000000
 
     ##############################################
     #   Filter Type Buttons' Callback Functions  #
     ##############################################
 
     def buttonLowPassPressed(self):
-        self.buttonLowPass.config( relief=FLAT)
-        self.buttonHighPass.config(relief=RAISED)
-        self.buttonAllPass.config( relief=RAISED)
+        self.buttonLowPass.config( relief=FLAT,   bg="#ffe4c4")
+        self.buttonHighPass.config(relief=RAISED, bg="#f0f0f0")
+        self.buttonAllPass.config( relief=RAISED, bg="#f0f0f0")
         dictInput["filterType"] = "lowPass"
     
     def buttonHighPassPressed(self):
-        self.buttonLowPass.config( relief=RAISED)
-        self.buttonHighPass.config(relief=FLAT)
-        self.buttonAllPass.config( relief=RAISED)
+        self.buttonLowPass.config( relief=RAISED, bg="#f0f0f0")
+        self.buttonHighPass.config(relief=FLAT,   bg="#ffe4c4")
+        self.buttonAllPass.config( relief=RAISED, bg="#f0f0f0")
         dictInput["filterType"] = "highPass"
 
     def buttonAllPassPressed(self):
-        self.buttonLowPass.config( relief=RAISED)
-        self.buttonHighPass.config(relief=RAISED)
-        self.buttonAllPass.config( relief=FLAT)
+        self.buttonLowPass.config( relief=RAISED, bg="#f0f0f0")
+        self.buttonHighPass.config(relief=RAISED, bg="#f0f0f0")
+        self.buttonAllPass.config( relief=FLAT,   bg="#ffe4c4")
         dictInput["filterType"] = "allPass"
     
     ###############################################
@@ -125,8 +123,23 @@ class MenuFirstOrder(tk.Frame):
     ###############################################
 
     def buttonGainBWPressed(self):
-        self.buttonGainBW.config( relief=FLAT)
+        self.buttonGainBW.config(relief=FLAT, bg="#ffe4c4")
         dictInput["gainBW"] = int(self.entryGainBW.get())
+
+    ######################################
+    #   Reset Buttons' Relief Function   #
+    ######################################
+
+    def resetButtons(self):
+        self.HzUnitButton.config( relief=RAISED, bg="#f0f0f0")
+        self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+
+        self.buttonLowPass.config( relief=RAISED, bg="#f0f0f0")
+        self.buttonHighPass.config(relief=RAISED, bg="#f0f0f0")
+        self.buttonAllPass.config( relief=RAISED, bg="#f0f0f0")
+
+        self.buttonGainBW.config(relief=RAISED, bg="#f0f0f0")
 
     def focus(self):
         pass

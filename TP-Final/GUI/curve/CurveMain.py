@@ -62,6 +62,7 @@ class CurveMain(tk.Frame):
             self.curves[curve] = curve(self.containCurve, self)
             self.curves[curve].grid_propagate(True)
             self.curves[curve].grid(row=0, column=0, sticky=E + W + N + S)
+            self.curves[curve].config(bg="#ffffff")
         
         self.showCurve(firstCurve)
 

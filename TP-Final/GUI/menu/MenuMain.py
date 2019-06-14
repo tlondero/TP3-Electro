@@ -6,6 +6,13 @@ from menu.MenuParameters import MenuParameters
 from menu.MenuInputSignal import MenuInputSignal 
 from menu.MenuMaths import MenuMaths
 
+from menu.MenuFirstOrder import MenuFirstOrder
+from menu.MenuSecondOrder import MenuSecondOrder
+
+from menu.MenuSinewave import MenuSinewave
+from menu.MenuSinglePulse import MenuSinglePulse
+from menu.MenuPeriodicPulse import MenuPeriodicPulse
+
 menus = [
     MenuParameters,
     MenuInputSignal,
@@ -40,17 +47,18 @@ class MenuMain(tk.Frame):
             self, width=36, text="Simulate",
             font=config.SMALL_FONT, background="#fff0bc", command=self.buttonSimulatePressed)
 
-        self.buttonSimulate.grid(row = 2, column = 0, columnspan = 3,sticky = S)
+        self.buttonSimulate.grid(row=2, column=0, columnspan=3, pady=12, sticky=S)
 
         self.containMenu = tk.Frame(self)
-        self.containMenu.grid(row=1, column=0, columnspan=3, sticky = E + W + N + S)
+        self.containMenu.grid(row=1, column=0, columnspan=3, sticky=E+W+N+S)
 
         self.menus = {}
 
         for menu in menus:
             self.menus[menu] = menu(self.containMenu, self)
             self.menus[menu].grid_propagate(True)
-            self.menus[menu].grid(row=0, column=0, sticky=E + W + N + S)
+            self.menus[menu].grid(row=0, column=0, sticky=E+W+N+S)
+            self.menus[menu].config(bg="#ffe4c4")
         
         self.showMenu(MenuParameters)
 
@@ -86,7 +94,10 @@ class MenuMain(tk.Frame):
         self.showMenu(MenuMaths)
 
     def buttonSimulatePressed(self):
+        self.menus[MenuInputSignal].getCurrentSignalMenu().updateSignal()
         self.controller.curveFrame.getCurrentCurve().simulate()
+        for menu in menus:
+            self.menus[menu].resetButtons()
 
     def focus(self):
         pass

@@ -3,6 +3,7 @@ from tkinter import *
 import config
 from userInput import dictInput
 import numpy as np
+from scipy import signal
 
 class MenuPeriodicPulse(tk.Frame):
     def __init__(self, parent, controller):
@@ -12,84 +13,169 @@ class MenuPeriodicPulse(tk.Frame):
         self.parent = parent
 
         self.insertPerioPulseParamText = tk.Label(
-            self, text="Insert the periodic pulse parameters",
+            self, width=55, text="Insert the periodic pulse parameters",
             font=config.SMALL_FONT, background="#ffe4c4")
 
-        self.insertPerioPulseParamText.grid(row=0, column=0, columnspan=6, sticky=N+E+W)
+        self.insertPerioPulseParamText.grid(row=0, column=0, columnspan=5, ipadx=3, ipady=5, sticky=N+E+W)
 
         #################################
         #   Frequency Inline Selector   #
         #################################
 
         # Widgets Definition
-        self.labelFrequency = tk.Label(self, text="Frequency", font=config.SMALL_FONT, bg="#ffe4c4")
-        self.entryFrequency = tk.Entry(self, background="#ffe4c4")
+        self.labelFrequency = tk.Label(self, width=15, text="Frequency", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.entryFrequency = tk.Entry(self, width=5)
 
-        self.mHzUnitButton = tk.Button(self, text="mHz", font=config.SMALL_FONT, command=self.mHzUnitButtonPressed)
-        self.HzUnitButton = tk.Button( self, text="Hz",  font=config.SMALL_FONT, command=self.HzUnitButtonPressed)
-        self.kHzUnitButton = tk.Button(self, text="kHz", font=config.SMALL_FONT, command=self.kHzUnitButtonPressed)
-        self.MHzUnitButton = tk.Button(self, text="MHz", font=config.SMALL_FONT, command=self.MHzUnitButtonPressed)
+        self.HzUnitButton = tk.Button( self, width=8, text="Hz",  font=config.SMALL_FONT, command=self.HzUnitButtonPressed)
+        self.kHzUnitButton = tk.Button(self, width=8, text="kHz", font=config.SMALL_FONT, command=self.kHzUnitButtonPressed)
+        self.MHzUnitButton = tk.Button(self, width=8, text="MHz", font=config.SMALL_FONT, command=self.MHzUnitButtonPressed)
 
         # Widgets Placement
         self.labelFrequency.grid(row=1, column=0, sticky=W, ipady=10)
         self.entryFrequency.grid(row=1, column=1, sticky=E, ipadx=10)
 
-        self.mHzUnitButton.grid(row=1, column=2)
-        self.HzUnitButton.grid(row =1, column=3)
-        self.kHzUnitButton.grid(row=1, column=4)
-        self.MHzUnitButton.grid(row=1, column=5)       
+        self.HzUnitButton.grid(row =1, column=2)
+        self.kHzUnitButton.grid(row=1, column=3)
+        self.MHzUnitButton.grid(row=1, column=4)    
 
-        paso = 1e-6
-        # generamos una señal de pulso periódico que arranque en t = 0.01 con f=1khz
-        t = np.arange(0, 0.01, paso) # 1us de presición
-        n = len(t)
+        #################################
+        #   Amplitude Inline Selector   #
+        #################################
 
-        freq = 1e3
-        period = 1 / freq
-        periodSamples = int(period / paso)
+        # Widgets Definition
+        self.labelAmplitude = tk.Label(self, width=15, text="Amplitude", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.entryAmplitude = tk.Entry(self, width=5)
 
-        # este codigo genera una señal cuadrada,
-        cuadrada = np.where(np.arange(n) % periodSamples < periodSamples/2, -0.5, 0.5)
+        self.mVUnitButton = tk.Button(self, width=8, text="mV", font=config.SMALL_FONT, command=self.mVUnitButtonPressed)
+        self.VUnitButton = tk.Button( self, width=8, text="V",  font=config.SMALL_FONT, command=self.VUnitButtonPressed)
 
-        # para que la señal no empiece de golpe y visualmente se vea mejor su comienzo
-        for i in range(2 * periodSamples):
-            cuadrada[i] = 0
+        # Widgets Placement
+        self.labelAmplitude.grid(row=2, column=0, sticky=W, ipady=10)
+        self.entryAmplitude.grid(row=2, column=1, sticky=E, ipadx=10)
 
-        # cargamos a la memoria la entrada seleccionada. Esta información será utilizada
-        # por MenuInputOutput
-        dictInput["inputSignal"] = {"y": cuadrada, "t": t}
+        self.mVUnitButton.grid(row=2, column=2)
+        self.VUnitButton.grid( row=2, column=3)     
+
+        ##################################
+        #   Duty Cycle Inline Selector   #
+        ##################################
+
+        # Widgets Definition
+        self.labelDutyCycle = tk.Label(self, width=15, text="Duty Cycle", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.entryDutyCycle = tk.Entry(self, width=5)
+
+        self.percentDCButton = tk.Button(self, width=8, text="%", font=config.SMALL_FONT, command=self.percentDCButtonPressed)
+
+        # Widgets Placement
+        self.labelDutyCycle.grid(row=3, column=0, sticky=W, ipady=10)
+        self.entryDutyCycle.grid(row=3, column=1, sticky=E, ipadx=10)
+
+        self.percentDCButton.grid(row=3, column=2)  
+
+        ############################################
+        #   Initialize Periodic Pulse Parameters   #
+        ############################################
+
+        self.amplitudeValue = 1
+        self.amplitudeUnitFactor = 1
+        self.frequencyValue = 1
+        self.frequencyUnitFactor = 1
+        self.dutyCycleValue = 50
 
     #################################################
     #   Frequency Unit Buttons' Callback Functions  #
     #################################################
 
-    def mHzUnitButtonPressed(self):
-        self.mHzUnitButton.config(relief=SUNKEN)
-        self.HzUnitButton.config( relief=RAISED)
-        self.kHzUnitButton.config(relief=RAISED)
-        self.MHzUnitButton.config(relief=RAISED)
-        dictInput["frequencyUnit"] = "mHz"
-
     def HzUnitButtonPressed(self):
-        self.mHzUnitButton.config(relief=RAISED)
-        self.HzUnitButton.config( relief=SUNKEN)
-        self.kHzUnitButton.config(relief=RAISED)
-        self.MHzUnitButton.config(relief=RAISED)
-        dictInput["frequencyUnit"] = "Hz"
+        self.HzUnitButton.config( relief=FLAT,   bg="#ffe4c4")
+        self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.frequencyValue = float(self.entryFrequency.get())
+        self.frequencyUnitFactor = 1
+        self.updateSignal()
+        dictInput["inputFrequencyValue"] = self.frequencyValue
+        dictInput["inputFrequencyUnitFactor"] = self.frequencyUnitFactor
 
     def kHzUnitButtonPressed(self):
-        self.mHzUnitButton.config(relief=RAISED)
-        self.HzUnitButton.config( relief=RAISED)
-        self.kHzUnitButton.config(relief=SUNKEN)
-        self.MHzUnitButton.config(relief=RAISED)
-        dictInput["frequencyUnit"] = "kHz"
+        self.HzUnitButton.config( relief=RAISED, bg="#f0f0f0")
+        self.kHzUnitButton.config(relief=FLAT,   bg="#ffe4c4")
+        self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.frequencyValue = float(self.entryFrequency.get())
+        self.frequencyUnitFactor = 1000
+        self.updateSignal()
+        dictInput["inputFrequencyValue"] = self.frequencyValue
+        dictInput["inputFrequencyUnitFactor"] = self.frequencyUnitFactor
 
     def MHzUnitButtonPressed(self):
-        self.mHzUnitButton.config(relief=RAISED)
-        self.HzUnitButton.config( relief=RAISED)
-        self.kHzUnitButton.config(relief=RAISED)
-        self.MHzUnitButton.config(relief=SUNKEN)
-        dictInput["frequencyUnit"] = "MHz"
+        self.HzUnitButton.config( relief=RAISED, bg="#f0f0f0")
+        self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.MHzUnitButton.config(relief=FLAT,   bg="#ffe4c4")
+        self.frequencyValue = float(self.entryFrequency.get())
+        self.frequencyUnitFactor = 1000000
+        self.updateSignal()
+        dictInput["inputFrequencyValue"] = self.frequencyValue
+        dictInput["inputFrequencyUnitFactor"] = self.frequencyUnitFactor
+
+    #################################################
+    #   Amplitude Unit Buttons' Callback Functions  #
+    #################################################
+
+    def mVUnitButtonPressed(self):
+        self.mVUnitButton.config(relief=FLAT,   bg="#ffe4c4")
+        self.VUnitButton.config (relief=RAISED, bg="#f0f0f0")
+        self.amplitudeValue = float(self.entryAmplitude.get())
+        self.amplitudeUnitFactor = 0.001
+        self.updateSignal()
+        dictInput["inputAmplitudeValue"] = self.amplitudeValue
+        dictInput["inputAmplitudeUnitFactor"] = self.amplitudeUnitFactor
+
+    def VUnitButtonPressed(self):
+        self.mVUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.VUnitButton.config (relief=FLAT,   bg="#ffe4c4")
+        self.amplitudeValue = float(self.entryAmplitude.get())
+        self.amplitudeUnitFactor = 1
+        self.updateSignal()
+        dictInput["inputAmplitudeValue"] = self.amplitudeValue
+        dictInput["inputAmplitudeUnitFactor"] = self.amplitudeUnitFactor
+
+    #############################################
+    #   Duty Cycle Button's Callback Function   #
+    #############################################
+
+    def percentDCButtonPressed(self):
+        self.percentDCButton.config(relief=FLAT,   bg="#ffe4c4")
+        self.dutyCycleValue = float(self.entryDutyCycle.get())
+        self.updateSignal()
+        dictInput["inputDutyCycle"] = self.dutyCycleValue
+
+    ######################################
+    #   Reset Buttons' Relief Function   #
+    ######################################
+
+    def resetButtons(self):
+        self.HzUnitButton.config( relief=RAISED, bg="#f0f0f0")
+        self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+
+        self.mVUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        self.VUnitButton.config (relief=RAISED, bg="#f0f0f0")
+
+        self.percentDCButton.config(relief=RAISED, bg="#f0f0f0")
+
+    ##########################################################
+    #   Update Periodic Pulse With Modified Params Function  #
+    ##########################################################
+
+    def updateSignal(self):
+        period = 1/(self.frequencyValue * self.frequencyUnitFactor)
+        t = np.linspace(0, 20*period, 1e3)
+        A = self.amplitudeValue * self.amplitudeUnitFactor
+        f = self.frequencyValue * self.frequencyUnitFactor
+        w = 2 * np.pi * f
+        d = self.dutyCycleValue/100
+        y = A * signal.square(w * t, duty = d)
+        dictInput["inputSignal"] = {"y": y, "t": t}
+        dictInput["inputSignalType"] = "periodicPulse"
 
     def focus(self):
         pass

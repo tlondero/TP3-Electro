@@ -18,19 +18,89 @@ class CurveStepResponse(tk.Frame):
 
         self.title = tk.Label(
             self, text="This is the Step Response curve", font=config.SMALL_FONT, bg="#ffffff")
-        self.title.pack(side=TOP, fill=X, ipady=10)
+        self.title.grid(row=0, column=0, columnspan=13, ipady=7, sticky=N)
 
         ###################################
         #   Step Response Graphs Canvas   #
         ###################################
+
         self.graphStepResponse = Canvas(self)
         self.fig, (self.ax1, self.ax2) = plt.subplots(nrows=2, sharex=True)
+        self.fig.subplots_adjust(top=0.95, right=0.95, bottom=0.12, hspace=0.30)
         self.dataPlot = FigureCanvasTkAgg(self.fig, master=self.graphStepResponse)
         self.nav = NavigationToolbar2Tk(self.dataPlot, self.graphStepResponse)
+        self.nav.config(bg="#ffffff")
+        self.nav._message_label.config(bg="#ffffff", fg="#ff0000")
         self.dataPlot.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
         self.dataPlot._tkcanvas.pack(side=BOTTOM, fill=X, expand=1)
 
-        self.graphStepResponse.pack(side=TOP, expand=1, fill=BOTH)
+        self.graphStepResponse.grid(row=1, column=0, columnspan=13, sticky=N)
+
+        ####################################
+        #    Axis Scaling Inline Setter    #
+        #################################### 
+
+        # Widgets Definition
+        self.periodQuantityLabel = tk.Label(self, width=7, text="Periods :", font=config.SMALL_FONT, bg="#ffffff")
+        self.periodQuantityEntry = tk.Entry(self, width=5)
+
+        self.inputLabel = tk.Label(self, width=5, text="Input", font=config.SMALL_FONT, bg="#ffffff")
+
+        self.yMinInputLabel = tk.Label(self, width=5, text="Y min", font=config.SMALLEST_FONT, bg="#ffffff")
+        self.yMinInputEntry = tk.Entry(self, width=5)
+        self.yMaxInputLabel = tk.Label(self, width=5, text="Y max", font=config.SMALLEST_FONT, bg="#ffffff")
+        self.yMaxInputEntry = tk.Entry(self, width=5)
+
+        self.outputLabel = tk.Label(self, width=5, text="Output", font=config.SMALL_FONT, bg="#ffffff")
+
+        self.yMinOutputLabel = tk.Label(self, width=5, text="Y min", font=config.SMALLEST_FONT, bg="#ffffff")
+        self.yMinOutputEntry = tk.Entry(self, width=5)
+        self.yMaxOutputLabel = tk.Label(self, width=5, text="Y max", font=config.SMALLEST_FONT, bg="#ffffff")
+        self.yMaxOutputEntry = tk.Entry(self, width=5)
+
+        self.rescaleAxisButton = tk.Button(  self, width=8, text="Rescale",    
+        font=config.SMALL_FONT, command=self.rescaleAxisButtonPressed, bg="#ffffff")
+
+        # Widgets Placement
+        self.periodQuantityLabel.grid(row=2, column=0, ipady=5)
+        self.periodQuantityEntry.grid(row=2, column=1, pady=5)
+
+        self.inputLabel.grid(row=2, column=2, ipady=5)
+
+        self.yMinInputLabel.grid(row=2, column=3, ipady=5)
+        self.yMinInputEntry.grid(row=2, column=4, pady=5)
+        self.yMaxInputLabel.grid(row=2, column=5, ipady=5)
+        self.yMaxInputEntry.grid(row=2, column=6, pady=5)
+        
+        self.outputLabel.grid(row=2, column=7, ipady=5)
+
+        self.yMinOutputLabel.grid(row=2, column=8, ipady=5)
+        self.yMinOutputEntry.grid(row=2, column=9, pady=5)
+        self.yMaxOutputLabel.grid(row=2, column=10, ipady=5)
+        self.yMaxOutputEntry.grid(row=2, column=11, pady=5)
+
+        self.rescaleAxisButton.grid(row=2, column=12, pady=5)
+
+        # Default scaling variables
+        self.autoScale = True
+        self.periodQuantity = 1
+        self.yMinInput = -1
+        self.yMaxInput = 1
+        self.yMinOutput = -1
+        self.yMaxOutput = 1
+
+    ################################################
+    #    Rescale Axis Button's Callback Function   #
+    ################################################
+
+    def rescaleAxisButtonPressed(self):
+        self.autoScale = False
+        self.periodQuantity = float(self.periodQuantityEntry.get())
+        self.yMinInput = float(self.yMinInputEntry.get())
+        self.yMaxInput = float(self.yMaxInputEntry.get())
+        self.yMinOutput = float(self.yMinOutputEntry.get())
+        self.yMaxOutput = float(self.yMaxOutputEntry.get())
+        self.simulate()
     
     def simulate(self):
         ###########################################
@@ -38,70 +108,124 @@ class CurveStepResponse(tk.Frame):
         ###########################################
         # Frequency Value
         f0 = dictInput.get("frequencyValue")
-
+        # Frequency Unit Factor
+        frequencyUnitFactor = dictInput.get("frequencyUnitFactor")
+        # Damping Coefficient
+        xi = dictInput.get("dampCoeff")
         #BandWidth Gain
         k = dictInput.get("gainBW")
 
-        # Frequency Unit
-        frequencyUnitFactor = 1
+        w0 = 1.0
 
-        if dictInput["frequencyUnit"] == "mHZ":
-            frequencyUnitFactor = 0.001
-        elif dictInput["frequencyUnit"] == "HZ":
-            frequencyUnitFactor = 1
-        elif dictInput["frequencyUnit"] == "kHZ":
-            frequencyUnitFactor = 1000
-        elif dictInput["frequencyUnit"] == "MHZ":
-            frequencyUnitFactor = 1000000
+        try:
+            # Defining pulsation
+            w0 = 2 * pi * f0 * frequencyUnitFactor
+            #############################################
+            #   System Definition Reading  User Input   #
+            #############################################
+            global sys
+            # First Order Systems
+            if dictInput["order"] == 1:
+                # Low Pass Filter
+                if dictInput["filterType"] == "lowPass":
+                    sys = signal.lti([k * w0], [1, w0])
+                # High Pass Filter
+                elif dictInput["filterType"] == "highPass":
+                    sys = signal.lti([k * w0, 0], [1, w0])
+                # All Pass Filter
+                elif dictInput["filterType"] == "allPass":
+                    sys = signal.lti([k, -k * w0], [1, w0])
+                # Undefined Filter
 
-        # Defining pulsation
-        w0 = 2 * pi * f0 * frequencyUnitFactor
-    
-        #############################################
-        #   System Definition Reading  User Input   #
-        #############################################
-        global sys
-        # First Order Systems
-        if dictInput["order"] == 1:
-            # Low Pass Filter
-            if dictInput["filterType"] == "lowPass":
-                sys = signal.lti([k * w0], [1, w0])
-            # High Pass Filter
-            elif dictInput["filterType"] == "highPass":
-                sys = signal.lti([k * w0, 0], [1, w0])
-            # All Pass Filter
-            elif dictInput["filterType"] == "allPass":
-                sys = signal.lti([k, -k * w0], [1, w0])
-            # Undefined Filter
+            # Second Order Systems
+            elif dictInput["order"] == 2:
+                # Low Pass Filter
+                if dictInput["filterType"] == "lowPass":
+                    sys = signal.lti([k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
+                # High Pass Filter
+                elif dictInput["filterType"] == "highPass":
+                    sys = signal.lti([k * w0 * w0, 0, 0], [1, 2 * xi * w0, w0 * w0])
+                # All Pass Filter
+                elif dictInput["filterType"] == "allPass":
+                    sys = signal.lti([k, -2 * k * xi * w0, w0 * w0], [1, 2 * xi * w0, w0 * w0])
+                # Band Pass Filter
+                elif dictInput["filterType"] == "bandPass":
+                    sys = signal.lti([0, k * w0 * w0, 0], [1, 2 * xi * w0, w0 * w0])
+                # Single Notch
+                elif dictInput["filterType"] == "singleNotch":
+                    sys = signal.lti([0, 1 , k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
+                # Multiple Notch
+                #elif dictInput["filterType"] == "multipleNotch":
+                    #sys = signal.lti([1, 2* k * xiz * wz, k * wz * wz], [1, 2* k * xip * wp, k * wp * wp])
 
-        # Second Order Systems
-        elif dictInput["order"] == 2:
-            pass
+            amp = dictInput.get("inputAmplitudeValue") * dictInput.get("inputAmplitudeUnitFactor")
 
-        ################################
-        #   Output system generation   #
-        ################################  
-        output = dict()
-        output["t"], output["y"], m = signal.lsim(sys, dictInput["inputSignal"]["y"], dictInput["inputSignal"]["t"])         
+        except(TypeError):
+            self.title.config(text="Please configure all the system parameters.", fg="#ff0000")
+        else:
+            self.title.config(text="", fg="#000000")
+            ################################
+            #   Output system generation   #
+            ################################  
+            output = dict()
+            output["t"], output["y"], m = signal.lsim(sys, dictInput["inputSignal"]["y"], dictInput["inputSignal"]["t"])         
 
-        #######################################
-        #   Input and output plot functions   #
-        #######################################
-        self.ax1.clear()
+            #######################################
+            #   Input and output plot functions   #
+            #######################################
 
-        self.ax1.plot(dictInput["inputSignal"]["t"], dictInput["inputSignal"]["y"])
-        self.ax1.minorticks_on()
-        self.ax1.grid(which='major', linestyle='-', linewidth=0.3, color='black')
-        self.ax1.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
+            #self.displayErrorsLabel.config(text="Please configure the input signal.")
 
-        self.ax2.clear()
+            #self.displayErrorsLabel.config(text="")
 
-        self.ax2.plot(output["t"], output["y"], color="orange")
-        self.ax2.minorticks_on()
-        self.ax2.grid(which='major', linestyle='-', linewidth=0.3, color='black')
-        self.ax2.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
+            self.ax1.clear()
 
-        self.dataPlot.draw()
+            self.ax1.plot(dictInput["inputSignal"]["t"], dictInput["inputSignal"]["y"])
+            self.ax1.minorticks_on()
+
+            self.ax1.set_xlabel("Time (s)")
+            self.ax1.set_ylabel("Voltage (V)")
+            self.ax1.grid(which='major', linestyle='-', linewidth=0.3, color='black')
+            self.ax1.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
+
+            self.ax2.clear()
+
+            self.ax2.plot(output["t"], output["y"], color="orange")
+            self.ax2.minorticks_on()
+
+            self.ax2.set_xlabel("Time (s)")
+            self.ax2.set_ylabel("Voltage (V)")
+            self.ax2.grid(which='major', linestyle='-', linewidth=0.3, color='black')
+            self.ax2.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
+
+            if dictInput.get("inputSignalType") == "singlePulse" :
+                period = 1 / (f0 * frequencyUnitFactor)
+                offset = dictInput.get("inputOffsetValue") * dictInput.get("inputOffsetUnitFactor")
+
+                self.ax1.set_xlim((0, 2 * period))
+                self.ax1.set_ylim(((- amp/8 + offset)*k, (amp + amp/4 + offset)*k))
+
+                self.ax2.set_xlim((0, 2 * period))
+                self.ax2.set_ylim(((- amp/8 + offset)*k, (amp + amp/4 + offset)*k))    
+
+            else :        
+                period = 1 / (dictInput.get("inputFrequencyValue") * dictInput.get("inputFrequencyUnitFactor"))
+
+                if self.autoScale :
+                    self.ax1.set_xlim((0, 5*period))
+                    self.ax1.set_ylim(((-amp - amp/4)*k, (amp + amp/4)*k))
+
+                    self.ax2.set_xlim((0, 5*period))
+                    self.ax2.set_ylim(((-amp - amp/4)*k, (amp + amp/4)*k))
+
+                else :
+                    self.ax1.set_xlim((0, self.periodQuantity * period))
+                    self.ax1.set_ylim((self.yMinInput, self.yMaxInput))
+
+                    self.ax2.set_xlim((0, 5*period))
+                    self.ax2.set_ylim((self.yMinOutput, self.yMaxOutput))
+
+            self.dataPlot.draw()
 
     def focus(self):
         pass

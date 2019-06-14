@@ -52,8 +52,10 @@ class MenuParameters(tk.Frame):
             self.orderMenus[orderMenu] = orderMenu(self.containOrderMenu, self)
             self.orderMenus[orderMenu].grid_propagate(True)
             self.orderMenus[orderMenu].grid(row=0, column=0, sticky=E + W + N + S)
+            self.orderMenus[orderMenu].config(bg="#ffe4c4")
         
         self.showOrderMenu(MenuFirstOrder)
+        dictInput["order"] = 1
      
     ######################################
     #   Order Menus Managing Functions   #
@@ -83,6 +85,14 @@ class MenuParameters(tk.Frame):
         self.buttonSecondOrder.config(relief=FLAT,   bg="#ffe4c4")    
         dictInput["order"] = 2
         self.showOrderMenu(MenuSecondOrder)   
+
+    ######################################
+    #   Reset Buttons' Relief Function   #
+    ######################################
+
+    def resetButtons(self):
+        for orderMenu in orderMenus:
+            self.orderMenus[orderMenu].resetButtons()
 
     def focus(self):
         pass

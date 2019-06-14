@@ -12,5 +12,12 @@ class MenuMaths(tk.Frame):
         self.title = tk.Label(self, text="This is the maths menu.", font=config.SMALL_FONT, bg="#ffe4c4")
         self.title.pack(side=TOP, fill=BOTH, expand=True)
 
+    ######################################
+    #   Reset Buttons' Relief Function   #
+    ######################################
+
+    def resetButtons(self):
+        pass
+
     def focus(self):
         pass

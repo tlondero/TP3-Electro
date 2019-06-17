@@ -17,8 +17,8 @@ class CurveStepResponse(tk.Frame):
         self.parent = parent
 
         self.title = tk.Label(
-            self, text="This is the Step Response curve", font=config.SMALL_FONT, bg="#ffffff")
-        self.title.grid(row=0, column=0, columnspan=13, ipady=7, sticky=N)
+            self, text="Step Response curve", font=config.SMALL_FONT, bg="#ffffff")
+        self.title.grid(row=0, column=0, columnspan=14, ipady=7, sticky=N)
 
         ###################################
         #   Step Response Graphs Canvas   #
@@ -34,32 +34,35 @@ class CurveStepResponse(tk.Frame):
         self.dataPlot.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
         self.dataPlot._tkcanvas.pack(side=BOTTOM, fill=X, expand=1)
 
-        self.graphStepResponse.grid(row=1, column=0, columnspan=13, sticky=N)
+        self.graphStepResponse.grid(row=1, column=0, columnspan=14, sticky=N)
 
         ####################################
         #    Axis Scaling Inline Setter    #
         #################################### 
 
         # Widgets Definition
-        self.periodQuantityLabel = tk.Label(self, width=7, text="Periods :", font=config.SMALL_FONT, bg="#ffffff")
-        self.periodQuantityEntry = tk.Entry(self, width=5)
+        self.periodQuantityLabel = tk.Label(self, width=7, text="Periods :", font=config.SMALLEST_FONT, bg="#ffffff")
+        self.periodQuantityEntry = tk.Entry(self, width=3)
 
-        self.inputLabel = tk.Label(self, width=5, text="Input", font=config.SMALL_FONT, bg="#ffffff")
+        self.inputLabel = tk.Label(self, width=5, text="Input :", font=config.SMALLEST_FONT, fg="#1f77b4", bg="#ffffff")
 
-        self.yMinInputLabel = tk.Label(self, width=5, text="Y min", font=config.SMALLEST_FONT, bg="#ffffff")
-        self.yMinInputEntry = tk.Entry(self, width=5)
-        self.yMaxInputLabel = tk.Label(self, width=5, text="Y max", font=config.SMALLEST_FONT, bg="#ffffff")
-        self.yMaxInputEntry = tk.Entry(self, width=5)
+        self.yMinInputLabel = tk.Label(self, width=5, text="Y min", font=config.SMALLEST_FONT, fg="#1f77b4", bg="#ffffff")
+        self.yMinInputEntry = tk.Entry(self, width=3)
+        self.yMaxInputLabel = tk.Label(self, width=5, text="Y max", font=config.SMALLEST_FONT, fg="#1f77b4", bg="#ffffff")
+        self.yMaxInputEntry = tk.Entry(self, width=3)
 
-        self.outputLabel = tk.Label(self, width=5, text="Output", font=config.SMALL_FONT, bg="#ffffff")
+        self.outputLabel = tk.Label(self, width=5, text="Output :", font=config.SMALLEST_FONT, fg="#ff7f0e", bg="#ffffff")
 
-        self.yMinOutputLabel = tk.Label(self, width=5, text="Y min", font=config.SMALLEST_FONT, bg="#ffffff")
-        self.yMinOutputEntry = tk.Entry(self, width=5)
-        self.yMaxOutputLabel = tk.Label(self, width=5, text="Y max", font=config.SMALLEST_FONT, bg="#ffffff")
-        self.yMaxOutputEntry = tk.Entry(self, width=5)
+        self.yMinOutputLabel = tk.Label(self, width=5, text="Y min", font=config.SMALLEST_FONT, fg="#ff7f0e", bg="#ffffff")
+        self.yMinOutputEntry = tk.Entry(self, width=3)
+        self.yMaxOutputLabel = tk.Label(self, width=5, text="Y max", font=config.SMALLEST_FONT, fg="#ff7f0e", bg="#ffffff")
+        self.yMaxOutputEntry = tk.Entry(self, width=3)
 
         self.rescaleAxisButton = tk.Button(  self, width=8, text="Rescale",    
         font=config.SMALL_FONT, command=self.rescaleAxisButtonPressed, bg="#ffffff")
+
+        self.autoscaleAxisButton = tk.Button(  self, width=8, text="Autoscale",    
+        font=config.SMALL_FONT, command=self.autoscaleAxisButtonPressed, bg="#ffffff")
 
         # Widgets Placement
         self.periodQuantityLabel.grid(row=2, column=0, ipady=5)
@@ -80,10 +83,11 @@ class CurveStepResponse(tk.Frame):
         self.yMaxOutputEntry.grid(row=2, column=11, pady=5)
 
         self.rescaleAxisButton.grid(row=2, column=12, pady=5)
+        self.autoscaleAxisButton.grid(row=2, column=13, pady=5)
 
         # Default scaling variables
-        self.autoScale = True
-        self.periodQuantity = 1
+        self.autoscale = True
+        self.periodQuantity = 5
         self.yMinInput = -1
         self.yMaxInput = 1
         self.yMinOutput = -1
@@ -94,12 +98,21 @@ class CurveStepResponse(tk.Frame):
     ################################################
 
     def rescaleAxisButtonPressed(self):
-        self.autoScale = False
-        self.periodQuantity = float(self.periodQuantityEntry.get())
-        self.yMinInput = float(self.yMinInputEntry.get())
-        self.yMaxInput = float(self.yMaxInputEntry.get())
-        self.yMinOutput = float(self.yMinOutputEntry.get())
-        self.yMaxOutput = float(self.yMaxOutputEntry.get())
+        self.autoscale = False
+        if(self.periodQuantityEntry.get()!=""):
+            self.periodQuantity = float(self.periodQuantityEntry.get())
+        if(self.yMinInputEntry.get()!=""):
+            self.yMinInput = float(self.yMinInputEntry.get())
+        if(self.yMaxInputEntry.get()!=""):
+            self.yMaxInput = float(self.yMaxInputEntry.get())
+        if(self.yMinOutputEntry.get()!=""):
+            self.yMinOutput = float(self.yMinOutputEntry.get())
+        if(self.yMaxOutputEntry.get()!=""):
+            self.yMaxOutput = float(self.yMaxOutputEntry.get())
+        self.simulate()
+
+    def autoscaleAxisButtonPressed(self):
+        self.autoscale = True
         self.simulate()
     
     def simulate(self):
@@ -125,34 +138,34 @@ class CurveStepResponse(tk.Frame):
             #############################################
             global sys
             # First Order Systems
-            if dictInput["order"] == 1:
+            if dictInput["order"] == "First":
                 # Low Pass Filter
-                if dictInput["filterType"] == "lowPass":
+                if dictInput["filterType"] == "Low Pass":
                     sys = signal.lti([k * w0], [1, w0])
                 # High Pass Filter
-                elif dictInput["filterType"] == "highPass":
-                    sys = signal.lti([k * w0, 0], [1, w0])
+                elif dictInput["filterType"] == "High Pass":
+                    sys = signal.lti([k, 0], [1, w0])
                 # All Pass Filter
-                elif dictInput["filterType"] == "allPass":
+                elif dictInput["filterType"] == "All Pass":
                     sys = signal.lti([k, -k * w0], [1, w0])
                 # Undefined Filter
 
             # Second Order Systems
-            elif dictInput["order"] == 2:
+            elif dictInput["order"] == "Second":
                 # Low Pass Filter
-                if dictInput["filterType"] == "lowPass":
+                if dictInput["filterType"] == "Low Pass":
                     sys = signal.lti([k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # High Pass Filter
-                elif dictInput["filterType"] == "highPass":
-                    sys = signal.lti([k * w0 * w0, 0, 0], [1, 2 * xi * w0, w0 * w0])
+                elif dictInput["filterType"] == "High Pass":
+                    sys = signal.lti([k, 0, 0], [1, 2 * xi * w0, w0 * w0])
                 # All Pass Filter
-                elif dictInput["filterType"] == "allPass":
+                elif dictInput["filterType"] == "All Pass":
                     sys = signal.lti([k, -2 * k * xi * w0, w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # Band Pass Filter
-                elif dictInput["filterType"] == "bandPass":
+                elif dictInput["filterType"] == "Band Pass":
                     sys = signal.lti([0, k * w0 * w0, 0], [1, 2 * xi * w0, w0 * w0])
                 # Single Notch
-                elif dictInput["filterType"] == "singleNotch":
+                elif dictInput["filterType"] == "Single Notch":
                     sys = signal.lti([0, 1 , k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # Multiple Notch
                 #elif dictInput["filterType"] == "multipleNotch":
@@ -161,7 +174,7 @@ class CurveStepResponse(tk.Frame):
             amp = dictInput.get("inputAmplitudeValue") * dictInput.get("inputAmplitudeUnitFactor")
 
         except(TypeError):
-            self.title.config(text="Please configure all the system parameters.", fg="#ff0000")
+            self.title.config(text="Please configure all the system and input signal parameters.", fg="#ff0000")
         else:
             self.title.config(text="", fg="#000000")
             ################################
@@ -198,7 +211,7 @@ class CurveStepResponse(tk.Frame):
             self.ax2.grid(which='major', linestyle='-', linewidth=0.3, color='black')
             self.ax2.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
-            if dictInput.get("inputSignalType") == "singlePulse" :
+            if dictInput.get("inputSignalType") == "Single Pulse" :
                 period = 1 / (f0 * frequencyUnitFactor)
                 offset = dictInput.get("inputOffsetValue") * dictInput.get("inputOffsetUnitFactor")
 
@@ -211,21 +224,29 @@ class CurveStepResponse(tk.Frame):
             else :        
                 period = 1 / (dictInput.get("inputFrequencyValue") * dictInput.get("inputFrequencyUnitFactor"))
 
-                if self.autoScale :
-                    self.ax1.set_xlim((0, 5*period))
+                if self.autoscale :
+                    self.ax1.set_xlim((0, self.periodQuantity * period))
                     self.ax1.set_ylim(((-amp - amp/4)*k, (amp + amp/4)*k))
 
-                    self.ax2.set_xlim((0, 5*period))
+                    self.ax2.set_xlim((0, self.periodQuantity * period))
                     self.ax2.set_ylim(((-amp - amp/4)*k, (amp + amp/4)*k))
 
                 else :
                     self.ax1.set_xlim((0, self.periodQuantity * period))
                     self.ax1.set_ylim((self.yMinInput, self.yMaxInput))
 
-                    self.ax2.set_xlim((0, 5*period))
+                    self.ax2.set_xlim((0, self.periodQuantity * period))
                     self.ax2.set_ylim((self.yMinOutput, self.yMaxOutput))
 
             self.dataPlot.draw()
+
+            self.title.config(text="{} Response curve : {} order {}, f0 = {}{}, K = {}.".format(
+                dictInput.get("inputSignalType"),
+                dictInput.get("order"),
+                dictInput.get("filterType"),
+                dictInput.get("frequencyValue"),
+                dictInput.get("frequencyUnit"),
+                dictInput.get("gainBW")))
 
     def focus(self):
         pass

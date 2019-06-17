@@ -4,7 +4,6 @@ import config
 
 from menu.MenuParameters import MenuParameters
 from menu.MenuInputSignal import MenuInputSignal 
-from menu.MenuMaths import MenuMaths
 
 from menu.MenuFirstOrder import MenuFirstOrder
 from menu.MenuSecondOrder import MenuSecondOrder
@@ -15,8 +14,7 @@ from menu.MenuPeriodicPulse import MenuPeriodicPulse
 
 menus = [
     MenuParameters,
-    MenuInputSignal,
-    MenuMaths
+    MenuInputSignal
 ]
 
 class MenuMain(tk.Frame):
@@ -27,21 +25,16 @@ class MenuMain(tk.Frame):
         self.parent = parent
 
         self.buttonParameters = tk.Button(
-            self, width=17, text="Parameters", 
+            self, width=26, text="Parameters", 
             font=config.SMALL_FONT, bg="#ffe4c4", relief=FLAT, 
             command=self.buttonParametersPressed)
 
         self.buttonInputSignal = tk.Button(
-            self, width=17, text="Input Signal",
+            self, width=26, text="Input Signal",
             font=config.SMALL_FONT, bg="#fff0bc", command=self.buttonInputSignalPressed)
 
-        self.buttonMaths = tk.Button(
-            self, width=17, text="Maths",
-            font=config.SMALL_FONT, bg="#fff0bc", command=self.buttonMathsPressed)
-        
-        self.buttonParameters.grid( row=0, column=0, ipadx=3, sticky = W)
-        self.buttonInputSignal.grid(row=0, column=1, ipadx=3)
-        self.buttonMaths.grid(      row=0, column=2, ipadx=3, sticky = E)
+        self.buttonParameters.grid( row=0, column=0, ipadx=4, sticky = W)
+        self.buttonInputSignal.grid(row=0, column=1, ipadx=4, sticky = E)
 
         self.buttonSimulate = tk.Button(
             self, width=36, text="Simulate",
@@ -78,20 +71,12 @@ class MenuMain(tk.Frame):
     def buttonParametersPressed(self):
         self.buttonParameters.config( relief=FLAT,   bg="#ffe4c4")
         self.buttonInputSignal.config(relief=RAISED, bg="#fff0bc")
-        self.buttonMaths.config(      relief=RAISED, bg="#fff0bc")
         self.showMenu(MenuParameters)
 
     def buttonInputSignalPressed(self):
         self.buttonParameters.config( relief=RAISED, bg="#fff0bc")
         self.buttonInputSignal.config(relief=FLAT,   bg="#ffe4c4")
-        self.buttonMaths.config(      relief=RAISED, bg="#fff0bc")
         self.showMenu(MenuInputSignal)
-
-    def buttonMathsPressed(self):
-        self.buttonParameters.config( relief=RAISED, bg="#fff0bc")
-        self.buttonInputSignal.config(relief=RAISED, bg="#fff0bc")
-        self.buttonMaths.config(      relief=FLAT,   bg="#ffe4c4")
-        self.showMenu(MenuMaths)
 
     def buttonSimulatePressed(self):
         self.menus[MenuInputSignal].getCurrentSignalMenu().updateSignal()

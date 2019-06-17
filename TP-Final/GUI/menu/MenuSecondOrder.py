@@ -10,18 +10,18 @@ class MenuSecondOrder(tk.Frame):
         self.controller = controller
         self.parent = parent
 
-        self.insertSOParamText = tk.Label(
+        self.title = tk.Label(
             self, width=55, text="Insert the second order parameters",
             font=config.SMALL_FONT, background="#ffe4c4")
 
-        self.insertSOParamText.grid(row=0, column=0, columnspan=5, ipadx=3, ipady=5, sticky=N+E+W)
+        self.title.grid(row=0, column=0, columnspan=5, ipadx=3, ipady=5, sticky=N+E+W)
 
         #################################
         #   Frequency Inline Selector   #
         #################################
 
         # Widgets Definition
-        self.labelFrequency = tk.Label(self, width=15, text="Frequency", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.labelFrequency = tk.Label(self, width=15, text=" Cutoff Frequency", font=config.SMALL_FONT, bg="#ffe4c4")
         self.entryFrequency = tk.Entry(self, width=5)
 
         self.HzUnitButton = tk.Button( self, width=8, text="Hz",  font=config.SMALL_FONT, command=self.HzUnitButtonPressed)
@@ -178,21 +178,48 @@ class MenuSecondOrder(tk.Frame):
         self.HzUnitButton.config( relief=FLAT,   bg="#ffe4c4")
         self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
         self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["frequencyValue"] = float(self.entryFrequency.get())
+
+        try:
+            dictInput["frequencyValue"] = float(self.entryFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff frequency value", fg="#ff0000")
+            self.HzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the first order parameters", fg="#000000")
+
+        dictInput["frequencyUnit"] = "Hz"
         dictInput["frequencyUnitFactor"] = 1
 
     def kHzUnitButtonPressed(self):
         self.HzUnitButton.config( relief=RAISED, bg="#f0f0f0")
         self.kHzUnitButton.config(relief=FLAT,   bg="#ffe4c4")
         self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["frequencyValue"] = float(self.entryFrequency.get())
+
+        try:
+            dictInput["frequencyValue"] = float(self.entryFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff frequency value", fg="#ff0000")
+            self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the first order parameters", fg="#000000")
+
+        dictInput["frequencyUnit"] = "kHz"
         dictInput["frequencyUnitFactor"] = 1000
 
     def MHzUnitButtonPressed(self):
         self.HzUnitButton.config( relief=RAISED, bg="#f0f0f0")
         self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
         self.MHzUnitButton.config(relief=FLAT,   bg="#ffe4c4")
-        dictInput["frequencyValue"] = float(self.entryFrequency.get())
+
+        try:
+            dictInput["frequencyValue"] = float(self.entryFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff frequency value", fg="#ff0000")
+            self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the first order parameters", fg="#000000")
+
+        dictInput["frequencyUnit"] = "MHz"
         dictInput["frequencyUnitFactor"] = 1000000
     
     ############################################################
@@ -256,7 +283,7 @@ class MenuSecondOrder(tk.Frame):
         self.buttonBandPass.config( relief=RAISED, bg="#f0f0f0")
         self.buttonSingNotch.config(relief=RAISED, bg="#f0f0f0")
         self.buttonMultNotch.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["filterType"] = "lowPass"
+        dictInput["filterType"] = "Low Pass"
     
     def buttonHighPassPressed(self):
         self.buttonLowPass.config(  relief=RAISED, bg="#f0f0f0")
@@ -265,7 +292,7 @@ class MenuSecondOrder(tk.Frame):
         self.buttonBandPass.config( relief=RAISED, bg="#f0f0f0")
         self.buttonSingNotch.config(relief=RAISED, bg="#f0f0f0")
         self.buttonMultNotch.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["filterType"] = "highPass"
+        dictInput["filterType"] = "High Pass"
 
     def buttonAllPassPressed(self):
         self.buttonLowPass.config(  relief=RAISED, bg="#f0f0f0")
@@ -274,7 +301,7 @@ class MenuSecondOrder(tk.Frame):
         self.buttonBandPass.config( relief=RAISED, bg="#f0f0f0")
         self.buttonSingNotch.config(relief=RAISED, bg="#f0f0f0")
         self.buttonMultNotch.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["filterType"] = "allPass"
+        dictInput["filterType"] = "All Pass"
 
     def buttonBandPassPressed(self):
         self.buttonLowPass.config(  relief=RAISED, bg="#f0f0f0")
@@ -283,7 +310,7 @@ class MenuSecondOrder(tk.Frame):
         self.buttonBandPass.config( relief=FLAT,   bg="#ffe4c4")
         self.buttonSingNotch.config(relief=RAISED, bg="#f0f0f0")
         self.buttonMultNotch.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["filterType"] = "bandPass"
+        dictInput["filterType"] = "Band Pass"
     
     def buttonSingNotchPressed(self):
         self.buttonLowPass.config(  relief=RAISED, bg="#f0f0f0")
@@ -292,7 +319,7 @@ class MenuSecondOrder(tk.Frame):
         self.buttonBandPass.config( relief=RAISED, bg="#f0f0f0")
         self.buttonSingNotch.config(relief=FLAT,   bg="#ffe4c4")
         self.buttonMultNotch.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["filterType"] = "singleNotch"
+        dictInput["filterType"] = "Single Notch"
 
     def buttonMultNotchPressed(self):
         self.buttonLowPass.config(  relief=RAISED, bg="#f0f0f0")
@@ -301,7 +328,7 @@ class MenuSecondOrder(tk.Frame):
         self.buttonBandPass.config( relief=RAISED, bg="#f0f0f0")
         self.buttonSingNotch.config(relief=RAISED, bg="#f0f0f0")
         self.buttonMultNotch.config(relief=FLAT,   bg="#ffe4c4")
-        dictInput["filterType"] = "multipleNotch"  
+        dictInput["filterType"] = "Multiple Notch"  
 
     ###################################################
     #   Damping Coefficient Button Callback Function  #
@@ -333,7 +360,13 @@ class MenuSecondOrder(tk.Frame):
 
     def buttonGainBWPressed(self):
         self.buttonGainBW.config(relief=FLAT, bg="#ffe4c4")
-        dictInput["gainBW"] = int(self.entryGainBW.get())
+        try:
+            dictInput["gainBW"] = float(self.entryGainBW.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float bandwidth gain value", fg="#ff0000")
+            self.buttonGainBW.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the first order parameters", fg="#000000")
 
     ######################################
     #   Reset Buttons' Relief Function   #

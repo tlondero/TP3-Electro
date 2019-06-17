@@ -55,14 +55,34 @@ class MenuSinewave(tk.Frame):
         self.mVUnitButton.grid(row=2, column=2)
         self.VUnitButton.grid( row=2, column=3)   
 
+        ##############################
+        #   Offset Inline Selector   #
+        ##############################
+
+        # Widgets Definition
+        self.labelOffset = tk.Label(self, width=15, text="Offset", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.entryOffset = tk.Entry(self, width=5)
+
+        self.mVUnitOffButton = tk.Button(self, width=8, text="mV", font=config.SMALL_FONT, command=self.mVUnitOffButtonPressed)
+        self.VUnitOffButton = tk.Button( self, width=8, text="V",  font=config.SMALL_FONT, command=self.VUnitOffButtonPressed)
+
+        # Widgets Placement
+        self.labelOffset.grid(row=3, column=0, sticky=W, ipady=10)
+        self.entryOffset.grid(row=3, column=1, sticky=E, ipadx=10)
+
+        self.mVUnitOffButton.grid(row=3, column=2)
+        self.VUnitOffButton.grid( row=3, column=3) 
+
         ######################################
         #   Initialize Sinewave Parameters   #
         ######################################
 
-        self.amplitudeValue = 1
-        self.amplitudeUnitFactor = 1
         self.frequencyValue = 1
         self.frequencyUnitFactor = 1
+        self.amplitudeValue = 1
+        self.amplitudeUnitFactor = 1
+        self.offsetValue = 0
+        self.offsetUnitFactor = 1
 
     #################################################
     #   Frequency Unit Buttons' Callback Functions  #
@@ -120,6 +140,28 @@ class MenuSinewave(tk.Frame):
         dictInput["inputAmplitudeValue"] = self.amplitudeValue
         dictInput["inputAmplitudeUnitFactor"] = self.amplitudeUnitFactor
 
+    ##############################################
+    #   Offset Unit Buttons' Callback Functions  #
+    ##############################################
+
+    def mVUnitOffButtonPressed(self):
+        self.mVUnitOffButton.config(relief=FLAT,   bg="#ffe4c4")
+        self.VUnitOffButton.config (relief=RAISED, bg="#f0f0f0")
+        self.offsetValue = float(self.entryOffset.get())
+        self.offsetUnitFactor = 0.001
+        self.updateSignal()
+        dictInput["inputOffsetValue"] = self.offsetValue
+        dictInput["inputOffsetUnitFactor"] = self.offsetUnitFactor
+
+    def VUnitOffButtonPressed(self):
+        self.mVUnitOffButton.config(relief=RAISED, bg="#f0f0f0")
+        self.VUnitOffButton.config (relief=FLAT,   bg="#ffe4c4")
+        self.offsetValue = float(self.entryOffset.get())
+        self.offsetUnitFactor = 1
+        self.updateSignal()
+        dictInput["inputOffsetValue"] = self.offsetValue
+        dictInput["inputOffsetUnitFactor"] = self.offsetUnitFactor
+
     ######################################
     #   Reset Buttons' Relief Function   #
     ######################################
@@ -141,10 +183,11 @@ class MenuSinewave(tk.Frame):
         t = np.linspace(0, 20*period, 1e3)
         A = self.amplitudeValue * self.amplitudeUnitFactor
         f = self.frequencyValue * self.frequencyUnitFactor
+        off = self.offsetValue * self.offsetUnitFactor
         w = 2 * np.pi * f
-        y = A * np.sin(w * t)
+        y = A * np.sin(w * t) + off
         dictInput["inputSignal"] = {"y": y, "t": t}
-        dictInput["inputSignalType"] = "sinewave"
+        dictInput["inputSignalType"] = "Sinewave"
 
     def focus(self):
         pass

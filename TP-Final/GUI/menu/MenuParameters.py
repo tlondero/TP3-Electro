@@ -55,7 +55,7 @@ class MenuParameters(tk.Frame):
             self.orderMenus[orderMenu].config(bg="#ffe4c4")
         
         self.showOrderMenu(MenuFirstOrder)
-        dictInput["order"] = 1
+        dictInput["order"] = "First"
      
     ######################################
     #   Order Menus Managing Functions   #
@@ -77,13 +77,13 @@ class MenuParameters(tk.Frame):
     def buttonFirstOrderPressed(self):
         self.buttonFirstOrder.config( relief=FLAT,   bg="#ffe4c4")
         self.buttonSecondOrder.config(relief=RAISED, bg="#fff0bc")
-        dictInput["order"] = 1
+        dictInput["order"] = "First"
         self.showOrderMenu(MenuFirstOrder)
 
     def buttonSecondOrderPressed(self):
         self.buttonFirstOrder.config( relief=RAISED, bg="#fff0bc")
         self.buttonSecondOrder.config(relief=FLAT,   bg="#ffe4c4")    
-        dictInput["order"] = 2
+        dictInput["order"] = "Second"
         self.showOrderMenu(MenuSecondOrder)   
 
     ######################################

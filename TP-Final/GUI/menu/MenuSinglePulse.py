@@ -130,7 +130,7 @@ class MenuSinglePulse(tk.Frame):
         off = self.offsetValue * self.offsetUnitFactor
         y = (A * np.heaviside(t - (0.05 * period), 0.5)) + off
         dictInput["inputSignal"] = {"y": y, "t": t}
-        dictInput["inputSignalType"] = "singlePulse"
+        dictInput["inputSignalType"] = "Single Pulse"
 
     def focus(self):
         pass

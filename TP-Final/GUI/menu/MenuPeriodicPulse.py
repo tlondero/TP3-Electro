@@ -54,7 +54,25 @@ class MenuPeriodicPulse(tk.Frame):
         self.entryAmplitude.grid(row=2, column=1, sticky=E, ipadx=10)
 
         self.mVUnitButton.grid(row=2, column=2)
-        self.VUnitButton.grid( row=2, column=3)     
+        self.VUnitButton.grid( row=2, column=3)  
+
+        ##############################
+        #   Offset Inline Selector   #
+        ##############################
+
+        # Widgets Definition
+        self.labelOffset = tk.Label(self, width=15, text="Offset", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.entryOffset = tk.Entry(self, width=5)
+
+        self.mVUnitOffButton = tk.Button(self, width=8, text="mV", font=config.SMALL_FONT, command=self.mVUnitOffButtonPressed)
+        self.VUnitOffButton = tk.Button( self, width=8, text="V",  font=config.SMALL_FONT, command=self.VUnitOffButtonPressed)
+
+        # Widgets Placement
+        self.labelOffset.grid(row=3, column=0, sticky=W, ipady=10)
+        self.entryOffset.grid(row=3, column=1, sticky=E, ipadx=10)
+
+        self.mVUnitOffButton.grid(row=3, column=2)
+        self.VUnitOffButton.grid( row=3, column=3)    
 
         ##################################
         #   Duty Cycle Inline Selector   #
@@ -67,19 +85,21 @@ class MenuPeriodicPulse(tk.Frame):
         self.percentDCButton = tk.Button(self, width=8, text="%", font=config.SMALL_FONT, command=self.percentDCButtonPressed)
 
         # Widgets Placement
-        self.labelDutyCycle.grid(row=3, column=0, sticky=W, ipady=10)
-        self.entryDutyCycle.grid(row=3, column=1, sticky=E, ipadx=10)
+        self.labelDutyCycle.grid(row=4, column=0, sticky=W, ipady=10)
+        self.entryDutyCycle.grid(row=4, column=1, sticky=E, ipadx=10)
 
-        self.percentDCButton.grid(row=3, column=2)  
+        self.percentDCButton.grid(row=4, column=2)  
 
         ############################################
         #   Initialize Periodic Pulse Parameters   #
         ############################################
 
+        self.frequencyValue = 1
+        self.frequencyUnitFactor = 1        
         self.amplitudeValue = 1
         self.amplitudeUnitFactor = 1
-        self.frequencyValue = 1
-        self.frequencyUnitFactor = 1
+        self.offsetValue = 0
+        self.offsetUnitFactor = 1
         self.dutyCycleValue = 50
 
     #################################################
@@ -138,6 +158,28 @@ class MenuPeriodicPulse(tk.Frame):
         dictInput["inputAmplitudeValue"] = self.amplitudeValue
         dictInput["inputAmplitudeUnitFactor"] = self.amplitudeUnitFactor
 
+    ##############################################
+    #   Offset Unit Buttons' Callback Functions  #
+    ##############################################
+
+    def mVUnitOffButtonPressed(self):
+        self.mVUnitOffButton.config(relief=FLAT,   bg="#ffe4c4")
+        self.VUnitOffButton.config (relief=RAISED, bg="#f0f0f0")
+        self.offsetValue = float(self.entryOffset.get())
+        self.offsetUnitFactor = 0.001
+        self.updateSignal()
+        dictInput["inputOffsetValue"] = self.offsetValue
+        dictInput["inputOffsetUnitFactor"] = self.offsetUnitFactor
+
+    def VUnitOffButtonPressed(self):
+        self.mVUnitOffButton.config(relief=RAISED, bg="#f0f0f0")
+        self.VUnitOffButton.config (relief=FLAT,   bg="#ffe4c4")
+        self.offsetValue = float(self.entryOffset.get())
+        self.offsetUnitFactor = 1
+        self.updateSignal()
+        dictInput["inputOffsetValue"] = self.offsetValue
+        dictInput["inputOffsetUnitFactor"] = self.offsetUnitFactor
+
     #############################################
     #   Duty Cycle Button's Callback Function   #
     #############################################
@@ -171,11 +213,12 @@ class MenuPeriodicPulse(tk.Frame):
         t = np.linspace(0, 20*period, 1e3)
         A = self.amplitudeValue * self.amplitudeUnitFactor
         f = self.frequencyValue * self.frequencyUnitFactor
+        off = self.offsetValue * self.offsetUnitFactor
         w = 2 * np.pi * f
         d = self.dutyCycleValue/100
-        y = A * signal.square(w * t, duty = d)
+        y = A * signal.square(w * t, duty = d) + off
         dictInput["inputSignal"] = {"y": y, "t": t}
-        dictInput["inputSignalType"] = "periodicPulse"
+        dictInput["inputSignalType"] = "Periodic Pulse"
 
     def focus(self):
         pass

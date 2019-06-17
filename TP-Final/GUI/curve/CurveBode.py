@@ -17,7 +17,7 @@ class CurveBode(tk.Frame):
         self.parent = parent
 
         self.title = tk.Label(
-            self, text="This is the Bode curve", font=config.SMALL_FONT, bg="#ffffff")
+            self, text="Bode curve", font=config.SMALL_FONT, bg="#ffffff")
         self.title.grid(row=0, column=0, columnspan=6, ipady=7, sticky=N)
 
         ##########################
@@ -68,8 +68,8 @@ class CurveBode(tk.Frame):
         self.freqAxisUnitFactor = 1 / (2 * pi)
         self.ax1.set_xlabel("Pulsation (Hz)")
         self.ax2.set_xlabel("Pulsation (Hz)")
-
         self.gainAxisdBActivated = True
+        self.dataPlot.draw()
 
     ###############################################
     #    Axis Units Buttons' Callback Functions   #
@@ -98,12 +98,16 @@ class CurveBode(tk.Frame):
         self.timesAxisButton.config(relief=RAISED, bg="#f0f0f0")
         self.gainAxisdBActivated = True
         self.simulate()
+        self.ax1.set_ylabel("Gain (dB)")
+        self.dataPlot.draw()
 
     def timesAxisButtonPressed(self):
         self.dBAxisButton.config(   relief=RAISED, bg="#f0f0f0")
         self.timesAxisButton.config(relief=FLAT,   bg="#ffffff")
         self.gainAxisdBActivated = False
         self.simulate()
+        self.ax1.set_ylabel("Gain (Times)")
+        self.dataPlot.draw()
               
     def simulate(self):
         ###########################################
@@ -144,33 +148,33 @@ class CurveBode(tk.Frame):
             #############################################
             global sys
             # First Order Systems
-            if dictInput["order"] == 1:
+            if dictInput["order"] == "First":
                 # Low Pass Filter
-                if dictInput["filterType"] == "lowPass":
+                if dictInput["filterType"] == "Low Pass":
                     sys = signal.lti([k * w0], [1, w0])
                 # High Pass Filter
-                elif dictInput["filterType"] == "highPass":
-                    sys = signal.lti([k * w0, 0], [1, w0])
+                elif dictInput["filterType"] == "High Pass":
+                    sys = signal.lti([k, 0], [1, w0])
                 # All Pass Filter
-                elif dictInput["filterType"] == "allPass":
+                elif dictInput["filterType"] == "All Pass":
                     sys = signal.lti([k, -k * w0], [1, w0])
 
             # Second Order Systems
-            elif dictInput["order"] == 2:
+            elif dictInput["order"] == "Second":
                 # Low Pass Filter
-                if dictInput["filterType"] == "lowPass":
+                if dictInput["filterType"] == "Low Pass":
                     sys = signal.lti([k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # High Pass Filter
-                elif dictInput["filterType"] == "highPass":
-                    sys = signal.lti([k * w0 * w0, 0, 0], [1, 2 * xi * w0, w0 * w0])
+                elif dictInput["filterType"] == "High Pass":
+                    sys = signal.lti([k, 0, 0], [1, 2 * xi * w0, w0 * w0])
                 # All Pass Filter
-                elif dictInput["filterType"] == "allPass":
+                elif dictInput["filterType"] == "All Pass":
                     sys = signal.lti([k, -2 * k * xi * w0, w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # Band Pass Filter
-                elif dictInput["filterType"] == "bandPass":
-                    sys = signal.lti([0, k * w0 * w0, 0], [1, 2 * xi * w0, w0 * w0])
+                elif dictInput["filterType"] == "Band Pass":
+                    sys = signal.lti([0, 2* xi * k * w0, 0], [1, 2 * xi * w0, w0 * w0])
                 # Single Notch
-                elif dictInput["filterType"] == "singleNotch":
+                elif dictInput["filterType"] == "Single Notch":
                     sys = signal.lti([0, 1 , k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # Multiple Notch
                 #elif dictInput["filterType"] == "multipleNotch":
@@ -192,12 +196,11 @@ class CurveBode(tk.Frame):
 
             if self.gainAxisdBActivated :
                 gainAxis = bode["gain"]
-                self.ax1.set_yscale("linear")
+
             else :
                 gainAxis = []
                 for values in bode["gain"] :
-                    gainAxis.append(power(values / 20, 10))
-                self.ax1.set_yscale("log")
+                    gainAxis.append(power(10, values / 20))
 
             ########################################
             #   Gain and Argument plot functions   #
@@ -206,6 +209,7 @@ class CurveBode(tk.Frame):
 
             self.ax1.semilogx(freqAxis, gainAxis, color="red")   
             self.ax1.minorticks_on()
+            self.ax1.set_xlabel("Pulsation (Hz)")
             self.ax1.set_ylabel("Gain (dB)")
             self.ax1.grid(which='major', linestyle='-', linewidth=0.3, color='black')
             self.ax1.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
@@ -214,11 +218,19 @@ class CurveBode(tk.Frame):
 
             self.ax2.semilogx(freqAxis, bode["arg"], color="purple")
             self.ax2.minorticks_on()
+            self.ax2.set_xlabel("Pulsation (Hz)")
             self.ax2.set_ylabel("Argument (°)")
             self.ax2.grid(which='major', linestyle='-', linewidth=0.3, color='black')
             self.ax2.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
             self.dataPlot.draw()
+
+            self.title.config(text="Bode : {} order {}, f0 = {}{}, G = {}.".format(
+                dictInput.get("order"),
+                dictInput.get("filterType"),
+                dictInput.get("frequencyValue"),
+                dictInput.get("frequencyUnit"),
+                dictInput.get("gainBW")))
 
     def focus(self):
         pass

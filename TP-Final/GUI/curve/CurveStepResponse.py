@@ -166,7 +166,7 @@ class CurveStepResponse(tk.Frame):
                     sys = signal.lti([0, k * w0 * w0, 0], [1, 2 * xi * w0, w0 * w0])
                 # Single Notch
                 elif dictInput["filterType"] == "Single Notch":
-                    sys = signal.lti([0, 1 , k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
+                    sys = signal.lti([k, 0, k * w0 * w0], [k, 2 * xi * w0, w0 * w0])
                 # Multiple Notch
                 #elif dictInput["filterType"] == "multipleNotch":
                     #sys = signal.lti([1, 2* k * xiz * wz, k * wz * wz], [1, 2* k * xip * wp, k * wp * wp])

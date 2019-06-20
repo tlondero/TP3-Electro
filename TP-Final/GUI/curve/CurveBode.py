@@ -124,24 +124,6 @@ class CurveBode(tk.Frame):
         try:
             # Defining pulsation
             w0 = 2 * pi * f0 * frequencyUnitFactor
-
-            # Notch Zero Frequency Value
-            #fz = dictInput.get("frequencyNZValue")
-            # Notch Zero Frequency Unit Factor
-            #frequencyNZUnitFactor = dictInput.get("frequencyNZUnitFactor")
-            # Notch Zero Damping Coefficient
-            #xiz = dictInput.get("NZdampCoeff")
-            # Defining Notch Zero pulsation
-            #wz = 2 * pi * fz * frequencyNZUnitFactor
-
-            # Notch Pole Frequency Value
-            #fp = dictInput.get("frequencyNPValue")
-            # Notch Pole Frequency Unit Factor
-            #frequencyNPUnitFactor = dictInput.get("frequencyNPUnitFactor")
-            # Notch Pole Damping Coefficient
-            #xip = dictInput.get("NPdampCoeff")
-            # Defining Notch Pole pulsation
-            #wp = 2 * pi * fp * frequencyNPUnitFactor
         
             #############################################
             #   System Definition Reading  User Input   #
@@ -175,10 +157,32 @@ class CurveBode(tk.Frame):
                     sys = signal.lti([0, 2* xi * k * w0, 0], [1, 2 * xi * w0, w0 * w0])
                 # Single Notch
                 elif dictInput["filterType"] == "Single Notch":
-                    sys = signal.lti([0, 1 , k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
+                    sys = signal.lti([k, 0 , k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # Multiple Notch
-                #elif dictInput["filterType"] == "multipleNotch":
-                    #sys = signal.lti([1, 2* k * xiz * wz, k * wz * wz], [1, 2* k * xip * wp, k * wp * wp])
+                elif dictInput["filterType"] == "Multiple Notch":
+                    # Notch Zero Frequency Value
+                    fz = dictInput.get("frequencyNZValue")
+                    # Notch Zero Frequency Unit Factor
+                    frequencyNZUnitFactor = dictInput.get("frequencyNZUnitFactor")
+                    # Notch Zero Damping Coefficient
+                    xiz = dictInput.get("NZdampCoeff")
+                    # Defining Notch Zero pulsation
+                    wz = 2 * pi * fz * frequencyNZUnitFactor
+
+                    # Notch Pole Frequency Value
+                    fp = dictInput.get("frequencyNPValue")
+                    # Notch Pole Frequency Unit Factor
+                    frequencyNPUnitFactor = dictInput.get("frequencyNPUnitFactor")
+                    # Notch Pole Damping Coefficient
+                    xip = dictInput.get("NPdampCoeff")
+                    # Defining Notch Pole pulsation
+                    wp = 2 * pi * fp * frequencyNPUnitFactor
+
+                    if (wz > wp) :
+                        sys = signal.lti([(k * wp * wp) / (wz * wz), (2* k * xiz * wp * wp) / wz, k * wp * wp], 
+                                         [1, 2 * xip * wp, wp * wp])
+                    else :
+                        sys = signal.lti([k, 2* k * xiz * wz, k * wz * wz], [1, 2 * xip * wp, wp * wp])
 
             ################################
             #   System's Bode generation   #

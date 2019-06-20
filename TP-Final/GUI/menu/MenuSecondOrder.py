@@ -185,7 +185,7 @@ class MenuSecondOrder(tk.Frame):
             self.title.config(text="Please insert a float cutoff frequency value", fg="#ff0000")
             self.HzUnitButton.config(relief=RAISED, bg="#f0f0f0")
         else:
-            self.title.config(text="Insert the first order parameters", fg="#000000")
+            self.title.config(text="Insert the second order parameters", fg="#000000")
 
         dictInput["frequencyUnit"] = "Hz"
         dictInput["frequencyUnitFactor"] = 1
@@ -201,7 +201,7 @@ class MenuSecondOrder(tk.Frame):
             self.title.config(text="Please insert a float cutoff frequency value", fg="#ff0000")
             self.kHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
         else:
-            self.title.config(text="Insert the first order parameters", fg="#000000")
+            self.title.config(text="Insert the second order parameters", fg="#000000")
 
         dictInput["frequencyUnit"] = "kHz"
         dictInput["frequencyUnitFactor"] = 1000
@@ -217,7 +217,7 @@ class MenuSecondOrder(tk.Frame):
             self.title.config(text="Please insert a float cutoff frequency value", fg="#ff0000")
             self.MHzUnitButton.config(relief=RAISED, bg="#f0f0f0")
         else:
-            self.title.config(text="Insert the first order parameters", fg="#000000")
+            self.title.config(text="Insert the second order parameters", fg="#000000")
 
         dictInput["frequencyUnit"] = "MHz"
         dictInput["frequencyUnitFactor"] = 1000000
@@ -230,21 +230,45 @@ class MenuSecondOrder(tk.Frame):
         self.HzUnitNZButton.config( relief=FLAT,   bg="#ffe4c4")
         self.kHzUnitNZButton.config(relief=RAISED, bg="#f0f0f0")
         self.MHzUnitNZButton.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["frequencyNZValue"] = float(self.entryNZFrequency.get())
+
+        try:
+            dictInput["frequencyNZValue"] = float(self.entryNZFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff zero frequency value", fg="#ff0000")
+            self.HzUnitNZButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the second order parameters", fg="#000000")
+
         dictInput["frequencyNZUnitFactor"] = 1
 
     def kHzUnitNZButtonPressed(self):
         self.HzUnitNZButton.config( relief=RAISED, bg="#f0f0f0")
         self.kHzUnitNZButton.config(relief=FLAT,   bg="#ffe4c4")
         self.MHzUnitNZButton.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["frequencyNZValue"] = float(self.entryNZFrequency.get())
+
+        try:
+            dictInput["frequencyNZValue"] = float(self.entryNZFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff zero frequency value", fg="#ff0000")
+            self.kHzUnitNZButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the second order parameters", fg="#000000")
+
         dictInput["frequencyNZUnitFactor"] = 1000
 
     def MHzUnitNZButtonPressed(self):
         self.HzUnitNZButton.config( relief=RAISED, bg="#f0f0f0")
         self.kHzUnitNZButton.config(relief=RAISED, bg="#f0f0f0")
         self.MHzUnitNZButton.config(relief=FLAT,   bg="#ffe4c4")
-        dictInput["frequencyNZValue"] = float(self.entryNZFrequency.get())
+
+        try:
+            dictInput["frequencyNZValue"] = float(self.entryNZFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff zero frequency value", fg="#ff0000")
+            self.MHzUnitNZButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the second order parameters", fg="#000000")
+
         dictInput["frequencyNZUnitFactor"] = 1000000
 
     ############################################################
@@ -255,21 +279,45 @@ class MenuSecondOrder(tk.Frame):
         self.HzUnitNPButton.config( relief=FLAT,   bg="#ffe4c4")
         self.kHzUnitNPButton.config(relief=RAISED, bg="#f0f0f0")
         self.MHzUnitNPButton.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["frequencyNPValue"] = float(self.entryNPFrequency.get())
+
+        try:
+            dictInput["frequencyNPValue"] = float(self.entryNPFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff pole frequency value", fg="#ff0000")
+            self.HzUnitNPButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the second order parameters", fg="#000000")
+
         dictInput["frequencyNPUnitFactor"] = 1
 
     def kHzUnitNPButtonPressed(self):
         self.HzUnitNPButton.config( relief=RAISED, bg="#f0f0f0")
         self.kHzUnitNPButton.config(relief=FLAT,   bg="#ffe4c4")
         self.MHzUnitNPButton.config(relief=RAISED, bg="#f0f0f0")
-        dictInput["frequencyNPValue"] = float(self.entryNPFrequency.get())
+
+        try:
+            dictInput["frequencyNPValue"] = float(self.entryNPFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff pole frequency value", fg="#ff0000")
+            self.kHzUnitNPButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the second order parameters", fg="#000000")
+
         dictInput["frequencyNPUnitFactor"] = 1000
 
     def MHzUnitNPButtonPressed(self):
         self.HzUnitNPButton.config( relief=RAISED, bg="#f0f0f0")
         self.kHzUnitNPButton.config(relief=RAISED, bg="#f0f0f0")
         self.MHzUnitNPButton.config(relief=FLAT,   bg="#ffe4c4")
-        dictInput["frequencyNPValue"] = float(self.entryNPFrequency.get())
+
+        try:
+            dictInput["frequencyNPValue"] = float(self.entryNPFrequency.get())
+        except(ValueError):
+            self.title.config(text="Please insert a float cutoff pole frequency value", fg="#ff0000")
+            self.MHzUnitNPButton.config(relief=RAISED, bg="#f0f0f0")
+        else:
+            self.title.config(text="Insert the second order parameters", fg="#000000")
+
         dictInput["frequencyNPUnitFactor"] = 1000000
 
     ##############################################
@@ -366,7 +414,7 @@ class MenuSecondOrder(tk.Frame):
             self.title.config(text="Please insert a float bandwidth gain value", fg="#ff0000")
             self.buttonGainBW.config(relief=RAISED, bg="#f0f0f0")
         else:
-            self.title.config(text="Insert the first order parameters", fg="#000000")
+            self.title.config(text="Insert the second order parameters", fg="#000000")
 
     ######################################
     #   Reset Buttons' Relief Function   #

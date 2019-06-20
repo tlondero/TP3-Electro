@@ -49,7 +49,7 @@ En el siguiente informe se expone un resumen el trabajo realizado en \textbf{Alt
 \section*{Desarrollo}
 
 \subsection*{Modelado de placa en Altium}
-Se hizo una placa en Altium del siguiente circuito provisto por la caterdra, el cual reconocimos como un filtro pasa bajos "Sallen Key"
+Se realizó un modelo de una placa en \textbf{Altium} del circuito provisto por la cátedra, presentado en la figura (\ref{fig:AltiumCirc}), el cual fue reconocido como un filtro pasa bajos ``Sallen Key".
 
 
 \begin{figure}[H]
@@ -58,13 +58,16 @@ Se hizo una placa en Altium del siguiente circuito provisto por la caterdra, el 
 	\caption{Sallen Key Low-Pass Filter.}
 	\label{fig:AltiumCirc}
 \end{figure}
+
 Los criterios para su diseño fueron los siguientes:
 \begin{itemize}
-\item[$\bullet$]Tamaño de pistas: 0.6mm
-\item[$\bullet$]Minima diferencia entre pistas: 0.6mm
-\item[$\bullet$]Tener la precaucion de que se pueda acceder y diferenciar todos los componentes.
+\item[$\bullet$]Tamaño de pistas: 0.6 mm;
+\item[$\bullet$]Mínima diferencia entre pistas: 0.6 mm;
+\item[$\bullet$]Tener la precaución de que se pudiera acceder y diferenciar todos los componentes.
 \end{itemize} 
-Luego de realizar el esquematico y el PCB se preparó para imprimir y se simuló en LTSpice obteniendo el siguiente diagrama de Bode y con su Montecarlo:
+
+Luego de realizar el esquematico y el PCB, se preparó el proyecto para imprimir, de forma tal que estuviera listo para llevar el modelo a la realidad.
+Finalmente se obtuvo, mediante el uso de \textbf{LTSpice}, los diagramas de Bode y con Montecarlo:
 
 \begin{figure}[H]
 	\centering
@@ -72,14 +75,17 @@ Luego de realizar el esquematico y el PCB se preparó para imprimir y se simuló
 	\caption{Bode Sallen Key.}
 	\label{fig:BodeAltium}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{Altium-MC}
 	\caption{Montecarlo Sallen Key.}
 	\label{fig:MCAltium}
 \end{figure}
+
+
 \subsection*{Simulación en LTSpice}
-Se comenzó analizando el período de carga y descarga de los componentes capacitivoSs e inductivos del circuito dado.
+Se comenzó analizando el período de carga y descarga de los componentes capacitivos e inductivos del circuito dado.
 
 \begin{figure}[H]
 \begin{center}

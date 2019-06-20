@@ -180,7 +180,7 @@ class MenuSinewave(tk.Frame):
 
     def updateSignal(self):
         period = 1/(self.frequencyValue * self.frequencyUnitFactor)
-        t = np.linspace(0, 20*period, 1e3)
+        t = np.linspace(0, 20*period, 1e5)
         A = self.amplitudeValue * self.amplitudeUnitFactor
         f = self.frequencyValue * self.frequencyUnitFactor
         off = self.offsetValue * self.offsetUnitFactor

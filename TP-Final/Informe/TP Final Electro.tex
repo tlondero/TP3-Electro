@@ -44,7 +44,11 @@
 
 \section*{Introducción}
 
+En el siguiente informe se expone un resumen el trabajo realizado en \textbf{Altium}, \textbf{LTSpice} y \textbf{Python}. En este expone los resultados obtenidos de las simulaciones realizadas.
+
 \section*{Desarrollo}
+
+\subsection*{Modelado de placa en Altium}
 
 \subsection*{Simulación en LTSpice}
 
@@ -68,7 +72,7 @@ Se comenzó analizando el período de carga y descarga de los componentes capaci
 \end{center}
 \end{figure}
 
-Mediante el uso del programa \textbf{LTSpice}, y otorgando un valor arbitrario de $5 \ V$ a la tensión de entrada, se obtuvo
+Mediante el uso de \textbf{LTSpice}, y otorgando un valor arbitrario de $5 \ V$ a la tensión de entrada, se obtuvo
 
 \begin{figure}[H]
 	\centering
@@ -94,27 +98,27 @@ Para analizar teóricamente ambas situaciones se observa que tanto el capacitor 
 \end{equation}
 
 \begin{equation}
-	I_{L} (t) = V_{f} \left( 1 - e^{- \frac{t}{0.156 \ s}  } \right)
+	I_{L} (t) = \frac{V_{f}}{30 \ \Omega} \left( 1 - e^{- \frac{t}{0.156 \ s}  } \right)
 	\label{eq:carg-l}
 \end{equation}
 
-Por otro lado, para la descarga, el circuito es un RLC serie. Sabiendo que para este circuito $\alpha < \omega_0$, se plantea la solución para un circuito subamortiguado, obteniéndose así las siguientes ecuaciones:
+%Por otro lado, para la descarga, el circuito es un RLC serie. Sabiendo que para este circuito $\alpha < \omega_0$, se plantea la solución para un circuito subamortiguado, obteniéndose así las siguientes ecuaciones:
+%
+%\begin{equation}
+%	V_{C} (t) = V_{f} \cdot e^{- \alpha t} \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right]
+%	\label{eq:descarg-c}
+%\end{equation}
+%
+%\begin{equation} \label{eq:descarg-l}
+%\begin{split}
+%I_{L} (t) = V_{f} C \cdot e^{- \alpha t} \left\lbrace - \alpha \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right] \right. \\
+% \left. - \omega_d sen \left(  \omega_d t \right) + \left( \alpha + \frac{R}{C} \right) cos \left(  \omega_d t \right) \right\rbrace
+%\end{split}
+%\end{equation}
+%
+%con $\alpha = 1153.85 \ \frac{1}{s}$, $\omega_d = 1471.44 \ \frac{1}{s}$, $R = 30 \ \Omega$.
 
-\begin{equation}
-	V_{C} (t) = V_{f} \cdot e^{- \alpha t} \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right]
-	\label{eq:descarg-c}
-\end{equation}
-
-\begin{equation} \label{eq:descarg-l}
-\begin{split}
-I_{L} (t) = V_{f} C \cdot e^{- \alpha t} \left\lbrace - \alpha \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right] \right. \\
- \left. - \omega_d sen \left(  \omega_d t \right) + \left( \alpha + \frac{R}{C} \right) cos \left(  \omega_d t \right) \right\rbrace
-\end{split}
-\end{equation}
-
-con $\alpha = 1153.85 \ \frac{1}{s}$, $\omega_d = 1471.44 \ \frac{1}{s}$, $R = 30 \ \Omega$.
-
-Luego se analiza el caso en el cual el valor de ambas resistencias sea de $0 \ \Omega$. Dicha situación no es posible en la realidad ya que siempre se presenta una resistencia interna por parte de los elementos. Idealmente, lo que sucedería sería que la tensión y la corriente oscilarían sin perdidas de energía.
+Luego se analiza el caso en el cual el valor de ambas resistencias sea de $0 \ \Omega$. Idealmente, lo que sucedería sería que la tensión y la corriente oscilarían entre el capacitor y la bobina sin perdidas de energía. Dicha situación no es posible en la realidad ya que siempre se presenta una resistencia interna por parte de los elementos, lo que generaría perdidas. 
 
 Finalmente, se realizó un diagrama de Montecarlo. Para ello se determinó las tolerancias de los distintos componentes de la siguiente forma: 5\% para las resistencias, 10\% para el capacitor y 0\% para la bobina. Se corrió la simulación 100 veces con un punto inicial en 1 e incrementándolo en 1 por iteratición. Además, se configuró la fuente de tensión de entrada para que varíe desde $0 \ V$ a $5 \ V$ con un paso de $0,1 \ V$. De esta forma se obtuvieron los gráficos presentados en la figuras (\ref{fig:LTSMCVC}), (\ref{fig:LTSMCIL}) y (\ref{fig:LTSMCIR}).
 
@@ -139,7 +143,10 @@ Finalmente, se realizó un diagrama de Montecarlo. Para ello se determinó las t
 	\label{fig:LTSMCIL}
 \end{figure}
 
+\subsection*{GUI en Python}
+
 \section*{Conclusión}
 
+Se pudo predecir los resultados obtenidos en las gráficas de corriente en función de la tensión en base a los conocimientos teóricos. Por otro lado, se pudo observar la importancia de las tolerancias y como afectan estas al resultado original mediante el uso del análisis de Montecarlo. De este último se rescata el énfasis que se debe hacer en la bobina, ya que es la que posee más variaciones en el resultado final. 
 
 \end{document}

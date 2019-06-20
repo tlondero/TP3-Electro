@@ -54,9 +54,9 @@ Se hizo una placa en Altium del siguiente circuito provisto por la caterdra, el 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{Altium}
+	\includegraphics[width=\textwidth]{Altium-Circuito}
 	\caption{Sallen Key Low-Pass Filter.}
-	\label{fig:LTSD1}
+	\label{fig:AltiumCirc}
 \end{figure}
 Los criterios para su diseño fueron los siguientes:
 \begin{itemize}
@@ -64,9 +64,21 @@ Los criterios para su diseño fueron los siguientes:
 \item[$\bullet$]Minima diferencia entre pistas: 0.6mm
 \item[$\bullet$]Tener la precaucion de que se pueda acceder y diferenciar todos los componentes.
 \end{itemize} 
-Luego de realizar el esquematico y el PCB se preparó para imprimir y se simuló en LTSpice obteniendo el siguiente diagrama de Bode:
-\subsection*{Simulación en LTSpice}
+Luego de realizar el esquematico y el PCB se preparó para imprimir y se simuló en LTSpice obteniendo el siguiente diagrama de Bode y con su Montecarlo:
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Altium-BODE}
+	\caption{Bode Sallen Key.}
+	\label{fig:BodeAltium}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Altium-MC}
+	\caption{Montecarlo Sallen Key.}
+	\label{fig:MCAltium}
+\end{figure}
+\subsection*{Simulación en LTSpice}
 Se comenzó analizando el período de carga y descarga de los componentes capacitivoSs e inductivos del circuito dado.
 
 \begin{figure}[H]

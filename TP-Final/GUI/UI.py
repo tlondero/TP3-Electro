@@ -9,7 +9,7 @@ class UI(tk.Tk):
         super(UI, self).__init__(**kwargs)
 
         self.protocol('WM_DELETE_WINDOW', self.exitFunction)
-        self.title("GuidinVisualizer 3.0.")
+        self.title("GuidinVisualizer 3.2.5")
         self.resizable(width=False, height=False)
 
         self.containMenu  = tk.Frame(self, bd = 1, relief = SUNKEN)

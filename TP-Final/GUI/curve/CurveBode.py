@@ -151,7 +151,7 @@ class CurveBode(tk.Frame):
                     sys = signal.lti([k, 0, 0], [1, 2 * xi * w0, w0 * w0])
                 # All Pass Filter
                 elif dictInput["filterType"] == "All Pass":
-                    sys = signal.lti([k, -2 * k * xi * w0, w0 * w0], [1, 2 * xi * w0, w0 * w0])
+                    sys = signal.lti([k, - 2* xi * k * w0, k*w0*w0], [1, 2 * xi * w0, w0 * w0])
                 # Band Pass Filter
                 elif dictInput["filterType"] == "Band Pass":
                     sys = signal.lti([0, 2* xi * k * w0, 0], [1, 2 * xi * w0, w0 * w0])

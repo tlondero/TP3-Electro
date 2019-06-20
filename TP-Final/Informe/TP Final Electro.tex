@@ -52,10 +52,22 @@ En el siguiente informe se expone un resumen el trabajo realizado en \textbf{Alt
 Se hizo una placa en Altium del siguiente circuito provisto por la caterdra, el cual reconocimos como un filtro pasa bajos "Sallen Key"
 
 
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Altium}
+	\caption{Sallen Key Low-Pass Filter.}
+	\label{fig:LTSD1}
+\end{figure}
+Los criterios para su diseño fueron los siguientes:
+\begin{itemize}
+\item[$\bullet$]Tamaño de pistas: 0.6mm
+\item[$\bullet$]Minima diferencia entre pistas: 0.6mm
+\item[$\bullet$]Tener la precaucion de que se pueda acceder y diferenciar todos los componentes.
+\end{itemize} 
+Luego de realizar el esquematico y el PCB se preparó para imprimir y se simuló en LTSpice obteniendo el siguiente diagrama de Bode:
 \subsection*{Simulación en LTSpice}
 
-Se comenzó analizando el período de carga y descarga de los componentes capacitivos e inductivos del circuito dado.
+Se comenzó analizando el período de carga y descarga de los componentes capacitivoSs e inductivos del circuito dado.
 
 \begin{figure}[H]
 \begin{center}

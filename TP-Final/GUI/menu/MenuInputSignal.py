@@ -25,16 +25,16 @@ class MenuInputSignal(tk.Frame):
 
         # Widgets Definition
         self.selectInputSignalText = tk.Label(
-            self, width=55, text="Select the input signal", font=config.SMALL_FONT, bg="#ffe4c4")
+            self, width=55, text="Seleccionar la señal de entrada", font=config.SMALL_FONT, bg="#ffe4c4")
         
         self.buttonSinewave = tk.Button(
-            self, width=17, text="Sinewave", relief=FLAT,
+            self, width=17, text="Senoide", relief=FLAT,
             font=config.SMALL_FONT, bg="#ffe4c4", command=self.buttonSinewavePressed)
         self.buttonSinglePulse = tk.Button(
-            self, width=17, text="Single Pulse",
+            self, width=17, text="Pulso único",
             font=config.SMALL_FONT, bg="#fff0bc", command=self.buttonSinglePulsePressed)
         self.buttonPeriodicPulse = tk.Button(
-            self, width=17, text="Periodic Pulse",
+            self, width=17, text="Pulso periódico",
             font=config.SMALL_FONT, bg="#fff0bc", command=self.buttonPeriodicPulsePressed)
 
         # Widgets Placement

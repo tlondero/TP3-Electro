@@ -7,7 +7,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.backends._backend_tk import NavigationToolbar2Tk
 import matplotlib.pyplot as plt
 from scipy import signal
-from numpy import pi
+from numpy import pi, sqrt
 
 class CurveZerosAndPoles(tk.Frame):
     def __init__(self, parent, controller):
@@ -17,7 +17,7 @@ class CurveZerosAndPoles(tk.Frame):
         self.parent = parent
 
         self.title = tk.Label(
-            self, text="Zeros and Poles curve", font=config.SMALL_FONT, bg="#ffffff")
+            self, text="Diagrama de Ceros y Polos", font=config.SMALL_FONT, bg="#ffffff")
         self.title.grid(row=0, column=0, ipady=7, sticky=N)
 
         ####################################
@@ -44,10 +44,14 @@ class CurveZerosAndPoles(tk.Frame):
         f0 = dictInput.get("frequencyValue")
         # Frequency Unit Factor
         frequencyUnitFactor = dictInput.get("frequencyUnitFactor")
-        # Damping Coefficient
-        xi = dictInput.get("dampCoeff")
         # BandWidth Gain
         k = dictInput.get("gainBW")
+        # Damping Coefficient
+        xi = dictInput.get("transParam")
+        transParamType = dictInput.get("transParamType")
+        if (transParamType == "gainMax"):
+            g = dictInput.get("transParam") / k
+            xi = (sqrt(2 / g) * sqrt(g - sqrt((g * g) - 1))) / 2
 
         try:
             # Defining pulsation
@@ -59,52 +63,44 @@ class CurveZerosAndPoles(tk.Frame):
             global num
             global den
             # First Order Systems
-            if dictInput["order"] == "First":
+            if dictInput["order"] == "Primer":
                 # Low Pass Filter
-                if dictInput["filterType"] == "Low Pass":
+                if dictInput["filterType"] == "Pasa bajos":
                     num = [k * w0]
                     den = [1, w0]
-                    #sys = signal.lti([k * w0], [1, w0])
                 # High Pass Filter
-                elif dictInput["filterType"] == "High Pass":
-                    num = [k, 0]
+                elif dictInput["filterType"] == "Pasa altos":
+                    num = [k, 0] 
                     den = [1, w0]
-                    #sys = signal.lti([k * w0, 0], [1, w0])
                 # All Pass Filter
-                elif dictInput["filterType"] == "All Pass":
+                elif dictInput["filterType"] == "Pasa todo":
                     num = [k, -k * w0]
-                    den = [1, w0]                
-                    #sys = signal.lti([k, -k * w0], [1, w0])
+                    den = [1, w0]
 
             # Second Order Systems
-            elif dictInput["order"] == "Second":
+            elif dictInput["order"] == "Segundo":
                 # Low Pass Filter
-                if dictInput["filterType"] == "Low Pass":
+                if dictInput["filterType"] == "Pasa bajos":
                     num = [k * w0 * w0]
                     den = [1, 2 * xi * w0, w0 * w0]
-                    #sys = signal.lti([k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # High Pass Filter
-                elif dictInput["filterType"] == "High Pass":
+                elif dictInput["filterType"] == "Pasa altos":
                     num = [k, 0, 0]
                     den = [1, 2 * xi * w0, w0 * w0]
-                    #sys = signal.lti([k * w0 * w0, 0, 0], [1, 2 * xi * w0, w0 * w0])
                 # All Pass Filter
-                elif dictInput["filterType"] == "All Pass":
-                    num = [k, -2 * k * xi * w0, w0 * w0]
+                elif dictInput["filterType"] == "Pasa todo":
+                    num = [k, -2 * k * xi * w0,  k * w0 * w0]
                     den = [1, 2 * xi * w0, w0 * w0]
-                    #sys = signal.lti([k, -2 * k * xi * w0, w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # Band Pass Filter
-                elif dictInput["filterType"] == "Band Pass":
-                    num = [k * w0 * w0, 0]
+                elif dictInput["filterType"] == "Pasa banda":
+                    num = [0, 2* xi * k * w0, 0]
                     den = [1, 2 * xi * w0, w0 * w0]
-                    #sys = signal.lti([0, k * w0 * w0, 0], [1, 2 * xi * w0, w0 * w0])
                 # Single Notch
                 elif dictInput["filterType"] == "Single Notch":
                     num = [k, 0 , k * w0 * w0]
                     den = [1, 2 * xi * w0, w0 * w0]
-                    #sys = signal.lti([0, 1 , k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # Multiple Notch
-                elif dictInput["filterType"] == "multipleNotch":
+                elif dictInput["filterType"] == "Multiple Notch":
                     # Notch Zero Frequency Value
                     fz = dictInput.get("frequencyNZValue")
                     # Notch Zero Frequency Unit Factor
@@ -122,8 +118,13 @@ class CurveZerosAndPoles(tk.Frame):
                     xip = dictInput.get("NPdampCoeff")
                     # Defining Notch Pole pulsation
                     wp = 2 * pi * fp * frequencyNPUnitFactor
-                    
-                    sys = signal.lti([1, 2* k * xiz * wz, k * wz * wz], [1, 2* k * xip * wp, k * wp * wp])
+
+                    if (wz > wp) :
+                        num = [(k * wp * wp) / (wz * wz), (2* k * xiz * wp * wp) / wz, k * wp * wp]
+                        den = [1, 2 * xip * wp, wp * wp]
+                    else :
+                        num = [k, 2* k * xiz * wz, k * wz * wz]
+                        den = [1, 2 * xip * wp, wp * wp]
 
             ################################
             #   System's Bode generation   #
@@ -135,7 +136,7 @@ class CurveZerosAndPoles(tk.Frame):
             #print(zpk["zeros"], zpk["poles"])  
 
         except(TypeError):
-            self.title.config(text="Please configure all the system parameters.", fg="#ff0000")
+            self.title.config(text="Se tiene que configurar todos los parametros del sistema.", fg="#ff0000")
         else:
             self.title.config(text="", fg="#000000")
 
@@ -155,8 +156,8 @@ class CurveZerosAndPoles(tk.Frame):
             #self.ax.set_ylim(-1.1*m, 1.1*m)
 
             self.ax.minorticks_on()
-            self.ax.set_xlabel("Real Axis")
-            self.ax.set_ylabel("Imaginary Axis")
+            self.ax.set_xlabel("Eje Real")
+            self.ax.set_ylabel("Eje Imaginario")
             self.ax.grid(which='major', linestyle='-', linewidth=0.3, color='black')
             self.ax.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 

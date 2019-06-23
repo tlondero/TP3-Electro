@@ -24,13 +24,13 @@ class MenuParameters(tk.Frame):
 
         # Widgets Definition
         self.selectOrderText = tk.Label(
-            self, width=55, text="Select the system order", font=config.SMALL_FONT, bg="#ffe4c4")
+            self, width=55, text="Seleccionar el orden del sistema", font=config.SMALL_FONT, bg="#ffe4c4")
         
         self.buttonFirstOrder = tk.Button(
-            self, width=27, text="First Order", relief=FLAT,
+            self, width=27, text="Primer Orden", relief=FLAT,
             font=config.SMALL_FONT, bg="#ffe4c4", command=self.buttonFirstOrderPressed)
         self.buttonSecondOrder = tk.Button(
-            self, width=27, text="Second Order",
+            self, width=27, text="Segundo Orden",
             font=config.SMALL_FONT, bg="#fff0bc", command=self.buttonSecondOrderPressed)
 
         # Widgets Placement
@@ -55,7 +55,7 @@ class MenuParameters(tk.Frame):
             self.orderMenus[orderMenu].config(bg="#ffe4c4")
         
         self.showOrderMenu(MenuFirstOrder)
-        dictInput["order"] = "First"
+        dictInput["order"] = "Primer"
      
     ######################################
     #   Order Menus Managing Functions   #
@@ -77,13 +77,13 @@ class MenuParameters(tk.Frame):
     def buttonFirstOrderPressed(self):
         self.buttonFirstOrder.config( relief=FLAT,   bg="#ffe4c4")
         self.buttonSecondOrder.config(relief=RAISED, bg="#fff0bc")
-        dictInput["order"] = "First"
+        dictInput["order"] = "Primer"
         self.showOrderMenu(MenuFirstOrder)
 
     def buttonSecondOrderPressed(self):
         self.buttonFirstOrder.config( relief=RAISED, bg="#fff0bc")
         self.buttonSecondOrder.config(relief=FLAT,   bg="#ffe4c4")    
-        dictInput["order"] = "Second"
+        dictInput["order"] = "Segundo"
         self.showOrderMenu(MenuSecondOrder)   
 
     ######################################

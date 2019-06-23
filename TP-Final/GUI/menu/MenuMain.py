@@ -25,22 +25,22 @@ class MenuMain(tk.Frame):
         self.parent = parent
 
         self.buttonParameters = tk.Button(
-            self, width=26, text="Parameters", 
+            self, width=26, text="Parametros", 
             font=config.SMALL_FONT, bg="#ffe4c4", relief=FLAT, 
             command=self.buttonParametersPressed)
 
         self.buttonInputSignal = tk.Button(
-            self, width=26, text="Input Signal",
+            self, width=26, text="Señal de entrada",
             font=config.SMALL_FONT, bg="#fff0bc", command=self.buttonInputSignalPressed)
 
         self.buttonParameters.grid( row=0, column=0, ipadx=4, sticky = W)
         self.buttonInputSignal.grid(row=0, column=1, ipadx=4, sticky = E)
 
         self.buttonSimulate = tk.Button(
-            self, width=36, text="Simulate",
+            self, width=36, text="Simular",
             font=config.SMALL_FONT, background="#fff0bc", command=self.buttonSimulatePressed)
 
-        self.buttonSimulate.grid(row=2, column=0, columnspan=3, pady=12, sticky=S)
+        self.buttonSimulate.grid(row=2, column=0, columnspan=3, pady=45, sticky=S)
 
         self.containMenu = tk.Frame(self)
         self.containMenu.grid(row=1, column=0, columnspan=3, sticky=E+W+N+S)

@@ -24,7 +24,7 @@ class CurveMain(tk.Frame):
         self.buttonStepResponse = tk.Button(
             self,
             width = 22,
-            text = "Step Response",
+            text = "Respuesta a entrada",
             font = config.SMALL_FONT,
             background = "#ffffff",
             relief = FLAT,
@@ -43,7 +43,7 @@ class CurveMain(tk.Frame):
         self.buttonZerosAndPoles = tk.Button(
             self,
             width = 22,
-            text = "Zeros And Poles",
+            text = "Ceros y Polos",
             font = config.SMALL_FONT,
             background = "#fff0bc",
             command = self.buttonZerosAndPolesPressed

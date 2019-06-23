@@ -4,7 +4,7 @@ from tkinter import *
 from menu.MenuMain import MenuMain
 from curve.CurveMain import CurveMain
 
-class UI(tk.Tk):
+class UI(tk.Tk): 
     def __init__(self, **kwargs):
         super(UI, self).__init__(**kwargs)
 

@@ -13,7 +13,7 @@ class MenuPeriodicPulse(tk.Frame):
         self.parent = parent
 
         self.insertPerioPulseParamText = tk.Label(
-            self, width=55, text="Insert the periodic pulse parameters",
+            self, width=55, text="Entregar los parametros del pulso periódico",
             font=config.SMALL_FONT, background="#ffe4c4")
 
         self.insertPerioPulseParamText.grid(row=0, column=0, columnspan=5, ipadx=3, ipady=5, sticky=N+E+W)
@@ -23,7 +23,7 @@ class MenuPeriodicPulse(tk.Frame):
         #################################
 
         # Widgets Definition
-        self.labelFrequency = tk.Label(self, width=15, text="Frequency", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.labelFrequency = tk.Label(self, width=15, text="Frecuencia", font=config.SMALL_FONT, bg="#ffe4c4")
         self.entryFrequency = tk.Entry(self, width=5)
 
         self.HzUnitButton = tk.Button( self, width=8, text="Hz",  font=config.SMALL_FONT, command=self.HzUnitButtonPressed)
@@ -43,7 +43,7 @@ class MenuPeriodicPulse(tk.Frame):
         #################################
 
         # Widgets Definition
-        self.labelAmplitude = tk.Label(self, width=15, text="Amplitude", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.labelAmplitude = tk.Label(self, width=15, text="Amplitud", font=config.SMALL_FONT, bg="#ffe4c4")
         self.entryAmplitude = tk.Entry(self, width=5)
 
         self.mVUnitButton = tk.Button(self, width=8, text="mV", font=config.SMALL_FONT, command=self.mVUnitButtonPressed)

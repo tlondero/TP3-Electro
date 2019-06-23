@@ -13,7 +13,7 @@ class MenuSinglePulse(tk.Frame):
         self.parent = parent
 
         self.insertSingPulseParamText = tk.Label(
-            self, width=55, text="Insert the single pulse parameters",
+            self, width=55, text="Entregar los parametros del pulso único",
             font=config.SMALL_FONT, background="#ffe4c4")
 
         self.insertSingPulseParamText.grid(row=0, column=0, columnspan=6, ipadx=3, ipady=5, sticky=N+E+W)
@@ -23,7 +23,7 @@ class MenuSinglePulse(tk.Frame):
         #################################
 
         # Widgets Definition
-        self.labelAmplitude = tk.Label(self, width=15, text="Amplitude", font=config.SMALL_FONT, bg="#ffe4c4")
+        self.labelAmplitude = tk.Label(self, width=15, text="Amplitud", font=config.SMALL_FONT, bg="#ffe4c4")
         self.entryAmplitude = tk.Entry(self, width=5)
 
         self.mVUnitAmpButton = tk.Button(self, width=8, text="mV", font=config.SMALL_FONT, command=self.mVUnitAmpButtonPressed)

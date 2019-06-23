@@ -7,7 +7,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.backends._backend_tk import NavigationToolbar2Tk
 import matplotlib.pyplot as plt
 from scipy import signal
-from numpy import pi, power
+from numpy import pi, sqrt, power
 
 class CurveBode(tk.Frame):
     def __init__(self, parent, controller):
@@ -17,8 +17,10 @@ class CurveBode(tk.Frame):
         self.parent = parent
 
         self.title = tk.Label(
-            self, text="Bode curve", font=config.SMALL_FONT, bg="#ffffff")
+            self, text="Diagrama de Bode", font=config.SMALL_FONT, bg="#ffffff")
         self.title.grid(row=0, column=0, columnspan=6, ipady=7, sticky=N)
+
+        plt.rc('text', usetex=False)
 
         ##########################
         #   Bode Graphs Canvas   #
@@ -41,7 +43,7 @@ class CurveBode(tk.Frame):
         ###################################     
 
         # Widgets Definition
-        self.labelFrequencyAxis = tk.Label(self, width=15, text="Frequency Axis", font=config.SMALL_FONT, bg="#ffffff")
+        self.labelFrequencyAxis = tk.Label(self, width=15, text="Eje de frecuencia", font=config.SMALL_FONT, bg="#ffffff")
 
         self.HzAxisButton = tk.Button(  self, width=8, text="Hz", relief=FLAT,      
         font=config.SMALL_FONT, command=self.HzAxisButtonPressed, bg="#ffffff")
@@ -66,8 +68,8 @@ class CurveBode(tk.Frame):
 
         # Default XAxis and YAxis Units
         self.freqAxisUnitFactor = 1 / (2 * pi)
-        self.ax1.set_xlabel("Pulsation (Hz)")
-        self.ax2.set_xlabel("Pulsation (Hz)")
+        self.ax1.set_xlabel("Pulsación (Hz)")
+        self.ax2.set_xlabel("Pulsación (Hz)")
         self.gainAxisdBActivated = True
         self.dataPlot.draw()
 
@@ -80,8 +82,8 @@ class CurveBode(tk.Frame):
         self.radsAxisButton.config(relief=RAISED, bg="#f0f0f0")
         self.freqAxisUnitFactor = 1 / (2 * pi)
         self.simulate()
-        self.ax1.set_xlabel("Pulsation (Hz)")
-        self.ax2.set_xlabel("Pulsation (Hz)")
+        self.ax1.set_xlabel("Frecuencia (Hz)")
+        self.ax2.set_xlabel("Frecuencia (Hz)")
         self.dataPlot.draw()
 
     def radsAxisButtonPressed(self):
@@ -89,8 +91,8 @@ class CurveBode(tk.Frame):
         self.radsAxisButton.config(relief=FLAT,   bg="#ffffff")
         self.freqAxisUnitFactor = 1
         self.simulate()
-        self.ax1.set_xlabel("Pulsation (rad/s)")
-        self.ax2.set_xlabel("Pulsation (rad/s)")
+        self.ax1.set_xlabel("Pulsación (rad/s)")
+        self.ax2.set_xlabel("Pulsación (rad/s)")
         self.dataPlot.draw()
 
     def dBAxisButtonPressed(self):
@@ -106,7 +108,7 @@ class CurveBode(tk.Frame):
         self.timesAxisButton.config(relief=FLAT,   bg="#ffffff")
         self.gainAxisdBActivated = False
         self.simulate()
-        self.ax1.set_ylabel("Gain (Times)")
+        self.ax1.set_ylabel("Gain (Veces)")
         self.dataPlot.draw()
               
     def simulate(self):
@@ -117,10 +119,15 @@ class CurveBode(tk.Frame):
         f0 = dictInput.get("frequencyValue")
         # Frequency Unit Factor
         frequencyUnitFactor = dictInput.get("frequencyUnitFactor")
-        # Damping Coefficient
-        xi = dictInput.get("dampCoeff")
         # BandWidth Gain
         k = dictInput.get("gainBW")
+        # Damping Coefficient
+        xi = dictInput.get("transParam")
+        transParamType = dictInput.get("transParamType")
+        if (transParamType == "gainMax"):
+            g = dictInput.get("transParam") / k
+            xi = (sqrt(2 / g) * sqrt(g - sqrt((g * g) - 1))) / 2
+
         try:
             # Defining pulsation
             w0 = 2 * pi * f0 * frequencyUnitFactor
@@ -130,30 +137,30 @@ class CurveBode(tk.Frame):
             #############################################
             global sys
             # First Order Systems
-            if dictInput["order"] == "First":
+            if dictInput["order"] == "Primer":
                 # Low Pass Filter
-                if dictInput["filterType"] == "Low Pass":
+                if dictInput["filterType"] == "Pasa bajos":
                     sys = signal.lti([k * w0], [1, w0])
                 # High Pass Filter
-                elif dictInput["filterType"] == "High Pass":
+                elif dictInput["filterType"] == "Pasa altos":
                     sys = signal.lti([k, 0], [1, w0])
                 # All Pass Filter
-                elif dictInput["filterType"] == "All Pass":
+                elif dictInput["filterType"] == "Pasa todo":
                     sys = signal.lti([k, -k * w0], [1, w0])
 
             # Second Order Systems
-            elif dictInput["order"] == "Second":
+            elif dictInput["order"] == "Segundo":
                 # Low Pass Filter
-                if dictInput["filterType"] == "Low Pass":
+                if dictInput["filterType"] == "Pasa bajos":
                     sys = signal.lti([k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # High Pass Filter
-                elif dictInput["filterType"] == "High Pass":
+                elif dictInput["filterType"] == "Pasa altos":
                     sys = signal.lti([k, 0, 0], [1, 2 * xi * w0, w0 * w0])
                 # All Pass Filter
-                elif dictInput["filterType"] == "All Pass":
-                    sys = signal.lti([k, -2 * k * xi * w0, w0 * w0], [1, 2 * xi * w0, w0 * w0])
+                elif dictInput["filterType"] == "Pasa todo":
+                    sys = signal.lti([k, -2 * k * xi * w0,  k * w0 * w0], [1, 2 * xi * w0, w0 * w0])
                 # Band Pass Filter
-                elif dictInput["filterType"] == "Band Pass":
+                elif dictInput["filterType"] == "Pasa banda":
                     sys = signal.lti([0, 2* xi * k * w0, 0], [1, 2 * xi * w0, w0 * w0])
                 # Single Notch
                 elif dictInput["filterType"] == "Single Notch":
@@ -194,7 +201,7 @@ class CurveBode(tk.Frame):
             freqAxis =  bode["w"] * self.freqAxisUnitFactor
 
         except(TypeError):
-            self.title.config(text="Please configure all the system parameters.", fg="#ff0000")
+            self.title.config(text="Se tiene que configurar todos los parametros del sistema.", fg="#ff0000")
         else:
             self.title.config(text="", fg="#000000")
 
@@ -210,20 +217,20 @@ class CurveBode(tk.Frame):
             #   Gain and Argument plot functions   #
             ########################################
             self.ax1.clear()
-
+            plt.rc('text', usetex=False)
             self.ax1.semilogx(freqAxis, gainAxis, color="red")   
             self.ax1.minorticks_on()
-            self.ax1.set_xlabel("Pulsation (Hz)")
+            self.ax1.set_xlabel("Pulsación (Hz)")
             self.ax1.set_ylabel("Gain (dB)")
             self.ax1.grid(which='major', linestyle='-', linewidth=0.3, color='black')
             self.ax1.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
             self.ax2.clear()
-
+            plt.rc('text', usetex=False)
             self.ax2.semilogx(freqAxis, bode["arg"], color="purple")
             self.ax2.minorticks_on()
-            self.ax2.set_xlabel("Pulsation (Hz)")
-            self.ax2.set_ylabel("Argument (°)")
+            self.ax2.set_xlabel("Pulsación (Hz)")
+            self.ax2.set_ylabel("Fase (°)")
             self.ax2.grid(which='major', linestyle='-', linewidth=0.3, color='black')
             self.ax2.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 

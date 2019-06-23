@@ -49,12 +49,42 @@ En el siguiente informe se expone un resumen el trabajo realizado en \textbf{Alt
 \section*{Desarrollo}
 
 \subsection*{Modelado de placa en Altium}
-Se hizo una placa en Altium del siguiente circuito provisto por la caterdra, el cual reconocimos como un filtro pasa bajos "Sallen Key"
+Se realizó un modelo de una placa en \textbf{Altium} del circuito provisto por la cátedra, presentado en la figura (\ref{fig:AltiumCirc}), el cual fue reconocido como un filtro pasa bajos ``Sallen Key".
 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Altium-Circuito}
+	\caption{Sallen Key Low-Pass Filter.}
+	\label{fig:AltiumCirc}
+\end{figure}
+
+Los criterios para su diseño fueron los siguientes:
+\begin{itemize}
+\item[$\bullet$]Tamaño de pistas: 0.6 mm;
+\item[$\bullet$]Mínima diferencia entre pistas: 0.6 mm;
+\item[$\bullet$]Tener la precaución de que se pudiera acceder y diferenciar todos los componentes.
+\end{itemize} 
+
+Luego de realizar el esquematico y el PCB, se preparó el proyecto para imprimir, de forma tal que estuviera listo para llevar el modelo a la realidad.
+Finalmente se obtuvo, mediante el uso de \textbf{LTSpice}, los diagramas de Bode y con Montecarlo:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Altium-BODE}
+	\caption{Bode Sallen Key.}
+	\label{fig:BodeAltium}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Altium-MC}
+	\caption{Montecarlo Sallen Key.}
+	\label{fig:MCAltium}
+\end{figure}
 
 
 \subsection*{Simulación en LTSpice}
-
 Se comenzó analizando el período de carga y descarga de los componentes capacitivos e inductivos del circuito dado.
 
 \begin{figure}[H]
@@ -108,14 +138,14 @@ Para analizar teóricamente ambas situaciones se observa que tanto el capacitor 
 %Por otro lado, para la descarga, el circuito es un RLC serie. Sabiendo que para este circuito $\alpha < \omega_0$, se plantea la solución para un circuito subamortiguado, obteniéndose así las siguientes ecuaciones:
 %
 %\begin{equation}
-%	V_{C} (t) = V_{f} \cdot e^{- \alpha t} \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right]
+%	V_{C} (t) = e^{- \alpha t} \left[ V_{f} \cdot cos \left(  \omega_0 t \right) + \left( V_{f} + \frac{I_L}{\alpha} \right) sen \left(  \omega_0 t \right) \right]
 %	\label{eq:descarg-c}
 %\end{equation}
 %
 %\begin{equation} \label{eq:descarg-l}
 %\begin{split}
-%I_{L} (t) = V_{f} C \cdot e^{- \alpha t} \left\lbrace - \alpha \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right] \right. \\
-% \left. - \omega_d sen \left(  \omega_d t \right) + \left( \alpha + \frac{R}{C} \right) cos \left(  \omega_d t \right) \right\rbrace
+%I_{L} (t) = \frac{\cdot e^{- \alpha t}{C \left( \alpha^{2} +  \omega^{2} \right) } \dot \left\lbrace sin \left(\omega_0 t \right) \left[ -V_{C0} - I_{L0} + V_C \omega_0 \right] \right. \\
+% \left. + cos \left( \omega_0 t \right) \left[ -V_{C0} \alpha - \omega_0 + \left( V_L + \frac{I_L}{R} \right) \right] \right\rbrace \right\rbrace
 %\end{split}
 %\end{equation}
 %

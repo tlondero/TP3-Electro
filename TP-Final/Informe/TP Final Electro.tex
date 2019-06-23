@@ -138,14 +138,14 @@ Para analizar teóricamente ambas situaciones se observa que tanto el capacitor 
 %Por otro lado, para la descarga, el circuito es un RLC serie. Sabiendo que para este circuito $\alpha < \omega_0$, se plantea la solución para un circuito subamortiguado, obteniéndose así las siguientes ecuaciones:
 %
 %\begin{equation}
-%	V_{C} (t) = V_{f} \cdot e^{- \alpha t} \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right]
+%	V_{C} (t) = e^{- \alpha t} \left[ V_{f} \cdot cos \left(  \omega_0 t \right) + \left( V_{f} + \frac{I_L}{\alpha} \right) sen \left(  \omega_0 t \right) \right]
 %	\label{eq:descarg-c}
 %\end{equation}
 %
 %\begin{equation} \label{eq:descarg-l}
 %\begin{split}
-%I_{L} (t) = V_{f} C \cdot e^{- \alpha t} \left\lbrace - \alpha \left[ cos \left(  \omega_d t \right) + {\omega_d}^{-1}  \left( \alpha + \frac{R}{C} \right) sen \left(  \omega_d t \right) \right] \right. \\
-% \left. - \omega_d sen \left(  \omega_d t \right) + \left( \alpha + \frac{R}{C} \right) cos \left(  \omega_d t \right) \right\rbrace
+%I_{L} (t) = \frac{\cdot e^{- \alpha t}{C \left( \alpha^{2} +  \omega^{2} \right) } \dot \left\lbrace sin \left(\omega_0 t \right) \left[ -V_{C0} - I_{L0} + V_C \omega_0 \right] \right. \\
+% \left. + cos \left( \omega_0 t \right) \left[ -V_{C0} \alpha - \omega_0 + \left( V_L + \frac{I_L}{R} \right) \right] \right\rbrace \right\rbrace
 %\end{split}
 %\end{equation}
 %

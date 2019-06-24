@@ -34,9 +34,9 @@ class MenuSecondOrder(tk.Frame):
         self.buttonBandPass = tk.Button(
             self, width=8, text="Pasa banda", font=config.SMALL_FONT, command=self.buttonBandPassPressed)
         self.buttonSingNotch = tk.Button(
-            self, width=8, text="SingNotch", font=config.SMALL_FONT, command=self.buttonSingNotchPressed)
+            self, width=8, text="Notch", font=config.SMALL_FONT, command=self.buttonSingNotchPressed)
         self.buttonMultNotch = tk.Button(
-            self, width=8, text="MultNotch", font=config.SMALL_FONT, command=self.buttonMultNotchPressed)
+            self, width=8, text="H-L Notch", font=config.SMALL_FONT, command=self.buttonMultNotchPressed)
 
         # Widgets Placement
         self.buttonLowPass.grid(  row=1, column=1, ipadx=3, pady=5)
@@ -150,7 +150,8 @@ class MenuSecondOrder(tk.Frame):
         for sides in ['top','bottom','left','right']:
             self.axTransParam.spines[sides].set_visible(False)
         self.axTransParam.set_facecolor("#ffe4c4")
-        self.axTransParam.text(0.25, 0.3, "$\displaystyle\\xi$", fontsize = 20)  
+        self.axTransParam.text(0.25, 0.3, "$\\xi$", fontsize = 20)
+#        self.axTransParam.text(0.25, 0.3, "$\displaystyle\\xi$", fontsize = 20)#Esto el original
         plt.rc('text', usetex=False)
 
         self.entryTransParam = tk.Entry(self, width=8)
@@ -536,25 +537,21 @@ class MenuSecondOrder(tk.Frame):
     def buttonXiPressed(self):
         self.buttonXi.config(     relief=FLAT,   bg="#ffe4c4")
         self.buttonGainMax.config(relief=RAISED, bg="#f0f0f0")
-
         self.axTransParam.clear()
         plt.rc('text', usetex=True)
-        self.axTransParam.text(0.25, 0.3, "$\displaystyle\\xi$", fontsize = 20)  
+        self.axTransParam.text(0.25, 0.3, "$\displaystyle \\xi$", fontsize = 20)
         self.canvasTransParam.draw()
         plt.rc('text', usetex=False)
-
         dictInput["transParamType"] = "xi"
 
     def buttonGainMaxPressed(self):
-        self.buttonXi.config(     relief=RAISED, bg="#f0f0f0")
         self.buttonGainMax.config(relief=FLAT,   bg="#ffe4c4")
-
+        self.buttonXi.config(     relief=RAISED, bg="#f0f0f0")
         self.axTransParam.clear()
         plt.rc('text', usetex=True)
         self.axTransParam.text(0.25, 0.3, "$\displaystyle G_{MAX\ }$", fontsize = 15)  
         self.canvasTransParam.draw()
         plt.rc('text', usetex=False)
-
         dictInput["transParamType"] = "gainMax"
 
     ##############################################################

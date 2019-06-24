@@ -125,7 +125,7 @@ Mediante el uso de \textbf{LTSpice}, y otorgando un valor arbitrario de $5 \ V$ 
 
 Mediante el uso de las figuras (\ref{fig:LTSC1}) y (\ref{fig:LTSD1}) se pudo determinar la pseudofrecuencia de oscilación del transitorio y el valor máximo de sobrepico. De esta forma, se determinó para el capacitor una pseudofrecuencia de ${\omega}_{T} \ = \ 4.47 \ ms$ y un sobrepico de $227 \ mV$, y para el inductor una pseudofrecuencia de ${\omega}_{T} \ = \ 3.84 \ ms$ y un sobrepico de $4.55 \ mA$.
 
-Por otro lado, se plantearon las  diferencuialoes correspondientes a cada caso y se buscaron soluciones a estas. Para la carga, se analizó por separado ambas ramas, mientras que en la descarga, se estableció que este era un circuito RLC. De esta forma se obtuvieron los siguientes resultados:
+Por otro lado, se plantearon las ecuaciones diferenciales correspondientes a cada caso y se buscaron soluciones a estas. Para la carga, se analizó por separado ambas ramas, mientras que en la descarga, se estableció que este era un circuito RLC. De esta forma se obtuvieron los siguientes resultados:
 
 \begin{figure}[H]
 	\centering
@@ -214,7 +214,7 @@ Se desarrolló una interfaz gráfica en \textbf{Python} que permite simular filt
 
 \vspace{1em}
 
-Con el fin de cumplir con dicho objetivo, se utilizó las librerias \texttt{tkinter} para la implementación gráfica, \texttt{matplotlib} para la generación de diagramas y curvas y luego \texttt{scipy} y \texttt{numpy} para todas las cuentas internas al programa. El ensamblaje de todas estas herramientas, con la programación orientada a objetos y utilitarios como \texttt{canvas}, permitió generar una ventana de interfaz mostrada a continuación.
+Con el fin de cumplir con dicho objetivo, se utilizó las librerias \texttt{tkinter} para la implementación gráfica, \texttt{matplotlib} para la generación de diagramas y curvas y luego \texttt{scipy} y \texttt{numpy} para todas las cuentas internas del programa. El ensamblaje de todas estas herramientas, con la programación orientada a objetos y utilitarios como \texttt{canvas}, permitió generar una ventana de interfaz mostrada a continuación.
 
 \begin{figure}[h]
 \begin{center}
@@ -244,8 +244,10 @@ El gráfico de respuesta a señales tiene debajo una barra que permite entrar l�
 
 Aunque la versión de UI propuesta durante la defensa todavía tiene algunos defectos respeto al cambio de datos o de ejes, esta permite obtener simulaciones esperadas de filtros conocidos. La UI también propone una experiencia de usuario nueva y única con respeto a los temas de filtros con un fin educativo.
 
-\section*{Conclusión}
+\section*{Conclusiones}
 
-Se pudo predecir los resultados obtenidos en las gráficas de corriente en función de la tensión en base a los conocimientos teóricos. Por otro lado, se pudo observar la importancia de las tolerancias y como afectan estas al resultado original mediante el uso del análisis de Montecarlo. Ademas se destacan dos puntos, el primero es como las tolerancias de los dispositivos afectan a los demás, como es el caso de la resistencia 2 a la corriente de la bobina, mientras que el segundo es la poca variación en el capacitor. 
+Se lograron obtener habilidades escenciales en el uso de Altium junto a consideraciones importantes a la hora de armar un PCB, incluyendo tanto dónde colocar tierras para lograr mediciones más rápidas en la placa, distintos anchos de pista en función de la corriente que tendrá que soportar el dispositivo, posicionamiento de los componentes que ayuden a la hora de soldar la placa, como un aprendizaje general a la hora del armado de PCBs.
+
+Se pudieron predecir los resultados obtenidos en las gráficas en las simulaciones de corriente en función de la tensión en base a los conocimientos teóricos. Por otro lado, se pudo observar la importancia de las tolerancias de los componentes y como afectan estas al resultado original mediante el uso del análisis de Montecarlo. Además se destacan dos puntos; cómo las tolerancias de los dispositivos afectan a los demás, como en el caso de la resistencia afectando a la corriente de la bobina, y la poca variación en el capacitor. 
 
 \end{document}

@@ -152,14 +152,17 @@ class CurveBode(tk.Frame):
                 # Gain Parameter
                 gainParamType = dictInput.get("gainParamType")
                 k = dictInput.get("gainParam")
-                if (gainParamType == "gainBW"):
+                if (gainParamType == "gainBW" ):
                     # BandWidth Gain
                     k = dictInput.get("gainParam")
                 elif(gainParamType == "gainMax"):
-                    # Maximum Gain
-                    G = 1 / (2 * xi * sqrt(1 - (xi * xi)))
-                    g = dictInput.get("gainParam")
-                    k = g / G
+                    if(xi<1):
+                        # Maximum Gain
+                        G = 1 / (2 * xi * sqrt(1 - (xi * xi)))
+                        g = dictInput.get("gainParam")
+                        k = g / G
+                    else:
+                        k = dictInput.get("gainParam")
 
                 # Low Pass Filter
                 if dictInput["filterType"] == "Pasa bajos":

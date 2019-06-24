@@ -101,79 +101,78 @@ class MenuSecondOrder(tk.Frame):
         self.kHzUnitButton.grid(row=4, column=3)
         self.MHzUnitButton.grid(row=4, column=4)
 
-        ######################################
-        #   BandWidth Gain Inline Selector   #
-        ######################################
-        
-        # Widgets Definition
-        self.graphGainBW = Canvas(self)
-        plt.rc('text', usetex=True)
-        self.figGainBW = matplotlib.figure.Figure(figsize=(0.8, 0.5))
-        self.figGainBW.patch.set_facecolor("#ffe4c4")
-        self.axGainBW = self.figGainBW.add_subplot(111)
-        self.canvasGainBW = FigureCanvasTkAgg(self.figGainBW, master=self.graphGainBW)      
-        self.canvasGainBW.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-        self.canvasGainBW._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
-
-        self.axGainBW.get_xaxis().set_visible(False)
-        self.axGainBW.get_yaxis().set_visible(False)
-        for sides in ['top','bottom','left','right']:
-            self.axGainBW.spines[sides].set_visible(False)
-        self.axGainBW.set_facecolor("#ffe4c4")
-        self.axGainBW.text(0.25, 0.3, "$\displaystyle G_{BP\ }$", fontsize = 15)  
-        plt.rc('text', usetex=False)
-
-        self.entryGainBW = tk.Entry(self, width=8)
-        self.buttonGainBW = tk.Button(self, width=8, text="Enviar", font=config.SMALL_FONT, command=self.buttonGainBWPressed)
-
-        # Widgets Placement
-        self.graphGainBW.grid( row=5, column=0, sticky=N)
-        self.entryGainBW.grid( row=5, column=1, sticky=E, ipadx=10)
-        self.buttonGainBW.grid(row=5, column=2)
-
         ###########################################
-        #   Transient Parameter Inline Selector   #
+        #   Damping Coefficient Inline Selector   #
         ###########################################
         
         # Widgets Definition
-        self.graphTransParam = Canvas(self)
+        self.graphDampCoeff = Canvas(self)
         plt.rc('text', usetex=True)
-        self.figTransParam = matplotlib.figure.Figure(figsize=(0.8, 0.5))
-        self.figTransParam.patch.set_facecolor("#ffe4c4")
-        self.axTransParam = self.figTransParam.add_subplot(111)
-        self.canvasTransParam = FigureCanvasTkAgg(self.figTransParam, master=self.graphTransParam)      
-        self.canvasTransParam.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-        self.canvasTransParam._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+        self.figDampCoeff = matplotlib.figure.Figure(figsize=(0.8, 0.5))
+        self.figDampCoeff.patch.set_facecolor("#ffe4c4")
+        self.axDampCoeff = self.figDampCoeff.add_subplot(111)
+        self.canvasDampCoeff = FigureCanvasTkAgg(self.figDampCoeff, master=self.graphDampCoeff)      
+        self.canvasDampCoeff.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+        self.canvasDampCoeff._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-        self.axTransParam.get_xaxis().set_visible(False)
-        self.axTransParam.get_yaxis().set_visible(False)
+        self.axDampCoeff.get_xaxis().set_visible(False)
+        self.axDampCoeff.get_yaxis().set_visible(False)
         for sides in ['top','bottom','left','right']:
-            self.axTransParam.spines[sides].set_visible(False)
-        self.axTransParam.set_facecolor("#ffe4c4")
-        self.axTransParam.text(0.25, 0.3, "$\\xi$", fontsize = 20)
-#        self.axTransParam.text(0.25, 0.3, "$\displaystyle\\xi$", fontsize = 20)#Esto el original
+            self.axDampCoeff.spines[sides].set_visible(False)
+        self.axDampCoeff.set_facecolor("#ffe4c4")
+        self.axDampCoeff.text(0.25, 0.3, "$\\xi$", fontsize = 15)  
         plt.rc('text', usetex=False)
 
-        self.entryTransParam = tk.Entry(self, width=8)
-        self.buttonTransParam = tk.Button(self, width=8, text="Enviar", font=config.SMALL_FONT, command=self.buttonTransParamPressed)
+        self.entryDampCoeff = tk.Entry(self, width=8)
+        self.buttonDampCoeff = tk.Button(self, width=8, text="Enviar", font=config.SMALL_FONT, command=self.buttonDampCoeffPressed)
 
         # Widgets Placement
-        self.graphTransParam.grid( row=6, column=0, sticky=N)
-        self.entryTransParam.grid( row=6, column=1, sticky=E, ipadx=10)
-        self.buttonTransParam.grid(row=6, column=2)
+        self.graphDampCoeff.grid( row=5, column=0, sticky=N)
+        self.entryDampCoeff.grid( row=5, column=1, sticky=E, ipadx=10)
+        self.buttonDampCoeff.grid(row=5, column=2)
+
+        ######################################
+        #   Gain Parameter Inline Selector   #
+        ######################################
+        
+        # Widgets Definition
+        self.graphGainParam = Canvas(self)
+        plt.rc('text', usetex=True)
+        self.figGainParam = matplotlib.figure.Figure(figsize=(0.8, 0.5))
+        self.figGainParam.patch.set_facecolor("#ffe4c4")
+        self.axGainParam = self.figGainParam.add_subplot(111)
+        self.canvasGainParam = FigureCanvasTkAgg(self.figGainParam, master=self.graphGainParam)      
+        self.canvasGainParam.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+        self.canvasGainParam._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+
+        self.axGainParam.get_xaxis().set_visible(False)
+        self.axGainParam.get_yaxis().set_visible(False)
+        for sides in ['top','bottom','left','right']:
+            self.axGainParam.spines[sides].set_visible(False)
+        self.axGainParam.set_facecolor("#ffe4c4")
+        self.axGainParam.text(0.25, 0.3, "$\displaystyle G_{BP\ }$", fontsize = 15)
+        plt.rc('text', usetex=False)
+
+        self.entryGainParam = tk.Entry(self, width=8)
+        self.buttonGainParam = tk.Button(self, width=8, text="Enviar", font=config.SMALL_FONT, command=self.buttonGainParamPressed)
+
+        # Widgets Placement
+        self.graphGainParam.grid( row=6, column=0, sticky=N)
+        self.entryGainParam.grid( row=6, column=1, sticky=E, ipadx=10)
+        self.buttonGainParam.grid(row=6, column=2)
 
         ################################################
         #   Transient Parameter Type Inline Selector   #
         ################################################
 
         # Widgets Definition
-        self.buttonXi = tk.Button(     self, width=30, text="Factor de amortiguamiento",
-        font=config.SMALL_FONT, command=self.buttonXiPressed, relief=FLAT, bg="#ffe4c4")
+        self.buttonGainBW = tk.Button(     self, width=30, text="Ganancia de banda pasante",
+        font=config.SMALL_FONT, command=self.buttonGainBWPressed, relief=FLAT, bg="#ffe4c4")
         self.buttonGainMax = tk.Button(self, width=20, text="Ganancia máxima", 
         font=config.SMALL_FONT, command=self.buttonGainMaxPressed)
 
         # Widgets Placement
-        self.buttonXi.grid(     row=7, column=0, columnspan=3)  
+        self.buttonGainBW.grid(     row=7, column=0, columnspan=3)  
         self.buttonGainMax.grid(row=7, column=3, columnspan=2)        
 
         #self.insertMNParamText = tk.Label(
@@ -516,43 +515,43 @@ class MenuSecondOrder(tk.Frame):
 
         #dictInput["frequencyNPUnitFactor"] = 1000000
 
-    ###################################################
-    #   Transient Parameter Button Callback Function  #
-    ###################################################
+    ##############################################
+    #   Gain Parameter Button Callback Function  #
+    ##############################################
 
-    def buttonTransParamPressed(self):
-        self.buttonTransParam.config(relief=FLAT, bg="#ffe4c4")
+    def buttonGainParamPressed(self):
+        self.buttonGainParam.config(relief=FLAT, bg="#ffe4c4")
         try:
-            dictInput["transParam"] = float(self.entryTransParam.get())
+            dictInput["gainParam"] = float(self.entryGainParam.get())
         except(ValueError):
             self.title.config(text="Entregar una ganancia de BP que sea de tipo float", fg="#ff0000")
-            self.buttonTransParam.config(relief=RAISED, bg="#f0f0f0")
+            self.buttonGainParam.config(relief=RAISED, bg="#f0f0f0")
         else:
             self.title.config(text="Seleccionar el filtro de segundo orden", fg="#000000")
 
     ###########################################################
-    #   Transient Parameter Type Buttons' Callback Functions  #
+    #   Gain Parameter Type Buttons' Callback Functions  #
     ###########################################################
 
-    def buttonXiPressed(self):
-        self.buttonXi.config(     relief=FLAT,   bg="#ffe4c4")
+    def buttonGainBWPressed(self):
+        self.buttonGainBW.config( relief=FLAT,   bg="#ffe4c4")
         self.buttonGainMax.config(relief=RAISED, bg="#f0f0f0")
-        self.axTransParam.clear()
+        self.axGainParam.clear()
         plt.rc('text', usetex=True)
-        self.axTransParam.text(0.25, 0.3, "$\displaystyle \\xi$", fontsize = 20)
-        self.canvasTransParam.draw()
+        self.axGainParam.text(0.25, 0.3, "$\displaystyle G_{BP\ }$", fontsize = 15)
+        self.canvasGainParam.draw()
         plt.rc('text', usetex=False)
-        dictInput["transParamType"] = "xi"
+        dictInput["gainParamType"] = "gainBW"
 
     def buttonGainMaxPressed(self):
         self.buttonGainMax.config(relief=FLAT,   bg="#ffe4c4")
-        self.buttonXi.config(     relief=RAISED, bg="#f0f0f0")
-        self.axTransParam.clear()
+        self.buttonGainBW.config(     relief=RAISED, bg="#f0f0f0")
+        self.axGainParam.clear()
         plt.rc('text', usetex=True)
-        self.axTransParam.text(0.25, 0.3, "$\displaystyle G_{MAX\ }$", fontsize = 15)  
-        self.canvasTransParam.draw()
+        self.axGainParam.text(0.25, 0.3, "$\displaystyle G_{MAX\ }$", fontsize = 15)  
+        self.canvasGainParam.draw()
         plt.rc('text', usetex=False)
-        dictInput["transParamType"] = "gainMax"
+        dictInput["gainParamType"] = "gainMax"
 
     ##############################################################
     #   Notch Zero Damping Coefficient Button Callback Function  #
@@ -570,17 +569,17 @@ class MenuSecondOrder(tk.Frame):
         #self.buttonNPDampCoeff.config(relief=FLAT, bg="#ffe4c4")
         #dictInput["NPdampCoeff"] = float(self.entryNPDampCoeff.get())
 
-    #################################################
-    #   Bandwidth Gain Buttons' Callback Functions  #
-    #################################################
+    ######################################################
+    #   Damping Coefficient Buttons' Callback Functions  #
+    ######################################################
 
-    def buttonGainBWPressed(self):
-        self.buttonGainBW.config(relief=FLAT, bg="#ffe4c4")
+    def buttonDampCoeffPressed(self):
+        self.buttonDampCoeff.config(relief=FLAT, bg="#ffe4c4")
         try:
-            dictInput["gainBW"] = float(self.entryGainBW.get())
+            dictInput["dampCoeff"] = float(self.entryDampCoeff.get())
         except(ValueError):
             self.title.config(text="Entregar una ganancia de BP que sea de tipo float", fg="#ff0000")
-            self.buttonGainBW.config(relief=RAISED, bg="#f0f0f0")
+            self.buttonDampCoeff.config(relief=RAISED, bg="#f0f0f0")
         else:
             self.title.config(text="Seleccionar el filtro de segundo orden", fg="#000000")
 
@@ -608,11 +607,11 @@ class MenuSecondOrder(tk.Frame):
         self.buttonSingNotch.config(relief=RAISED, bg="#f0f0f0")
         self.buttonMultNotch.config(relief=RAISED, bg="#f0f0f0")
 
-        self.buttonTransParam.config( relief=RAISED, bg="#f0f0f0")
+        self.buttonDampCoeff.config( relief=RAISED, bg="#f0f0f0")
         # self.buttonNZDampCoeff.config(relief=RAISED, bg="#f0f0f0")
         # self.buttonNPDampCoeff.config(relief=RAISED, bg="#f0f0f0")
 
-        self.buttonGainBW.config(relief=RAISED, bg="#f0f0f0")
+        self.buttonGainParam.config(relief=RAISED, bg="#f0f0f0")
 
     def focus(self):
         pass

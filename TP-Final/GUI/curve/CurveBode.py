@@ -119,15 +119,19 @@ class CurveBode(tk.Frame):
         f0 = dictInput.get("frequencyValue")
         # Frequency Unit Factor
         frequencyUnitFactor = dictInput.get("frequencyUnitFactor")
-        # BandWidth Gain
-        k = dictInput.get("gainBW")
         # Damping Coefficient
-        transParamType = dictInput.get("transParamType")
-        if (transParamType == "gainMax"):
-            g = dictInput.get("transParam") / k
-            xi = (sqrt(2 / g) * sqrt(g - sqrt((g * g) - 1))) / 2
-        else:
-            xi = dictInput.get("transParam")
+        xi = dictInput.get("dampCoeff")
+        # Gain Parameters
+        gainParamType = dictInput.get("gainParamType")
+        if (gainParamType == "gainBW"):
+            # BandWidth Gain
+            k = dictInput.get("gainParam")
+        elif(gainParamType == "gainMax"):
+            # Maximum Gain
+            G = 1 / (2 * xi * sqrt(1 - (xi * xi)))
+            g = dictInput.get("gainParam")
+            k = g / G
+        
         try:
             # Defining pulsation
             w0 = 2 * pi * f0 * frequencyUnitFactor

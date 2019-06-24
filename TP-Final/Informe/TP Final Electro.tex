@@ -125,18 +125,48 @@ Mediante el uso de \textbf{LTSpice}, y otorgando un valor arbitrario de $5 \ V$ 
 
 Mediante el uso de las figuras (\ref{fig:LTSC1}) y (\ref{fig:LTSD1}) se pudo determinar la pseudofrecuencia de oscilación del transitorio y el valor máximo de sobrepico. De esta forma, se determinó para el capacitor una pseudofrecuencia de ${\omega}_{T} \ = \ 4.47 \ ms$ y un sobrepico de $227 \ mV$, y para el inductor una pseudofrecuencia de ${\omega}_{T} \ = \ 3.84 \ ms$ y un sobrepico de $4.55 \ mA$.
 
-Para analizar teóricamente ambas situaciones se observa que tanto el capacitor como el inductor se encuentran en ramas distintas conectadas a una fuente de tensión constante, es por ello que se llega a las siguientes ecuaciones:
+Por otro lado, se plantearon las  diferencuialoes correspondientes a cada caso y se buscaron soluciones a estas. Para la carga, se analizó por separado ambas ramas, mientras que en la descarga, se estableció que este era un circuito RLC. De esta forma se obtuvieron los siguientes resultados:
 
-\begin{equation}
-	V_{C} (t) = V_{f} \left( 1 - e^{- \frac{t}{0.396 \ ms}  } \right)
-	\label{eq:carg-c}
-\end{equation}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{LTSpice-CargaCSim}
+	\caption{Carga del capacitor simulada a partir de la resolución del circuito.}
+	\label{fig:LTSCCS}
+\end{figure}
 
-\begin{equation}
-	I_{L} (t) = \frac{V_{f}}{30 \ \Omega} \left( 1 - e^{- \frac{t}{0.156 \ s}  } \right)
-	\label{eq:carg-l}
-\end{equation}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{LTSpice-CargaLSim}
+	\caption{carga de la bobina simulada a partir de la resolución del circuito.}
+	\label{fig:LTSCLS}
+\end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{LTSpice-DescargaCSim}
+	\caption{Descarga del capacitor simulada a partir de la resolución del circuito.}
+	\label{fig:LTSDCS}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{LTSpice-DescargaLSim}
+	\caption{Descarga de la bobina simulada a partir de la resolución del circuito.}
+	\label{fig:LTSDLS}
+\end{figure}
+
+%Para analizar teóricamente ambas situaciones se observa que tanto el capacitor como el inductor se encuentran en ramas distintas conectadas a una fuente de tensión constante, es por ello que se llega a las siguientes ecuaciones:
+%
+%\begin{equation}
+%	V_{C} (t) = V_{f} \left( 1 - e^{- \frac{t}{0.396 \ ms}  } \right)
+%	\label{eq:carg-c}
+%\end{equation}
+%
+%\begin{equation}
+%	I_{L} (t) = \frac{V_{f}}{30 \ \Omega} \left( 1 - e^{- \frac{t}{0.156 \ s}  } \right)
+%	\label{eq:carg-l}
+%\end{equation}
+%
 %Por otro lado, para la descarga, el circuito es un RLC serie. Sabiendo que para este circuito $\alpha < \omega_0$, se plantea la solución para un circuito subamortiguado, obteniéndose así las siguientes ecuaciones:
 %
 %\begin{equation}

@@ -123,6 +123,7 @@ class CurveBode(tk.Frame):
         xi = dictInput.get("dampCoeff")
         # Gain Parameters
         gainParamType = dictInput.get("gainParamType")
+        k = dictInput.get("gainParam")
         if (gainParamType == "gainBW"):
             # BandWidth Gain
             k = dictInput.get("gainParam")

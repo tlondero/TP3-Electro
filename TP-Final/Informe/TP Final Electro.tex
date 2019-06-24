@@ -6,6 +6,8 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
+\usepackage{courier}
+
 \usepackage{float}
 \usepackage{graphicx}
 \graphicspath{ {./Imagenes/} }
@@ -177,6 +179,41 @@ Finalmente, se realizó un diagrama de Montecarlo. Para ello se determinó las t
 \end{figure}
 
 \subsection*{GUI en Python}
+
+El objetivo en ese trabajo fue de desarrollar una interfaz gráfica en el lenguaje de alto nivel \textbf{Python} permitiendo simular filtros de primer y segundo orden. Se deseó lograr en primer lugar a una interfaz que sea simple y intuitiva para un publico de estudiantes o profesores con nociones de electrotecnia.
+
+\vspace{1em}
+
+Con el fin de cumplir con ese objetivo, usamos las librerias \texttt{tkinter} para la implementación gráfica, \texttt{matplotlib} para la generación de diagramas y curvas, y luego \texttt{scipy} y \texttt{numpy} para todas las cuentas internas al programa. El ensamblaje de todas estas herramientas con la programación orientada a objetos y utilitarios como \texttt{canvas} permitió generar una ventana de interfaz mostrada a continuación.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.35]{PantallaUI}
+\caption{Vista completa de la interfaz gráfica.}
+\end{center}
+\end{figure}
+
+Con respecto a la usabilidad de esta interfaz, dicha se puede descomponer en dos partes elementales que serían una parte de entrada de datos y otra de visualización de resultados. En particular en la parte de entrada de datos, el uso predominante de botones permite un uso intuitivo de la UI. Se puede entonces navegar entre los menús con 
+facilidad y así tener un buen control al momento de la entrada de los datos. La generación en la pantalla de las ecuaciones de los filtros simulados permite además al usuario de conocer precisamente el sentido de los datos esperados por la UI.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{EcuacionUI}
+\caption{Visualización de las ecuaciones de filtros al entregar los parametros.}
+\end{center}
+\end{figure}
+
+Para la parte de visualización de resultados, tres sub-ventanas son disponibles para mostrar respetivamente las respuestas a entradas, los diagramas de Bode y de Ceros y Polos de los filtros entrados.
+El gráfico de respuesta a señales tiene abajo una barra que permite entrar límites de ejes personalizados. También propone un botón de \textit{autoscale} para volver a los límites por defecto propuestos por la interfaz. Por otro lado, se puede elegir diferentes escalas para mostrar los diagramas de Bode, dB o veces para el eje de magnitud y Hz o rad/s para de eje de frecuencia.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.7]{RescaleUI}
+\caption{Barra de herramientas permitiendo el cambio de los límites de ejes y el \textit{autoscale}.}
+\end{center}
+\end{figure}
+
+Aunque la versión de UI propuesta durante la defensa todavía tiene algunos defectos respeto al cambio de datos o de ejes, ya permite obtener simulaciones esperadas de filtros conocidos. La UI también propone una experiencia de usuario nueva y única con respeto a los temas de filtros con un fin educativo.
 
 \section*{Conclusión}
 

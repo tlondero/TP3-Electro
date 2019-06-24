@@ -50,7 +50,7 @@ class CurveBode(tk.Frame):
         self.radsAxisButton = tk.Button(self, width=8, text="rad/sec", 
         font=config.SMALL_FONT, command=self.radsAxisButtonPressed)
 
-        self.labelGainAxis = tk.Label(self, width=15, text="Gain Axis", font=config.SMALL_FONT, bg="#ffffff")
+        self.labelGainAxis = tk.Label(self, width=15, text="Eje de ganancia", font=config.SMALL_FONT, bg="#ffffff")
 
         self.dBAxisButton = tk.Button(   self, width=8, text="dB", relief=FLAT, 
         font=config.SMALL_FONT,  command=self.dBAxisButtonPressed, bg="#ffffff")

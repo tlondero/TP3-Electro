@@ -127,16 +127,6 @@ class CurveStepResponse(tk.Frame):
         k = dictInput.get("gainBW")
         # Damping Coefficient
         xi = dictInput.get("dampCoeff")
-        # Gain Parameters
-        gainParamType = dictInput.get("gainParamType")
-        if (gainParamType == "gainBW"):
-            # BandWidth Gain
-            k = dictInput.get("gainParam")
-        elif(gainParamType == "gainMax"):
-            # Maximum Gain
-            G = 1 / (2 * xi * sqrt(1 - (xi * xi)))
-            g = dictInput.get("gainParam")
-            k = g / G
 
         try:
             # Defining pulsation
@@ -147,6 +137,10 @@ class CurveStepResponse(tk.Frame):
             global sys
             # First Order Systems
             if dictInput["order"] == "Primer":
+
+                # Gain Param
+                k = dictInput.get("gainBW")
+
                 # Low Pass Filter
                 if dictInput["filterType"] == "Pasa bajos":
                     sys = signal.lti([k * w0], [1, w0])
@@ -159,6 +153,19 @@ class CurveStepResponse(tk.Frame):
 
             # Second Order Systems
             elif dictInput["order"] == "Segundo":
+
+                # Gain Parameter
+                gainParamType = dictInput.get("gainParamType")
+                k = dictInput.get("gainParam")
+                if (gainParamType == "gainBW"):
+                    # BandWidth Gain
+                    k = dictInput.get("gainParam")
+                elif(gainParamType == "gainMax"):
+                    # Maximum Gain
+                    G = 1 / (2 * xi * sqrt(1 - (xi * xi)))
+                    g = dictInput.get("gainParam")
+                    k = g / G
+
                 # Low Pass Filter
                 if dictInput["filterType"] == "Pasa bajos":
                     sys = signal.lti([k * w0 * w0], [1, 2 * xi * w0, w0 * w0])

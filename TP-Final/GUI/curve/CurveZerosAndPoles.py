@@ -46,16 +46,6 @@ class CurveZerosAndPoles(tk.Frame):
         frequencyUnitFactor = dictInput.get("frequencyUnitFactor")
         # Damping Coefficient
         xi = dictInput.get("dampCoeff")
-        # Gain Parameters
-        gainParamType = dictInput.get("gainParamType")
-        if (gainParamType == "gainBW"):
-            # BandWidth Gain
-            k = dictInput.get("gainParam")
-        elif(gainParamType == "gainMax"):
-            # Maximum Gain
-            G = 1 / (2 * xi * sqrt(1 - (xi * xi)))
-            g = dictInput.get("gainParam")
-            k = g / G
 
         try:
             # Defining pulsation
@@ -68,6 +58,10 @@ class CurveZerosAndPoles(tk.Frame):
             global den
             # First Order Systems
             if dictInput["order"] == "Primer":
+
+                # Gain Param
+                k = dictInput.get("gainBW")
+
                 # Low Pass Filter
                 if dictInput["filterType"] == "Pasa bajos":
                     num = [k * w0]
@@ -83,6 +77,19 @@ class CurveZerosAndPoles(tk.Frame):
 
             # Second Order Systems
             elif dictInput["order"] == "Segundo":
+
+                # Gain Parameter
+                gainParamType = dictInput.get("gainParamType")
+                k = dictInput.get("gainParam")
+                if (gainParamType == "gainBW"):
+                    # BandWidth Gain
+                    k = dictInput.get("gainParam")
+                elif(gainParamType == "gainMax"):
+                    # Maximum Gain
+                    G = 1 / (2 * xi * sqrt(1 - (xi * xi)))
+                    g = dictInput.get("gainParam")
+                    k = g / G
+
                 # Low Pass Filter
                 if dictInput["filterType"] == "Pasa bajos":
                     num = [k * w0 * w0]

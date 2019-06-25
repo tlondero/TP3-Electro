@@ -46,12 +46,12 @@
 
 \section*{Introducción}
 
-En el siguiente informe se expone un resumen el trabajo realizado en \textbf{Altium}, \textbf{LTSpice} y \textbf{Python}. En este expone los resultados obtenidos de las simulaciones realizadas.
+En el siguiente informe se expone un resumen del trabajo realizado en \textbf{Altium}, \textbf{LTSpice} y \textbf{Python}, y los resultados obtenidos de las simulaciones realizadas.
 
 \section*{Desarrollo}
 
 \subsection*{Modelado de placa en Altium}
-Se realizó un modelo de una placa en \textbf{Altium} del circuito provisto por la cátedra, presentado en la figura (\ref{fig:AltiumCirc}), el cual fue reconocido como un filtro pasa bajos ``Sallen Key".
+Se realizó un modelo de una placa en \textbf{Altium} del circuito provisto por la cátedra, presentado en la figura (\ref{fig:AltiumCirc}), el cual fue reconocido como un filtro pasa bajos "Sallen Key".
 
 
 \begin{figure}[H]
@@ -66,10 +66,11 @@ Los criterios para su diseño fueron los siguientes:
 \item[$\bullet$]Tamaño de pistas: 0.6 mm;
 \item[$\bullet$]Mínima diferencia entre pistas: 0.6 mm;
 \item[$\bullet$]Tener la precaución de que se pudiera acceder y diferenciar todos los componentes.
+\item[$\bullet$]Posicionamiento a conciencia para realizar mediciones con el osciloscopio.
 \end{itemize} 
 
-Luego de realizar el esquematico y el PCB, se preparó el proyecto para imprimir, de forma tal que estuviera listo para llevar el modelo a la realidad.
-Finalmente se obtuvo, mediante el uso de \textbf{LTSpice}, los diagramas de Bode y con Montecarlo:
+Luego de realizar el esquemático y el PCB, se preparó el proyecto para imprimir, de forma tal que estuviera listo para llevar el modelo a la realidad.
+Por último se obtuvo mediante el uso de \textbf{LTSpice}, los diagramas de Bode y Montecarlo:
 
 \begin{figure}[H]
 	\centering
@@ -183,9 +184,9 @@ Por otro lado, se plantearon las ecuaciones diferenciales correspondientes a cad
 %
 %con $\alpha = 1153.85 \ \frac{1}{s}$, $\omega_d = 1471.44 \ \frac{1}{s}$, $R = 30 \ \Omega$.
 
-Luego se analiza el caso en el cual el valor de ambas resistencias sea de $0 \ \Omega$. Idealmente, lo que sucedería sería que la tensión y la corriente oscilarían entre el capacitor y la bobina sin perdidas de energía. Dicha situación no es posible en la realidad ya que siempre se presenta una resistencia interna por parte de los elementos, lo que generaría perdidas. 
+Luego se analiza el caso en el cual el valor de ambas resistencias es de $0 \ \Omega$. Idealmente, lo que sucedería sería que la tensión y la corriente oscilarían entre el capacitor y la bobina sin perdidas de energía. Dicha situación no es posible en la realidad ya que siempre se presenta una resistencia interna por parte de los elementos, lo que generaría perdidas. 
 
-Finalmente, se realizó un diagrama de Montecarlo. Para ello se determinó las tolerancias de los distintos componentes de la siguiente forma: 5\% para las resistencias, 10\% para el capacitor y 0\% para la bobina. Se corrió la simulación 100 veces con un punto inicial en 1 e incrementándolo en 1 por iteratición. Además, se configuró la fuente de tensión de entrada para que varíe desde $0 \ V$ a $5 \ V$ con un paso de $0,1 \ V$. De esta forma se obtuvieron los gráficos presentados en la figuras (\ref{fig:LTSMCVC}), (\ref{fig:LTSMCIL}) y (\ref{fig:LTSMCIR}).
+Finalmente, se realizó un diagrama de Montecarlo. Para ello se determinó las tolerancias de los distintos componentes de la siguiente forma: 5\% para las resistencias, 10\% para el capacitor y 0\% para la bobina. Se corrió la simulación 100 veces con un punto inicial en 1 e incrementándolo en 1 por iteración. Además, se configuró la fuente de tensión de entrada para que varíe desde $0 \ V$ a $5 \ V$ con un paso de $0,1 \ V$. De esta forma se obtuvieron los gráficos presentados en la figuras (\ref{fig:LTSMCVC}), (\ref{fig:LTSMCIL}) y (\ref{fig:LTSMCIR}).
 
 \begin{figure}[H]
 	\centering
@@ -232,8 +233,8 @@ La interfaz puede ser descompuesta en dos partes elementales: una parte destinad
 \end{center}
 \end{figure}
 
-Por otro lado, en la parte de visualización de resultados, tres sub-ventanas se encuentran disponibles para mostrar respetivamente las respuestas a entradas, los diagramas de Bode y de Ceros y Polos de los filtros elegidos.
-El gráfico de respuesta a señales tiene debajo una barra que permite entrar límites de ejes personalizados. También propone un botón de \textit{autoscale} para volver a los límites por defecto propuestos por la interfaz. Finalmente, se puede elegir diferentes escalas para mostrar los diagramas de Bode, dB o veces para el eje de magnitud y Hz o rad/s para de eje de frecuencia.
+Por otro lado, en la parte de visualización de resultados, tres sub-ventanas se encuentran disponibles para mostrar respectivamente las respuestas a las entradas, los diagramas de Bode y de Ceros y Polos de los filtros elegidos.
+El gráfico de respuesta a señales tiene debajo una barra que permite ingresar límites de ejes personalizados. También propone un botón de \textit{autoscale} para volver a los límites por defecto propuestos por la interfaz. Finalmente, se puede elegir diferentes escalas para mostrar los diagramas de Bode, dB o veces para el eje de magnitud y Hz o rad/s para de eje de frecuencia.
 
 \begin{figure}[h]
 \begin{center}
@@ -242,11 +243,10 @@ El gráfico de respuesta a señales tiene debajo una barra que permite entrar l�
 \end{center}
 \end{figure}
 
-Aunque la versión de UI propuesta durante la defensa todavía tiene algunos defectos respeto al cambio de datos o de ejes, esta permite obtener simulaciones esperadas de filtros conocidos. La UI también propone una experiencia de usuario nueva y única con respeto a los temas de filtros con un fin educativo.
 
 \section*{Conclusiones}
 
-Se lograron obtener habilidades escenciales en el uso de Altium junto a consideraciones importantes a la hora de armar un PCB, incluyendo tanto dónde colocar tierras para lograr mediciones más rápidas en la placa, distintos anchos de pista en función de la corriente que tendrá que soportar el dispositivo, posicionamiento de los componentes que ayuden a la hora de soldar la placa, como un aprendizaje general a la hora del armado de PCBs.
+Se lograron obtener habilidades esenciales en el uso de Altium junto a consideraciones importantes a la hora de armar un PCB, incluyendo tanto dónde colocar tierras para lograr mediciones más rápidas en la placa, distintos anchos de pista en función de la corriente que tendrá que soportar el dispositivo, posicionamiento de los componentes que ayuden a la hora de soldar la placa, como un aprendizaje general a la hora del armado de PCBs.
 
 Se pudieron predecir los resultados obtenidos en las gráficas en las simulaciones de corriente en función de la tensión en base a los conocimientos teóricos. Por otro lado, se pudo observar la importancia de las tolerancias de los componentes y como afectan estas al resultado original mediante el uso del análisis de Montecarlo. Además se destacan dos puntos; cómo las tolerancias de los dispositivos afectan a los demás, como en el caso de la resistencia afectando a la corriente de la bobina, y la poca variación en el capacitor. 
 

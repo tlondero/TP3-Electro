@@ -255,7 +255,7 @@ class CurveBode(tk.Frame):
                 dictInput.get("filterType"),
                 dictInput.get("frequencyValue"),
                 dictInput.get("frequencyUnit"),
-                dictInput.get("gainBW")))
+                dictInput.get("gainParam")))
 
     def focus(self):
         pass

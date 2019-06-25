@@ -256,6 +256,6 @@ class CurveBode(tk.Frame):
                 dictInput.get("frequencyValue"),
                 dictInput.get("frequencyUnit"),
                 dictInput.get("gainBW")))
-
+#KTN
     def focus(self):
         pass

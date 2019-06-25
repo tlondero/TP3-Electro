@@ -287,7 +287,7 @@ class CurveStepResponse(tk.Frame):
                 dictInput.get("filterType"),
                 dictInput.get("frequencyValue"),
                 dictInput.get("frequencyUnit"),
-                dictInput.get("gainBW")))
+                round(k, 2)))
 
     def focus(self):
         pass

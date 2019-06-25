@@ -257,5 +257,6 @@ class CurveBode(tk.Frame):
                 dictInput.get("frequencyUnit"), 
                 round(k, 2)))
 
+
     def focus(self):
         pass
